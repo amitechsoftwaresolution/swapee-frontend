@@ -1,0 +1,104 @@
+[
+   {
+      "type":"Electronics",
+      "bgColor":"#b1ca4b",
+      "image":"/images/categories/Electronics.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Vehicles",
+      "bgColor":"#ec716a",
+      "image":"/images/categories/Vehicles.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Properties",
+      "bgColor":"#5ee2e7",
+      "image":"/images/categories/Properties.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Business & Industries",
+      "bgColor":"#6aa7f8",
+      "image":"/images/categories/Business & Industries.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Services",
+      "bgColor":"#e3bf51",
+      "image":"/images/categories/Services.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Jobs",
+      "bgColor":"#e48c44",
+      "image":"/images/categories/Jobs.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Hobbies, Sports & Kids",
+      "bgColor":"#f2c138",
+      "image":"/images/categories/Hobbies, Sports & Kids.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Fashion & Beauty",
+      "bgColor":"#ca6f4b",
+      "image":"/images/categories/Fashion & Beauty.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Education",
+      "bgColor":"#ca8b4b",
+      "image":"/images/categories/Education.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Essentials",
+      "bgColor":"#7aca4b",
+      "image":"/images/categories/Essentials.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Books",
+      "bgColor":"#4bca8b",
+      "image":"/images/categories/Books.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Movies, Music & Games",
+      "bgColor":"#4bcabb",
+      "image":"/images/categories/Movies, Music & Games.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Toys, Kids & Baby",
+      "bgColor":"#4bb3ca",
+      "image":"/images/categories/Toys, Kids & Baby.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Handmades",
+      "bgColor":"#4b6bca",
+      "image":"/images/categories/Handmades.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Furnitures",
+      "bgColor":"#914bca",
+      "image":"/images/categories/Furnitures.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Gifts & Crafts",
+      "bgColor":"#bd4bca",
+      "image":"/images/categories/Gifts & Crafts.jpg",
+      "link":"/categories"
+   },
+   {
+      "type":"Others",
+      "bgColor":"#ca4b93",
+      "image":"/images/categories/Others.jpg",
+      "link":"/categories"
+   }
+]

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class App extends Component {
-    render() {
-        return (
-          <div>
-            
-          </div>
-        )
-    }
+import NavigationComponent from './Components/Navigation/NavigationComponent'
+
+const App = () => {
+    return (
+      <div>
+        <NavigationComponent />
+      </div>
+    )
 }
 
 export default App

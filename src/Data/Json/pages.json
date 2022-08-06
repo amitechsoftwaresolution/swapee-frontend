@@ -1,0 +1,17 @@
+[
+   {
+      "name": "Home",
+      "variant": "containedSecondary",
+      "color": "primary"
+   },
+   {
+      "name": "Categories",
+      "variant": "containedSecondary",
+      "color": "primary"
+   },
+   {
+      "name": "Dashboard",
+      "variant": "containedPrimary",
+      "color": "secondary"
+   }
+]
