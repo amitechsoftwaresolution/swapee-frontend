@@ -1,22 +1,20 @@
 .nav-link {
-    /* color: #000; */
     color: #fff;
-    border: 1px solid #ff6347;
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: #ff6347;
-    /* background: #31e2f2; */
+    border: 1px solid #31e2f2;
+    padding: 10px;
+    background: #31e2f2;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.9rem;
     border-radius: 10px;
     transition: all 400ms ease;
     height: 20px;
-    width: 80px;
+    width: 100px;
     font-weight: 600;
     align-self: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .nav-link:hover {

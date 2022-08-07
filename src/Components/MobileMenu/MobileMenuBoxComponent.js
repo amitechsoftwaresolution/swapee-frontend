@@ -1,111 +1,54 @@
-import React from "react"
+import React, {useState} from "react"
 
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
-import Menu from "@mui/material/Menu"
-import MenuItem from "@mui/material/MenuItem"
-import Typography from "@mui/material/Typography"
 import MenuIcon from "@mui/icons-material/Menu"
 import HomeIcon from '@mui/icons-material/Home'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
 import InfoIcon from '@mui/icons-material/Info'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import GridViewIcon from '@mui/icons-material/GridView'
 import CategoryIcon from '@mui/icons-material/Category'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import DescriptionIcon from '@mui/icons-material/Description'
+import SecurityIcon from '@mui/icons-material/Security'
 
-import LogoComponent from "../Logo/LogoComponent"
+import DrawerPanel from "../Drawer/DrawerPanel"
 
-const MobileMenuBoxComponent = (props) => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null)
+const MobileMenuBoxComponent = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false)
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget)
+    const NAV_LINKS = [
+        {label: "Home", href: "/", icon: <HomeIcon sx = {{color: "#fff"}}/>},
+        {label: "Dashboard", href: "/", icon: <DashboardIcon sx = {{color: "#fff"}}/>},
+        {label: "Categories", href: "/", icon: <CategoryIcon sx = {{color: "#fff"}}/>},
+        {label: "About Us", href: "/", icon: <InfoIcon sx = {{color: "#fff"}}/>},
+        {label: "FAQ", href: "/", icon: <LiveHelpIcon sx = {{color: "#fff"}}/>},
+        {label: "Privacy & Policy", href: "/", icon: <SecurityIcon sx = {{color: "#fff"}}/>},
+        {label: "Terms & Condition", href: "/", icon: <DescriptionIcon sx = {{color: "#fff"}}/>}
+    ]
+
+    const handleDrawer = () => {
+        setDrawerOpen(!drawerOpen)
     }
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null)
-    }
+    const renderMenuIcon = () => (
+        <IconButton
+            size = "large"
+            aria-label = "account of current user"
+            aria-controls = "menu-appbar"
+            aria-haspopup = "true"
+            color = "secondary"
+            onClick = {handleDrawer}
+            sx = {{color: "#fff"}}
+        >
+            <MenuIcon/>
+        </IconButton>
+    )
 
     return(
         <>
             <Box sx = {{ display: {xs: 'flex', md: 'none'}, flexGrow: 0}}>
-                {/*Mobile menu Icon*/}
-                <IconButton
-                    size = "large"
-                    aria-label = "account of current user"
-                    aria-controls = "menu-appbar"
-                    aria-haspopup = "true"
-                    color = "secondary"
-                    onClick = {handleOpenNavMenu}>
-                    <MenuIcon/>
-                </IconButton>
-                {/*Open mobile menu*/}
-                <Menu
-                    PaperProps = {{
-                        style: {
-                            maxHeight: '',
-                            height: '100vh',
-                            width: 'auto',
-                            borderRadius: '0%'
-                        },
-                    }}
-                    sx = {{
-                        display: {xs: 'block', md: 'none'},
-                        mt:{xs:'-65px'} , ml:{xs:'-20px'},
-                        width:{xs:'85%'}, height:{xs:'100%'}
-                    }}
-                    id = "menu-appbar"
-                    anchorEl = {anchorElNav}
-                    anchorOrigin = {{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    open = {Boolean(anchorElNav)}
-                    onClose = {handleCloseNavMenu}
-                    keepMounted
-                    transformOrigin = {{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                >
-                    <LogoComponent textColor="text.secondary" iconColor="secondary" position="left"/>
-                    <hr/>
-
-                    <MenuItem  onClick={handleCloseNavMenu} sx={{  width:{xs:'340px' }}}>
-                        <AccountCircleIcon color="info"/>
-                        <Typography sx={{ml:2}} color="text.disabled"  textAlign="center">Login</Typography>
-                    </MenuItem>
-
-                    <hr/>
-
-                    <MenuItem  onClick={handleCloseNavMenu} sx={{  width:{xs:'340px' }}}>
-                        <GridViewIcon color="info"/>
-                        <Typography sx={{ml:2}} color="text.disabled"  textAlign="center">Dashboard</Typography>
-                    </MenuItem>
-
-                    {props.pages.map((page) => (
-                        <MenuItem key={page}  onClick={handleCloseNavMenu} sx={{  width:{xs:'340px' }}}>
-                            <HomeIcon color="info" />
-                            <Typography sx={{ml:2}} color="text.disabled"  textAlign="center">{page.name}</Typography>
-                        </MenuItem>
-                    ))}
-
-                    <MenuItem  onClick={handleCloseNavMenu} sx={{  width:{xs:'340px' }}}>
-                        <CategoryIcon color="info"/>
-                        <Typography sx={{ml:2}} color="text.disabled"  textAlign="center">Categories</Typography>
-                    </MenuItem>
-
-                    <hr/>
-                    <MenuItem  onClick={handleCloseNavMenu} sx={{  width:{xs:'340px' }}}>
-                        <LiveHelpIcon color="info"/>
-                        <Typography sx={{ml:2}} color="text.disabled"  textAlign="center">FAQ</Typography>
-                    </MenuItem>
-
-                    <MenuItem  onClick={handleCloseNavMenu} sx={{  width:{xs:'340px' }}}>
-                        <InfoIcon color="info"/>
-                        <Typography sx={{ml:2}} color="text.disabled"  textAlign="center">About Us</Typography>
-                    </MenuItem>
-                </Menu>
+                { renderMenuIcon() }
+                <DrawerPanel open = {drawerOpen} links = {NAV_LINKS} handleDrawer = {handleDrawer}/>
             </Box>
         </>
     )

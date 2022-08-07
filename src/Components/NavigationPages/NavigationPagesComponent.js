@@ -34,11 +34,11 @@ const NavigationPagesComponent = (props) => {
                     </Button>
                 ))}
                 <a href = "/signup" className = "nav-link">Dashboard</a>
-                {/* <MenuBoxWidget
+                <MenuBoxWidget
                     menuList = {Categories}
                     anchorElUser = {anchorElUser}
                     setAnchorElUser = {() => setAnchorElUser()}
-                /> */}
+                />
             </Box>
         </>
     )
