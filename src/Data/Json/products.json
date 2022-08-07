@@ -1,0 +1,17 @@
+[
+      {
+         "type":"Services",
+         "image":"/images/right.PNG",
+         "link":"/products"
+      },
+      {
+         "type":"Services",
+         "image":"/images/post2.jpg",
+         "link":"/products"
+      },
+      {
+         "type":"Services",
+         "image":"/images/post3.png",
+         "link":"/products"
+      }
+ ]
