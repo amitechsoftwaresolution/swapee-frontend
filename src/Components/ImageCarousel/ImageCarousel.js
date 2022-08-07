@@ -27,9 +27,9 @@ const ImageCarousel = ({data}) => {
                 className = "image-carousel"
                 dots
                 infinite
-                speed = {2000}
+                speed = {3000}
                 autoplay = {true}
-                autoplaySpeed = {4000}
+                autoplaySpeed = {5000}
                 slidesToShow = {1}
                 slidesToScroll = {1}
                 arrows = {true}
