@@ -50,7 +50,7 @@ const NavigationComponent = () => {
                         <MobileMenuBoxComponent pages = {Pages}/>
                         <LogoComponent textColor = "text.secondary" position = "start" />
                         <NavigationPagesComponent pages = {Pages}/>
-                        <SearchBarComponent />
+                        <SearchBarComponent placeholder = "Search"/>
                         <ProfileIconComponent
                             tooltip = "Open settings"
                             alt = "Username"

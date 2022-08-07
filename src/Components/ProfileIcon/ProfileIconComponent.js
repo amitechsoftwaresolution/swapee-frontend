@@ -19,7 +19,7 @@ const ProfileIconComponent = (props) => {
             <Box sx = {{flexGrow:0}}>
                 <Tooltip title = {props.tooltip}>
                     <IconButton onClick = {handleOpenUserMenu} >
-                        <Avatar alt = {props.username} src = {props.src}  sx = {{backgroundColor:'#4b4e5f'}}/>
+                        <Avatar alt = {props.username} src = {props.src}  sx = {{backgroundColor:'#4b4e5f', width: "30px", height: "30px"}}/>
                     </IconButton>
                 </Tooltip>
                 <MenuBoxWidget

@@ -6,6 +6,7 @@ import Box from "@mui/material/Box"
 import Categories from '../../Data/Json/categories.json'
 import MenuBoxWidget from "../Widgets/MenuBoxWidget"
 
+import './Navigation.css'
 
 const NavigationPagesComponent = (props) => {
 
@@ -25,18 +26,19 @@ const NavigationPagesComponent = (props) => {
                 {props.pages.map((page) => (
                     <Button
                         variant = {page.variant}
-                        sx = {{my: 2, display: 'block'}}
+                        sx = {{my: 2, display: 'block', color: "#fff", m: '10px'}}
                         key = {page.name}
                         onMouseOver = {page.name === 'Categories' ? handleOpenUserMenu : handleCloseUserMenu}
                     >
                         {page.name}
                     </Button>
                 ))}
-                <MenuBoxWidget
+                <a href = "/signup" className = "nav-link">Dashboard</a>
+                {/* <MenuBoxWidget
                     menuList = {Categories}
                     anchorElUser = {anchorElUser}
                     setAnchorElUser = {() => setAnchorElUser()}
-                />
+                /> */}
             </Box>
         </>
     )
