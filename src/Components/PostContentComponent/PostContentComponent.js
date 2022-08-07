@@ -3,13 +3,15 @@ import React, {useState, useEffect} from "react"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Stack from "@mui/material/Stack"
-import Button from "@mui/material/Button"
+import useMediaQuery from "@mui/material/useMediaQuery"
 import DiamondIcon from "@mui/icons-material/Diamond"
 
 import PrimaryButton from "../Button/PrimaryButton"
 import SecondaryButton from "../Button/SecondaryButton"
 
 const PostContentComponent = ({content}) => {
+    const matches = useMediaQuery('(max-width: 800px)')
+
     const [postTitle, setPostTitle ] = useState({
         prefix: "",
         suffix: ""
@@ -44,7 +46,7 @@ const PostContentComponent = ({content}) => {
                 fontFamily: 'Candara',
                 fontWeight: 600,
                 textTransform: "capitalize",
-                fontSize: "4rem"
+                fontSize: matches ? "2rem" : "4rem"
             }}
             component = "h1"
             variant = "h1"
@@ -63,7 +65,7 @@ const PostContentComponent = ({content}) => {
             align = "justify"
             component = "a"
             color = "rgba(255, 255, 255, 0.7)"
-            sx = {{whiteSpace: "initial",  fontFamily: 'Trebuchet MS', fontSize: '1.1rem'}}
+            sx = {{whiteSpace: "initial",  fontFamily: 'Trebuchet MS', fontSize: matches ? '0.8rem' : '1.1rem'}}
         >
             {content.description}
         </Typography>
