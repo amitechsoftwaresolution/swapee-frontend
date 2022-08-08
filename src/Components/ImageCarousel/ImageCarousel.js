@@ -2,27 +2,8 @@ import React from "react"
 
 import Slider from "react-slick"
 
-import Paper from '@mui/material/Paper'
-
-const ImageCarousel = ({data}) => {
-
-    const renderContentContainer = (item, idx) => (
-        <div key = {idx}>
-            <Paper elevation = {3} 
-                sx = {{
-                    width: '100%', 
-                    height: "450px", 
-                    borderRadius: "25px", 
-                    display: "flex",
-                    backgroundImage: `url(${item})`,
-                    backgroundSize: "cover"
-                }}
-            />
-        </div>
-    )
-
+const ImageCarousel = ({data, children}) => {
     return (
-        <div>
             <Slider
                 className = "image-carousel"
                 dots
@@ -36,9 +17,8 @@ const ImageCarousel = ({data}) => {
                 fade = {true}
                 adaptiveHeight = {true}
             >
-                { data.map((item, idx) => renderContentContainer(item, idx)) }
+                { data && data.map((item, idx) => { return  children(item, idx) }) }
             </Slider>
-        </div>
     )
 }
 
