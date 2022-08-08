@@ -154,7 +154,7 @@ const Footer = () => {
     }
 
     return (
-        <div>
+        <div className = 'shadow'>
             <div className = 'footer_root'>
                 <div className = 'footer_container'>
                     { renderFooterMainContent() }
