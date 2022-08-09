@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Post from '../../Components/Post/Post'
 import SectionComponent from '../../Components/Section/SectionComponent'
 import CategoryBoxGroupComponent from '../../Components/Category/CategoryBoxGroupComponent'
+import Section from '../../Components/Section/Section'
 
 import './Home.css'
 import img01 from '../../Assets/Images/img01.jpg'
@@ -39,6 +40,7 @@ class Home extends Component {
             <div className = 'home-main-container'>
                 <Post content = {this.products[0]} />
                 <SectionComponent data = {this.sectionDetails[0]} component = {CategoryBoxGroupComponent} />
+                <Section data = {this.sectionDetails[0]} />
             </div>
         )
     }

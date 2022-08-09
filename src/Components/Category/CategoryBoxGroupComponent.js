@@ -7,8 +7,6 @@ import ImageListItemBar from '@mui/material/ImageListItemBar'
 import IconButton from '@mui/material/IconButton'
 import CategoryIcon from '@mui/icons-material/Category'
 
-// import categories from '../../Data/Json/categories.json'
-
 const CategoryBoxGroupComponent = () => {
 
     const itemData = [
