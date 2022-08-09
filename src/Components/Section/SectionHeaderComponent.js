@@ -1,26 +1,18 @@
 import React from "react"
 
-import Typography from "@mui/material/Typography"
+import CustomCssButton from "../Button/CustomCssButton"
+
+import './Section.css'
 
 const SectionHeaderComponent = (props) => {
-    const heading = (variant, text, txtTransform) => {
-        return <Typography
-            sx = {{pt:0}}
-            component = "h1" 
-            variant = {variant} 
-            align = "center" 
-            color = "text.primary" 
-            gutterBottom
-            textTransform = {txtTransform}
-        >
-            {text}
-        </Typography>
-    }
-
     return(
-        <div>
-            { heading("h4", props.data.title, "uppercase") }
-            { heading("body1", props.data.description, "lowercase") }
+        <div className = "section-header-root">
+            <div className = "section-title">
+                <span>{props.data.title}</span>
+                <h2>What we have ?</h2>
+            </div>
+            <p> {props.data.description} </p>
+            <CustomCssButton href = "#" label = "View all"/>
         </div>
     )
 }

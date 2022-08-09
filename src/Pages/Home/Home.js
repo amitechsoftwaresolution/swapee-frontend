@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import Post from '../../Components/Post/Post'
+import SectionComponent from '../../Components/Section/SectionComponent'
+import CategoryBoxGroupComponent from '../../Components/Category/CategoryBoxGroupComponent'
 
 import './Home.css'
 import img01 from '../../Assets/Images/img01.jpg'
@@ -25,10 +27,18 @@ class Home extends Component {
         }
     ]
 
+    sectionDetails = [
+        {
+          title: "Our Categories",
+          description: "We Swapee provide a great amount of services through various categories! Go through our categories and enjoy your commodity exchange."
+        }
+    ]
+
     renderMainContainer = () => {
         return (
             <div className = 'home-main-container'>
-                <Post content = {this.products[0]}/>
+                <Post content = {this.products[0]} />
+                <SectionComponent data = {this.sectionDetails[0]} component = {CategoryBoxGroupComponent} />
             </div>
         )
     }

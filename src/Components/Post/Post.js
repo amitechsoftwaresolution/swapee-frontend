@@ -10,6 +10,19 @@ import './Post.css'
 
 const Post = ({content}) => {
 
+    const carouselSetting = {
+        dots: true,
+        infinite: true,
+        speed: 3000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        arrows: true,
+        fade: true,
+        adaptiveHeight: true
+    }
+
     const renderPostCarouselContent = (img, idx) => (
             <Paper elevation = {3} key = {idx}
                 sx = {{
@@ -30,7 +43,7 @@ const Post = ({content}) => {
                     <PostContentComponent content = {content}/>
                 </Grid>
                 <Grid item xs = {'none'} sm = {12} md = {6} sx = {{display: {xs: 'none', md: 'block'}}}>
-                    <ImageCarousel data = {content.imgs} children = {renderPostCarouselContent}/>
+                    <ImageCarousel data = {content.imgs} children = {renderPostCarouselContent} settings = {carouselSetting}/>
                 </Grid>
             </Grid>
         </div>
