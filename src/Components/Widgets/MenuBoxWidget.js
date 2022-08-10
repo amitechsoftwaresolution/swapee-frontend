@@ -18,12 +18,35 @@ const MenuBoxWidget = (props) => {
                     style: {
                         maxHeight: 200,
                         width: 'auto',
-                        borderRadius: '5%'
+                        maxWidth: '180px',
+                        padding: '16px',
+                        marginTop: "-8px",
+                        borderRadius: '0px 0px 8px 8px',
                     },
                 }}
-                sx = {{ overflow: 'auto', mt:{xs:'41px', md:'57px'} , ml:{xs:'15px', md:0}}} anchorEl = {props.anchorElUser}
-                    anchorOrigin = {{vertical: 'top', horizontal: 'right',}} keepMounted open = {Boolean(props.anchorElUser)}
-                    transformOrigin = {{vertical: 'top', horizontal: 'right',}} onClose = {handleCloseUserMenu}>
+                sx = {{ 
+                    overflow: 'auto', 
+                    mt:{xs:'41px', md:'57px'} , 
+                    ml:{xs:'15px', md:0}, 
+                    '*::-webkit-scrollbar': {
+                            width: '0.4em'
+                    },
+                    '&::-webkit-scrollbar-track': {
+                        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+                        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        backgroundColor: 'rgba(0,0,0,.1)',
+                        outline: '1px solid slategrey'
+                    }
+                }} 
+                anchorEl = {props.anchorElUser}
+                anchorOrigin = {{vertical: 'top', horizontal: 'right',}} 
+                keepMounted 
+                open = {Boolean(props.anchorElUser)}
+                transformOrigin = {{vertical: 'top', horizontal: 'right'}} 
+                onClose = {handleCloseUserMenu}
+            >
 
                 {
                     props.header
