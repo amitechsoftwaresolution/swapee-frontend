@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 
 import Post from '../../Components/Post/Post'
-import SectionComponent from '../../Components/Section/SectionComponent'
-import CategoryBoxGroupComponent from '../../Components/Category/CategoryBoxGroupComponent'
-import Section from '../../Components/Section/Section'
+import CategorySection from '../../Components/Section/CategorySection'
 
 import './Home.css'
 import img01 from '../../Assets/Images/img01.jpg'
 import img02 from '../../Assets/Images/img02.jpg'
 
 class Home extends Component {
+    state = {
+        isViewMoreClicked: false,
+        categoriesToShow: []
+    }
 
     products = [
         {
@@ -35,12 +37,43 @@ class Home extends Component {
         }
     ]
 
+    categoryList = [
+        {type: "Electronics", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s4.f4c5d8f9.jpg" },
+        {type: "Vehicles", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s1.69341801.jpg" },
+        {type: "Properties", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s2.3260a3b5.jpg" },
+        {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
+        {type: "Electronics", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s4.f4c5d8f9.jpg" },
+        {type: "Vehicles", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s1.69341801.jpg" },
+        {type: "Properties", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s2.3260a3b5.jpg" },
+        {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
+        {type: "Electronics", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s4.f4c5d8f9.jpg" },
+        {type: "Vehicles", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s1.69341801.jpg" },
+        {type: "Properties", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s2.3260a3b5.jpg" },
+        {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
+    ]
+
+    handleViewMoreOnClick = () => {
+        this.setState({ isViewMoreClicked: !this.state.isViewMoreClicked })
+    }
+
+    renderCategorySection = () => {
+        const {isViewMoreClicked, categoriesToShow} = this.state
+        return (
+            <CategorySection 
+                sectionDetail = {this.sectionDetails[0]} 
+                categoryList = {this.categoryList}
+                isViewMoreClicked = {isViewMoreClicked}
+                categoriesToShow = {categoriesToShow}
+                handleViewMoreOnClick = {this.handleViewMoreOnClick}
+            />
+        )
+    }
+
     renderMainContainer = () => {
         return (
             <div className = 'home-main-container'>
                 <Post content = {this.products[0]} />
-                <SectionComponent data = {this.sectionDetails[0]} component = {CategoryBoxGroupComponent} />
-                <Section data = {this.sectionDetails[0]} />
+                { this.renderCategorySection() }
             </div>
         )
     }

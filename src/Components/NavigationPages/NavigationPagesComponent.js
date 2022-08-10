@@ -28,7 +28,7 @@ const NavigationPagesComponent = (props) => {
                         variant = {page.variant}
                         sx = {{my: 2, display: 'block', color: "#fff", m: '10px', letterSpacing: "0.1rem !important"}}
                         key = {page.name}
-                        onMouseOver = {page.name === 'Categories' ? handleOpenUserMenu : handleCloseUserMenu}
+                        onClick = {page.name === 'Categories' ? handleOpenUserMenu : handleCloseUserMenu}
                     >
                         {page.name}
                     </Button>

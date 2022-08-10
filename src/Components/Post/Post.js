@@ -42,7 +42,7 @@ const Post = ({content}) => {
                 <Grid item xs = {12} sm = {12} md = {6} sx = {{padding: "5px"}}>
                     <PostContentComponent content = {content}/>
                 </Grid>
-                <Grid item xs = {'none'} sm = {12} md = {6} sx = {{display: {xs: 'none', md: 'block'}}}>
+                <Grid item sm = {12} md = {6} sx = {{display: {xs: 'none', md: 'block'}}}>
                     <ImageCarousel data = {content.imgs} children = {renderPostCarouselContent} settings = {carouselSetting}/>
                 </Grid>
             </Grid>

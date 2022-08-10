@@ -4,15 +4,20 @@ import CustomCssButton from "../Button/CustomCssButton"
 
 import './Section.css'
 
-const SectionHeaderComponent = (props) => {
+const SectionHeaderComponent = ({title, description, isViewMoreClicked, handleViewMoreOnClick}) => {
     return(
         <div className = "section-header-root">
             <div className = "section-title">
-                <span>{props.data.title}</span>
+                <span>{title}</span>
                 <h2>What we have ?</h2>
             </div>
-            <p> {props.data.description} </p>
-            <CustomCssButton href = "#" label = "View all"/>
+            <p> {description} </p>
+            <div className = 'view-more-container'>
+                <CustomCssButton 
+                    label = {isViewMoreClicked ? "View less" : "View more"} 
+                    onClick = {handleViewMoreOnClick}
+                />
+            </div>
         </div>
     )
 }
