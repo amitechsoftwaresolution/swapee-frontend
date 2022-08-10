@@ -8,7 +8,7 @@ import CategoryItem from '../Category/CategoryItem'
 
 import './Section.css'
 
-const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, handleViewMoreOnClick}) => {
+const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, categoriesToView, handleViewMoreOnClick}) => {
 
     const renderCategory = (item, idx) => {
         return (
@@ -32,7 +32,7 @@ const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, handle
                 </div>
                 <div className = 'category-container'>
                     <Grid container spacing = {2}>
-                        { categoryList.map((i, idx) => { return renderCategory(i, idx) })}
+                        { categoriesToView && categoriesToView.map((i, idx) => { return renderCategory(i, idx) })}
                     </Grid>
                 </div>
             </div>

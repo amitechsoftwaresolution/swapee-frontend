@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Post from '../../Components/Post/Post'
 import CategorySection from '../../Components/Section/CategorySection'
+import FabButton from '../../Components/FabButton/FabButton'
 
 import './Home.css'
 import img01 from '../../Assets/Images/img01.jpg'
@@ -10,7 +11,7 @@ import img02 from '../../Assets/Images/img02.jpg'
 class Home extends Component {
     state = {
         isViewMoreClicked: false,
-        categoriesToShow: []
+        categoriesToView: [],
     }
 
     products = [
@@ -52,18 +53,28 @@ class Home extends Component {
         {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
     ]
 
+    componentDidMount() {
+        this.setState({ categoriesToView: this.categoryList.slice(0, 6) })
+    }
+
     handleViewMoreOnClick = () => {
-        this.setState({ isViewMoreClicked: !this.state.isViewMoreClicked })
+        const {isViewMoreClicked} = this.state
+        let list = isViewMoreClicked ? this.categoryList.slice(0, 6) : this.categoryList
+
+        this.setState({ 
+            isViewMoreClicked: !isViewMoreClicked,
+            categoriesToView: list
+        })
     }
 
     renderCategorySection = () => {
-        const {isViewMoreClicked, categoriesToShow} = this.state
+        const {isViewMoreClicked, categoriesToView} = this.state
         return (
             <CategorySection 
                 sectionDetail = {this.sectionDetails[0]} 
                 categoryList = {this.categoryList}
                 isViewMoreClicked = {isViewMoreClicked}
-                categoriesToShow = {categoriesToShow}
+                categoriesToView = {categoriesToView}
                 handleViewMoreOnClick = {this.handleViewMoreOnClick}
             />
         )
@@ -82,6 +93,7 @@ class Home extends Component {
         return (
             <div className = 'home-page-root'>
                 { this.renderMainContainer() }
+                <FabButton />
             </div>
         )
     }
