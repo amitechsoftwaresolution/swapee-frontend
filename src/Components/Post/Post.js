@@ -38,7 +38,7 @@ const Post = ({content}) => {
 
     return (
         <div className = 'post-root'>
-            <Grid container spacing = {4} sx = {{padding: "20px"}}>
+            <Grid container spacing = {4} sx = {{padding: "10px"}}>
                 <Grid item xs = {12} sm = {12} md = {6} sx = {{padding: "5px"}}>
                     <PostContentComponent content = {content}/>
                 </Grid>

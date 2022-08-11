@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Box, Grid} from "@mui/material"
+import {Box, Grid, useMediaQuery} from "@mui/material"
 
 import SectionHeaderComponent from './SectionHeaderComponent'
 import CategoryList from '../Category/CategoryList'
@@ -9,17 +9,18 @@ import CategoryItem from '../Category/CategoryItem'
 import './Section.css'
 
 const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, categoriesToView, handleViewMoreOnClick}) => {
+    const matches = useMediaQuery('(min-width:800px)')
 
     const renderCategory = (item, idx) => {
         return (
-            <Grid item xs = {3} sm = {4} md = {2} key = {idx}>
+            <Grid item xs = {4} sm = {4} md = {2} key = {idx}>
                 <CategoryItem item = {item} />
             </Grid>
         )
     }
 
     return (
-        <Box sx = {{ pl:'60px', pr:'60px', pt:'50px', pb:'30px'}}>
+        <Box sx = {{pl: matches ? '60px': '20px', pr: matches ? '60px' : '30px', pt:'50px', pb:'30px'}}>
             <div className = 'section-root'>
                 <SectionHeaderComponent 
                     title = {sectionDetail && sectionDetail.title}
