@@ -1,0 +1,134 @@
+.footer_root {
+    display: block;
+    min-height: 100px;
+    background: #4b4e5f;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.footer_container {
+    padding-left: 4%;
+}
+
+.footer_main_content_wrapper {
+    padding: 20px 0;
+    text-align: left;
+    display: block;
+}
+
+.content_wrapper_logo {
+    display: flex;
+    align-items: center;
+}
+
+.content_wrapper_items {
+    display: flex;
+    color: #ffffff;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.content_wrapper_items_left {
+    position: relative;
+    min-height: 1px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.wrapper_item-caption {
+    color: #c0bebe;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+}
+
+.footer-social {
+    margin-left: 15px;
+}
+
+.footer-social a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transform: all 0.2s ease;
+    padding: 5px;
+}
+
+.content_wrapper_items_right {
+    position: relative;
+    min-height: 1px;
+    margin-left: 10px;
+}
+
+.menu__item {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.footer_bottom {
+    margin-left: 10px;
+}
+
+.footer_bottom_content_wrapper {
+    padding: 10px 0;
+}
+
+.footer_bottom_copyrights {
+    box-sizing: border-box;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.05rem;
+}
+
+.footer_bottom_copyrights span {
+    font-size: 0.65rem;
+    margin-left: 5px;
+    color: #31e2f2;
+    font-weight: bold;
+}
+
+.shadow {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 800px) {
+    .footer-social a {
+        height: 30px;
+        width: 30px;
+    }
+
+    .footer_bottom_copyrights {
+        font-size: 0.6rem;
+    }
+
+    .footer_bottom_copyrights span {
+        font-size: 0.6rem;
+    }
+
+    .footer_main_content_wrapper .content_wrapper_logo h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .footer_nav_ul {
+        flex-direction: column;
+    }
+
+    .footer_main_content_wrapper .content_wrapper_logo h1 {
+        font-size: 1rem;
+    }
+}

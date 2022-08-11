@@ -1,0 +1,81 @@
+.custom_button_contained {
+    display: flex;
+    color: #fff;
+    border: 1px solid #31e2f2;
+    padding: 12px;
+    background: #31e2f2;
+    border-radius: 10px;
+    transition: .4s all ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    min-width: 80px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+}
+
+.custom_button_outlined {
+    display: flex;
+    color: #fff;
+    border: 1px solid #31e2f2;
+    padding: 12px;
+    background: transparent;
+    border-radius: 10px;
+    transition: .4s all ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    min-width: 80px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+}
+
+.custom-css-button{
+    display: inline-block;
+    font-size: 14px;
+    font-family: "Play", sans-serif;
+    font-weight: 700;
+    padding: 14px 32px 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.custom-css-button:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 30px;
+    width: 30px;
+    border-left: 5px solid #31e2f2;
+    border-top: 5px solid #31e2f2;
+    content: "";
+    z-index: -1;
+    -webkit-transition: all, 0.7s;
+    -o-transition: all, 0.7s;
+    transition: all, 0.7s;
+}
+
+.custom-css-button:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    width: 30px;
+    border-right: 5px solid #31e2f2;
+    border-bottom: 5px solid #31e2f2;
+    content: "";
+    z-index: -1;
+    -webkit-transition: all, 0.7s;
+    -o-transition: all, 0.7s;
+    transition: all, 0.7s;
+}

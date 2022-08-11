@@ -1,0 +1,12 @@
+[
+   {
+      "name": "Home",
+      "variant": "text",
+      "color": "primary"
+   },
+   {
+      "name": "Categories",
+      "variant": "text",
+      "color": "primary"
+   }
+]
