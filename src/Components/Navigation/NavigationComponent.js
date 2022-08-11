@@ -18,6 +18,8 @@ import Pages from '../../Data/Json/pages.json'
 const NavigationComponent = () => {
     const [navFixed, setNavFixed] = useState(false)
 
+    const currentUser = { role: "", token: null }
+
     const changeNavbarDesign = () => {
         if (window.scrollY >= 80) {
             setNavFixed(true)
@@ -42,6 +44,10 @@ const NavigationComponent = () => {
         }
     ]
 
+    const renderProfileIcon = () => (
+        <ProfileIconComponent tooltip = "Open settings" alt = "Username" menuList = {profileMenuList} />
+    )
+
     return (
         <div>
             <AppBar position = {navFixed ? 'fixed':'static'} className = 'nav'>
@@ -51,11 +57,7 @@ const NavigationComponent = () => {
                         <LogoComponent textColor = "text.secondary" position = "start" />
                         <NavigationPagesComponent pages = {Pages}/>
                         <SearchBarComponent placeholder = "Search"/>
-                        <ProfileIconComponent
-                            tooltip = "Open settings"
-                            alt = "Username"
-                            menuList = {profileMenuList}
-                        />
+                        { currentUser && currentUser.token && renderProfileIcon() }
                     </Toolbar>
                 </Container>
             </AppBar>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
@@ -8,9 +8,10 @@ import MenuBoxWidget from "../Widgets/MenuBoxWidget"
 
 import './Navigation.css'
 
-const NavigationPagesComponent = (props) => {
+const NavigationPagesComponent = ({pages}) => {
+    const [anchorElUser, setAnchorElUser] = useState(null)
 
-    const [anchorElUser, setAnchorElUser] = React.useState(null)
+    const currentUser = { role: "", token: null }
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget)
@@ -20,10 +21,26 @@ const NavigationPagesComponent = (props) => {
         setAnchorElUser(null)
     }
 
+    const renderSignInButton = () => (
+        <a href = "/signin" className = "nav-link">Sign in</a>
+    )
+
+    const renderDashBoardButton = () => (
+        <a href = "/dashboard" className = "nav-link">Dashboard</a>
+    )
+
+    const renderMenu = () => (
+        <MenuBoxWidget
+            menuList = {Categories}
+            anchorElUser = {anchorElUser}
+            setAnchorElUser = {() => setAnchorElUser()}
+        />
+    )
+
     return (
         <>
             <Box sx = {{display: {xs: 'none', md: 'flex'}, flexGrow: 2, justifyContent: 'center'}}>
-                {props.pages.map((page) => (
+                {pages && pages.map((page) => (
                     <Button
                         variant = {page.variant}
                         sx = {{my: 2, display: 'block', color: "#fff", m: '10px', letterSpacing: "0.1rem !important"}}
@@ -33,12 +50,9 @@ const NavigationPagesComponent = (props) => {
                         {page.name}
                     </Button>
                 ))}
-                <a href = "/signup" className = "nav-link">Dashboard</a>
-                <MenuBoxWidget
-                    menuList = {Categories}
-                    anchorElUser = {anchorElUser}
-                    setAnchorElUser = {() => setAnchorElUser()}
-                />
+                { currentUser && !currentUser.token && renderSignInButton() }
+                { currentUser && currentUser.role && currentUser.role === 'admin' &&  renderDashBoardButton() }
+                { renderMenu() }
             </Box>
         </>
     )
