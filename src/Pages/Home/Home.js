@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Post from '../../Components/Post/Post'
 import CategorySection from '../../Components/Section/CategorySection'
 import FabButton from '../../Components/FabButton/FabButton'
+import Loading from '../../Components/Loading/Loading'
 
 import './Home.css'
 import img01 from '../../Assets/Images/img01.jpg'
@@ -12,6 +13,7 @@ class Home extends Component {
     state = {
         isViewMoreClicked: false,
         categoriesToView: [],
+        loading: false
     }
 
     products = [
@@ -28,7 +30,7 @@ class Home extends Component {
             description:"Lorem Ipsum is a piece of text, used by designers to fill a space where the content will eventually sit. It helps show how text will look once a piece of content is finished, during the planning phase.",
             date:"02nd April 2022",
             imgs: [img01, img02]
-        }
+        },
     ]
 
     sectionDetails = [
@@ -90,10 +92,12 @@ class Home extends Component {
     }
 
     render() {
+        const {loading} = this.state
         return (
             <div className = 'home-page-root'>
                 { this.renderMainContainer() }
                 <FabButton />
+                { loading && <Loading open = {loading} /> }
             </div>
         )
     }
