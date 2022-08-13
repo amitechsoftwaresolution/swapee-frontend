@@ -12,9 +12,6 @@ import LogoComponent from "../Logo/LogoComponent"
 import NavigationPagesComponent from "../NavigationPages/NavigationPagesComponent"
 import SearchBarComponent from "../SearchBar/SearchBarComponent"
 
-import Pages from '../../Data/Json/pages.json'
-
-
 const NavigationComponent = () => {
     const [navFixed, setNavFixed] = useState(false)
 
@@ -53,9 +50,9 @@ const NavigationComponent = () => {
             <AppBar position = {navFixed ? 'fixed':'static'} className = 'nav'>
                 <Container maxWidth = "xl">
                     <Toolbar disableGutters>
-                        <MobileMenuBoxComponent pages = {Pages}/>
+                        <MobileMenuBoxComponent />
                         <LogoComponent textColor = "text.secondary" position = "start" />
-                        <NavigationPagesComponent pages = {Pages}/>
+                        <NavigationPagesComponent />
                         <SearchBarComponent placeholder = "Search"/>
                         { currentUser && currentUser.token && renderProfileIcon() }
                     </Toolbar>

@@ -6,14 +6,14 @@ import LogoComponent from "../Logo/LogoComponent"
 
 import './Drawer.css'
 
-const DrawerPanel = ({open, links, handleDrawer}) => {
+const DrawerPanel = ({open, links, icons, handleDrawer}) => {
 
     const renderLinkItem = (idx, item) => {
-        const {icon, href, label} = item
+        const {href, label} = item
         return (
             <ListItem key = {idx}>
-                <ListItemIcon> {icon} </ListItemIcon>
-                <a href = {href} className = "nav-links">{label}</a>
+                <ListItemIcon> {icons[label]} </ListItemIcon>
+                <a href = {href} className = "drawer-links">{label}</a>
             </ListItem>
         )
     }
