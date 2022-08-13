@@ -67,8 +67,13 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
     }
 
     const renderPasswordField = (name, label, placeholder) => {
-        const {showPassword, passwordType} = state
-        const values = {name, label, placeholder, value: state[name], showPassword, passwordType}
+        const {showPassword, showConfirmPassword, passwordType, confirmPasswordType} = state
+        let values = {name, label, placeholder, value: state[name]}
+        if (name === "password") {
+            values = {...values, showPassword, passwordType}
+        } else {
+            values = {...values, showPassword: showConfirmPassword, passwordType: confirmPasswordType}
+        }
         return (
             <div className = "signup_form-input_wrapper">
                 <PasswordField 

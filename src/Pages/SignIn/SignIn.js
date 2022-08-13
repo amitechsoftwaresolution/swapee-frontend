@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {Grid, CssBaseline, Paper} from '@mui/material'
+import {Grid, CssBaseline} from '@mui/material'
 import SignInForm from './SignInForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 
@@ -101,7 +101,7 @@ class SignIn extends Component {
         return (
             <Grid container component = "main">
                 <CssBaseline />
-                <Grid item xs = {false} sm = {4} md = {6} component = {Paper} elevation = {6} sx={{
+                <Grid item xs = {false} sm = {4} md = {6} sx = {{
                     backgroundImage: `url(${signin_cover})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',

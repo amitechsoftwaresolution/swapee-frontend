@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {Grid, CssBaseline, Paper} from '@mui/material'
+import {Grid, CssBaseline} from '@mui/material'
 import SignUpForm from './SignUpForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 
@@ -131,7 +131,7 @@ class SignUp extends Component {
         return (
             <Grid container component = "main">
                 <CssBaseline />
-                <Grid item xs = {false} sm = {4} md = {6} component = {Paper} elevation = {6} sx={{
+                <Grid item xs = {false} sm = {4} md = {6} sx = {{
                     backgroundImage: `url(${signup_cover})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
