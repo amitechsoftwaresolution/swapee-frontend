@@ -1,15 +1,16 @@
 import React, {useState} from "react"
 
-import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 
 import Categories from '../../Data/Json/categories.json'
 import MenuBoxWidget from "../Widgets/MenuBoxWidget"
 
+import pages from '../../Data/Json/pages.json'
+
 import './Navigation.css'
 
-const NavigationPagesComponent = ({pages}) => {
-    const [anchorElUser, setAnchorElUser] = useState(null)
+const NavigationPagesComponent = () => {
+    const [anchorElUser, setAnchorElUser] = useState(false)
 
     const currentUser = { role: "", token: null }
 
@@ -17,16 +18,12 @@ const NavigationPagesComponent = ({pages}) => {
         setAnchorElUser(event.currentTarget)
     }
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null)
-    }
-
     const renderSignInButton = () => (
-        <a href = "/signin" className = "nav-link">Sign in</a>
+        <a href = "/signin" className = "appbar-link">Sign in</a>
     )
 
     const renderDashBoardButton = () => (
-        <a href = "/dashboard" className = "nav-link">Dashboard</a>
+        <a href = "/dashboard" className = "appbar-link">Dashboard</a>
     )
 
     const renderMenu = () => (
@@ -37,24 +34,23 @@ const NavigationPagesComponent = ({pages}) => {
         />
     )
 
+    const renderPageLink = (page) => (
+        <a href = {page.href} key = {page.label} className = "appbar-page-link">{page.label}</a>
+    )
+
+    const renderCategoryLink = (page) => (
+        <div className = "appbar-page-link" onClick = {handleOpenUserMenu}>{page.label}</div>
+    )
+
     return (
-        <>
-            <Box sx = {{display: {xs: 'none', md: 'flex'}, flexGrow: 2, justifyContent: 'center'}}>
-                {pages && pages.map((page) => (
-                    <Button
-                        variant = {page.variant}
-                        sx = {{my: 2, display: 'block', color: "#fff", m: '10px', letterSpacing: "0.1rem !important"}}
-                        key = {page.name}
-                        onClick = {page.name === 'Categories' ? handleOpenUserMenu : handleCloseUserMenu}
-                    >
-                        {page.name}
-                    </Button>
-                ))}
+        <Box sx = {{display: {xs: 'none', md: 'flex'}, flexGrow: 2, alignItems: "center"}}>
+            {pages && pages.appbar.map((page) => page.label === "Categories" ? renderCategoryLink(page) : renderPageLink(page))}
+            <Box sx = {{marginLeft: "20px"}}>
                 { currentUser && !currentUser.token && renderSignInButton() }
                 { currentUser && currentUser.role && currentUser.role === 'admin' &&  renderDashBoardButton() }
-                { renderMenu() }
             </Box>
-        </>
+            { renderMenu() }
+        </Box>
     )
 }
 

@@ -18,10 +18,11 @@ const MenuBoxWidget = (props) => {
                     style: {
                         maxHeight: 200,
                         width: 'auto',
-                        maxWidth: '180px',
+                        maxWidth: '200px',
                         padding: '16px',
-                        marginTop: "-8px",
+                        marginTop: "-15px",
                         borderRadius: '0px 0px 8px 8px',
+                        marginLeft: "50px"
                     },
                 }}
                 sx = {{ 

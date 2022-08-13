@@ -2,89 +2,51 @@ import React, { Component } from 'react'
 
 import {Grid} from '@mui/material'
 
-import SignUpForm from './SignUpForm'
+import ForgotPasswordForm from './ForgotPasswordForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
 
-import './SignUp.css'
-import signup_cover from '../../Assets/Images/signup_cover.jpg'
+import './ForgotPassword.css'
+import forgotpassword_cover from '../../Assets/Images/signin_cover.jpg'
 
-class SignUp extends Component {
+class ForgotPassword extends Component {
     state = {
-        name: "",
         email: "",
-        password: "",
-        confirmPassword: "",
         message: "",
         severity: "",
         openSnackBar: false,
-        loading: false,
-        showPassword: false,
-        showConfirmPassword: false,
-        passwordType: "password",
-        confirmPasswordType: "password"
+        loading: false
     }
 
-    handleSignUpApi = async(data) => {
+    handleEmailApi = async(email) => {
         try {
             this.setState({ loading: true })
-            // handle sign up api
-            this.setState({ 
-                loading: false,
-                name: "",
-                email: "", 
-                password: "",
-                confirmPassword: "",
-                message: null
-            })
+            // handle api
+            this.setState({ loading: false, email: "", message: null })
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
         }
     }
 
-    handleSignUpOnClick = () => {
-        const {name, email, password, confirmPassword} = this.state
-        if (name && email && password && confirmPassword) {
+    handleSubmitOnClick = () => {
+        const {email} = this.state
+        if (email) {
             const result = this.validateEmail(email)
-            const passwordMatched = this.validatePassword(password, confirmPassword)
-
             if (!result) {
                 this.setErrorSnackBar('Enter a valid email address')
             }
-            else if (!passwordMatched) {
-                this.setErrorSnackBar('Passwords not matched')
-            }
             else {
-                const data = {name, email, password}
-                this.handleSignUpApi(data)
+                this.handleEmailApi(email)
             }
         }
         else {
-            this.setErrorSnackBar('Fields cannot be empty' )
+            this.setErrorSnackBar('Email cannot be empty' )
         }
     }
 
     handleCancelOnClick = () => {
-        this.setState({
-            name: "",
-            email: "",
-            password: "",
-            confirmPassword: ""
-        })
-    }
-
-    handleShowPasswordOnClick = (name) => {
-        const {showPassword, showConfirmPassword} = this.state
-
-        if (name === "password") {
-            let passwordType = showPassword ? "password" : "text"
-            this.setState({ showPassword: !showPassword, passwordType })
-        }
-        else {
-            let confirmPasswordType = showConfirmPassword ? "password" : "text"
-            this.setState({ showConfirmPassword: !showConfirmPassword, confirmPasswordType })
-        }
+        this.setState({ email: "" })
     }
 
     handleInputOnChange = (e) => {
@@ -113,10 +75,6 @@ class SignUp extends Component {
         return pattern.test(email)
     }
 
-    validatePassword = (password, confirmPassword) => {
-        return password === confirmPassword
-    }
-
     renderSnackBar = () => {
         const {openSnackBar, severity, message} = this.state
         return (
@@ -133,19 +91,18 @@ class SignUp extends Component {
         return (
             <Grid container component = "main">
                 <Grid item xs = {false} sm = {4} md = {5} sx = {{
-                    backgroundImage: `url(${signup_cover})`,
+                    backgroundImage: `url(${forgotpassword_cover})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }} />
                 <Grid item xs = {false} sm = {false} md = {1}/>
                 <Grid item xs = {12} sm = {8} md = {5} sx = {{padding: "15px"}}>
-                    <SignUpForm 
+                    <ForgotPasswordForm 
                         state = {this.state} 
                         handleInputOnChange = {this.handleInputOnChange}
-                        handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
                         handleCancelOnClick = {this.handleCancelOnClick}
-                        handleSignUpOnClick = {this.handleSignUpOnClick}
+                        handleSubmitOnClick = {this.handleSubmitOnClick}
                     />
                 </Grid>
                 <Grid item xs = {false} sm = {false} md = {1}/>
@@ -156,7 +113,7 @@ class SignUp extends Component {
     render() {
         const {openSnackBar, loading} = this.state
         return (
-            <div className = 'signup-page-root'>
+            <div className = 'forgot-password-page-root'>
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
                 { loading && <Loading open = {loading} /> }
@@ -165,4 +122,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+export default ForgotPassword

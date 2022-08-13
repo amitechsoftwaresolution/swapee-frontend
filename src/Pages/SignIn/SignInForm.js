@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
 import {Grid, Box} from '@mui/material'
 
@@ -15,35 +15,6 @@ import SocialButton from '../../Components/Button/SocialButton'
 import './SignIn.css'
 
 const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick}) => {
-    const [mx, setMarginX] = useState(10)
-
-    useEffect(() => {
-        window.addEventListener('resize', setPropertiesWithScreenSize)
-    }, [])
-
-    const setPropertiesWithScreenSize = () => {
-        if (window.innerWidth >= 1300) {
-            setMarginX(10)
-        }
-        else if (window.innerWidth >= 1200) {
-            setMarginX(8)
-        }
-        else if (window.innerWidth >= 950) {
-            setMarginX(6)
-        }
-        else if (window.innerWidth >= 750) {
-            setMarginX(4)
-        }
-        else if (window.innerWidth >= 600) {
-            setMarginX(3)
-        }
-        else if (window.innerWidth >= 400) {
-            setMarginX(1)
-        }
-        else {
-            setMarginX(0)
-        }
-    }
 
     const renderSocialLoginContainer = () => {
         return (
@@ -81,7 +52,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
     const renderForgotPasswordLink = () => {
         return (
             <div className = 'forgot-password-root'>
-                <a href = "/" className = 'forgot-password-link'>Forgot password?</a>
+                <a href = "/forgot-password" className = 'forgot-password-link'>Forgot password?</a>
             </div>
         )
     }
@@ -119,7 +90,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
             <div className = 'signup-link-root'>
                 <p className = 'signup-link-para'>
                     Don’t have an account ?
-                    <a href = "/" className = 'signup-link'>Get Started</a>
+                    <a href = "/signup" className = 'signup-link'>Get Started</a>
                 </p>
             </div>
         )
@@ -145,8 +116,8 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
     }
 
     return (
-        <Box sx = {{my: 2, mx: mx, display: 'flex', flexDirection: 'column'}}>
-            <div className = 'sign-form'>
+        <Box sx = {{my: 2, display: 'flex', flexDirection: 'column'}}>
+            <div className = 'signin-form'>
                 { renderHeader() }
                 <div className = 'sign-form-input-container'>
                     { renderInputField("email", "Email", "Email address") }

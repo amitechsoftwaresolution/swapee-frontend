@@ -1,12 +1,16 @@
-[
-   {
-      "name": "Home",
-      "variant": "text",
-      "color": "primary"
-   },
-   {
-      "name": "Categories",
-      "variant": "text",
-      "color": "primary"
-   }
-]
+{
+   "appbar": [
+      { "label": "Home", "href": "/" },
+      { "label": "Categories", "href": "#" },
+      { "label": "About Us", "href": "/" }
+   ],
+   "Drawer": [
+      { "label": "Home", "href": "/" },
+      { "label": "Dashboard", "href": "/" },
+      { "label": "Categories", "href": "#" },
+      { "label": "About Us", "href": "/" },
+      { "label": "FAQ", "href": "/" },
+      { "label": "Privacy & Policy", "href": "/" },
+      { "label": "Terms & Condition", "href": "/" }
+   ]
+}

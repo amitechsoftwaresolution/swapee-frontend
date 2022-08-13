@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
-import {Grid, CssBaseline} from '@mui/material'
+import {Grid} from '@mui/material'
+
 import SignInForm from './SignInForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
+import Loading from '../../Components/Loading/Loading'
 
 import './SignIn.css'
 import signin_cover from '../../Assets/Images/signin_cover.jpg'
@@ -100,14 +102,14 @@ class SignIn extends Component {
     renderMainContainer = () => {
         return (
             <Grid container component = "main">
-                <CssBaseline />
-                <Grid item xs = {false} sm = {4} md = {6} sx = {{
+                <Grid item xs = {false} sm = {4} md = {5} sx = {{
                     backgroundImage: `url(${signin_cover})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }} />
-                <Grid item xs = {11} sm = {8} md = {6}>
+                <Grid item xs = {false} sm = {false} md = {1}/>
+                <Grid item xs = {12} sm = {8} md = {5} sx = {{padding: "15px"}}>
                     <SignInForm 
                         state = {this.state} 
                         handleInputOnChange = {this.handleInputOnChange}
@@ -116,16 +118,18 @@ class SignIn extends Component {
                         handleLoginOnClick = {this.handleLoginOnClick}
                     />
                 </Grid>
+                <Grid item xs = {false} sm = {false} md = {1}/>
             </Grid>
         )
     }
 
     render() {
-        const {openSnackBar} = this.state
+        const {openSnackBar, loading} = this.state
         return (
             <div className = 'signin-page-root'>
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
+                { loading && <Loading open = {loading} /> }
             </div>
         )
     }

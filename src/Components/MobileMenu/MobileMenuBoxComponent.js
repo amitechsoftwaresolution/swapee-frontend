@@ -13,18 +13,20 @@ import SecurityIcon from '@mui/icons-material/Security'
 
 import DrawerPanel from "../Drawer/DrawerPanel"
 
+import Pages from '../../Data/Json/pages.json'
+
 const MobileMenuBoxComponent = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
 
-    const NAV_LINKS = [
-        {label: "Home", href: "/", icon: <HomeIcon sx = {{color: "#fff"}}/>},
-        {label: "Dashboard", href: "/", icon: <DashboardIcon sx = {{color: "#fff"}}/>},
-        {label: "Categories", href: "/", icon: <CategoryIcon sx = {{color: "#fff"}}/>},
-        {label: "About Us", href: "/", icon: <InfoIcon sx = {{color: "#fff"}}/>},
-        {label: "FAQ", href: "/", icon: <LiveHelpIcon sx = {{color: "#fff"}}/>},
-        {label: "Privacy & Policy", href: "/", icon: <SecurityIcon sx = {{color: "#fff"}}/>},
-        {label: "Terms & Condition", href: "/", icon: <DescriptionIcon sx = {{color: "#fff"}}/>}
-    ]
+    const NAV_ICONS = {
+        "Home": <HomeIcon sx = {{color: "#fff"}}/>,
+        "Dashboard": <DashboardIcon sx = {{color: "#fff"}}/>,
+        "Categories": <CategoryIcon sx = {{color: "#fff"}}/>,
+        "About Us": <InfoIcon sx = {{color: "#fff"}}/>,
+        "FAQ": <LiveHelpIcon sx = {{color: "#fff"}}/>,
+        "Privacy & Policy": <SecurityIcon sx = {{color: "#fff"}}/>,
+        "Terms & Condition": <DescriptionIcon sx = {{color: "#fff"}}/>
+    }
 
     const handleDrawer = () => {
         setDrawerOpen(!drawerOpen)
@@ -48,7 +50,12 @@ const MobileMenuBoxComponent = () => {
         <>
             <Box sx = {{ display: {xs: 'flex', md: 'none'}, flexGrow: 0}}>
                 { renderMenuIcon() }
-                <DrawerPanel open = {drawerOpen} links = {NAV_LINKS} handleDrawer = {handleDrawer}/>
+                <DrawerPanel 
+                    open = {drawerOpen} 
+                    links = {Pages.Drawer}
+                    icons = {NAV_ICONS}
+                    handleDrawer = {handleDrawer}
+                />
             </Box>
         </>
     )
