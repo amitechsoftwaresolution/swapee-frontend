@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
 import {Grid, Box} from '@mui/material'
 
@@ -11,35 +11,6 @@ import CancelButton from '../../Components/Button/CancelButton'
 import './SignUp.css'
 
 const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleSignUpOnClick}) => {
-    const [mx, setMarginX] = useState(10)
-
-    useEffect(() => {
-        window.addEventListener('resize', setPropertiesWithScreenSize)
-    }, [])
-
-    const setPropertiesWithScreenSize = () => {
-        if (window.innerWidth >= 1300) {
-            setMarginX(10)
-        }
-        else if (window.innerWidth >= 1200) {
-            setMarginX(8)
-        }
-        else if (window.innerWidth >= 950) {
-            setMarginX(6)
-        }
-        else if (window.innerWidth >= 750) {
-            setMarginX(4)
-        }
-        else if (window.innerWidth >= 600) {
-            setMarginX(3)
-        }
-        else if (window.innerWidth >= 400) {
-            setMarginX(1)
-        }
-        else {
-            setMarginX(0)
-        }
-    }
 
     const renderButtonFooter = () => {
         return (
@@ -104,7 +75,7 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
             <div className = 'signin-link-root'>
                 <p className = 'signin-link-para'>
                     Already have an account ?
-                    <a href = "/" className = 'signin-link'>Sign In</a>
+                    <a href = "/signin" className = 'signin-link'>Sign In</a>
                 </p>
             </div>
         )
@@ -130,8 +101,8 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
     }
 
     return (
-        <Box sx = {{my: 2, mx: mx, display: 'flex', flexDirection: 'column'}}>
-            <div className = 'sign-form'>
+        <Box sx = {{my: 2, display: 'flex', flexDirection: 'column'}}>
+            <div className = 'signup-form'>
                 { renderHeader() }
                 <div className = 'sign-form-input-container'>
                     { renderInputField("name", "Name", "Name") }
