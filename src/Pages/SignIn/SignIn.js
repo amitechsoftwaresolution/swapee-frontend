@@ -19,7 +19,7 @@ class SignIn extends Component {
         passwordType: "password"
     }
 
-    handleSigninApi = async(data) => {
+    handleSignInApi = async(data) => {
         try {
             this.setState({ loading: true })
             // handle sign in api
@@ -39,7 +39,7 @@ class SignIn extends Component {
             }
             else {
                 const data = {email, password}
-                this.handleSigninApi(data)
+                this.handleSignInApi(data)
             }
         }
         else {

@@ -2,13 +2,13 @@ import React from 'react'
 
 import NavigationComponent from './Components/Navigation/NavigationComponent'
 import Footer from './Components/Footer/Footer'
-import SignIn from './Pages/SignIn/SignIn'
+import SignUp from './Pages/SignUp/SignUp'
 
 const App = () => {
     return (
       <div>
           <NavigationComponent />
-          <SignIn />
+          <SignUp />
           <Footer />
       </div>
     )
