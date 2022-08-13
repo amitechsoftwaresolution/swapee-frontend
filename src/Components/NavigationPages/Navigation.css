@@ -8,8 +8,8 @@
     font-size: 0.8rem;
     border-radius: 10px;
     transition: all 400ms ease;
-    height: 20px;
-    width: 100px;
+    height: 40px !important;
+    width: 100px !important;
     font-weight: 600;
     align-self: center;
     align-items: center;
