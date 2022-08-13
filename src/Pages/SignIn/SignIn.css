@@ -1,0 +1,61 @@
+.signin-page-root {
+    display: block;
+    width: 100%;
+    height: 90vh;
+    background-color: rgb(250, 251, 251);
+}
+
+.sign-form {
+    background-color: rgb(255, 255, 255);
+    color: rgb(33, 43, 54);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-image: none;
+    position: relative;
+    box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
+    border-radius: 16px;
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 16px 0px 16px 16px;
+    padding: 25px;
+}
+
+.sign-form_header {
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-form_header_wel {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-form_title {
+    font-size: 1.5rem;
+    margin: 0px 0px 8px;
+    font-weight: 700;
+    line-height: 1.5;
+    font-family: "Public Sans", sans-serif;
+}
+
+.signin-form_des {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-family: Public Sans,sans-serif;
+    font-weight: 400;
+    color: #637381;
+}
+
+.signin_form-input_wrapper {
+    width: 100%;
+    position: relative;
+    padding-bottom: 13px;
+    margin-bottom: 25px;
+}
+
+.sign-form-input-container {
+    margin-top: 35px;
+}
