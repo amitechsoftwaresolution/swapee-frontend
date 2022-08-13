@@ -12,11 +12,26 @@ const SignInButtonWidget = (props) => {
                     margin: '0px',
                     width: '100%',
                     height: '50px',
-                    borderRadius: '4px',
+                    borderRadius: '5px',
                     color: 'white',
-                    border: '0px transparent',
+                    border: '0px',
                     textAlign: 'center',
-                    background: background
+                    background: background,
+                    alignItems: "center",
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: "center",
+                    boxShadow: 'rgb(0 171 85 / 24%) 0px 8px 16px 0px',
+                    transition: 'all, 1s',
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.1rem",
+                    '&:hover': {
+                        color: background, 
+                        border: `1px solid ${background}`, 
+                        background: 'transparent', 
+                        fontWeight: "bold", 
+                        transition: 'all, 1s'
+                    }
                 }}
             >
                 { 
