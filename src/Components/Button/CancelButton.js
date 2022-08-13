@@ -2,7 +2,7 @@ import React from 'react'
 
 import Button from "@mui/material/Button"
 
-const CancelButton = () => {
+const CancelButton = ({onClick}) => {
     return (
         <>
             <Button
@@ -23,6 +23,7 @@ const CancelButton = () => {
                     fontSize: "0.75rem",
                     letterSpacing: "0.1rem"
                 }}
+                onClick = {onClick}
             >
                 Cancel
             </Button>

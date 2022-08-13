@@ -33,6 +33,7 @@ const SignInButtonWidget = (props) => {
                         transition: 'all, 1s'
                     }
                 }}
+                onClick = {props.onClick}
             >
                 { 
                     props && props.icon && <props.icon sx = {{ 
