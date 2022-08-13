@@ -8,7 +8,7 @@ import GoogleIcon from '@mui/icons-material/Google'
 import LogoComponent from '../../Components/Logo/LogoComponent'
 import InputField from '../../Components/Input/InputField'
 import PasswordField from '../../Components/Input/PasswordField'
-import SignInButtonWidget from '../../Components/Widgets/SignInButtonWidget'
+import SignInButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/CancelButton'
 import SocialButton from '../../Components/Button/SocialButton'
 
@@ -118,7 +118,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
         return (
             <div className = 'signup-link-root'>
                 <p className = 'signup-link-para'>
-                    Don’t have an account?
+                    Don’t have an account ?
                     <a href = "/" className = 'signup-link'>Get Started</a>
                 </p>
             </div>
