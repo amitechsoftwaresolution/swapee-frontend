@@ -1,0 +1,129 @@
+.signin-page-root {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 90vh;
+    background-color: rgb(250, 251, 251);
+}
+
+.sign-form {
+    background-color: rgb(255, 255, 255);
+    color: rgb(33, 43, 54);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-image: none;
+    position: relative;
+    box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
+    border-radius: 16px;
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 16px 0px 16px 16px;
+    padding: 25px;
+}
+
+.sign-form_header {
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-form_header_wel {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-form_title {
+    font-size: 1.5rem;
+    margin: 0px 0px 8px;
+    font-weight: 700;
+    font-family: "Public Sans", sans-serif;
+    letter-spacing: 0.05rem;
+}
+
+.signin-form_des {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 0.85rem;
+    font-family: Public Sans,sans-serif;
+    font-weight: 400;
+    color: rgba(86, 101, 115, 0.7);
+    letter-spacing: 0.05rem;
+    margin-top: -10px;
+}
+
+.signin_form-input_wrapper {
+    width: 100%;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.sign-form-input-container {
+    margin-top: 35px;
+}
+
+.forgot-password-root {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.forgot-password-link {
+    margin: 0px;
+    font-weight: 600;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    color: rgb(0, 171, 85);
+    text-decoration: none;
+}
+
+.signup-link-root {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.signup-link-para {
+    margin: 0px;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+
+.signup-link {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    color: rgb(0, 171, 85);
+    text-decoration: none;
+    margin-left: 5px;
+    letter-spacing: 0.05rem;
+    margin-right: 10px;
+}
+
+.social-login-root {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.social-login-txt1 {
+    font-family: "Public Sans", sans-serif;
+    font-size: 0.8rem;
+    color: #999999;
+    text-transform: uppercase;
+    letter-spacing: 0.07rem;
+}
