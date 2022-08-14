@@ -39,7 +39,7 @@ const NavigationPagesComponent = () => {
     )
 
     const renderCategoryLink = (page) => (
-        <div className = "appbar-page-link" onClick = {handleOpenUserMenu}>{page.label}</div>
+        <div className = "appbar-page-link" key = {page.label} onClick = {handleOpenUserMenu}>{page.label}</div>
     )
 
     return (
