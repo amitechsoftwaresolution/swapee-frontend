@@ -61,7 +61,7 @@ class SignUp extends Component {
             }
         }
         else {
-            this.setErrorSnackBar('Fields cannot be empty' )
+            this.setErrorSnackBar('Fields cannot be empty')
         }
     }
 
