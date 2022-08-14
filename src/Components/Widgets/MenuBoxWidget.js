@@ -2,6 +2,7 @@ import React from "react"
 
 import Typography from "@mui/material/Typography"
 import Menu from "@mui/material/Menu"
+import Grid from "@mui/material/Grid"
 
 import MenuBoxItemWidget from "./MenuBoxItemWidget"
 
@@ -11,18 +12,40 @@ const MenuBoxWidget = (props) => {
         props.setAnchorElUser(null)
     }
 
+    const renderMenuItem = (item) => (
+        <Grid item sm = {4} md = {4} key = {item.type}>
+            <MenuBoxItemWidget
+                handleCloseUserMenu = {() => handleCloseUserMenu()}
+                item = {item}
+                customIcon = {item.icon}
+            />
+        </Grid>
+    )
+
+    const renderMenuItems = () => (
+        <Grid container spacing = {1}>
+            { props.menuList.map((item) => renderMenuItem(item)) }
+        </Grid>
+    )
+
+    const renderHeader = () => (
+        <Typography sx = {{mt:{xs:1}, p:2}} color = "text.primary" variant = "subtitle1"  noWrap component = "a">
+            {props.header}
+        </Typography>
+    )
+
     return(
         <>
             <Menu
                 PaperProps = {{
                     style: {
-                        maxHeight: 200,
+                        maxHeight: 300,
                         width: 'auto',
-                        maxWidth: '200px',
+                        maxWidth: '700px',
                         padding: '16px',
                         marginTop: "-15px",
-                        borderRadius: '0px 0px 8px 8px',
-                        marginLeft: "50px"
+                        borderRadius: '8px 8px 8px 8px',
+                        marginLeft: "36%"
                     },
                 }}
                 sx = {{ 
@@ -48,23 +71,8 @@ const MenuBoxWidget = (props) => {
                 transformOrigin = {{vertical: 'top', horizontal: 'right'}} 
                 onClose = {handleCloseUserMenu}
             >
-
-                {
-                    props.header
-                    &&
-                    <Typography sx = {{mt:{xs:1}, p:2}} color = "text.primary" variant = "subtitle1"  noWrap component = "a">
-                        {props.header}
-                    </Typography>
-                }
-
-                {props.menuList.map((item) => (
-                    <MenuBoxItemWidget
-                        handleCloseUserMenu = {() => handleCloseUserMenu()}
-                        item = {item}
-                        key = {item.type}
-                        customIcon={item.icon}
-                    />
-                ))}
+                { props.header && renderHeader() }
+                { renderMenuItems() }
             </Menu>
         </>
     )
