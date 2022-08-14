@@ -12,7 +12,7 @@ import forgotpassword_cover from '../../Assets/Images/signin_cover.jpg'
 class ForgotPassword extends Component {
     state = {
         email: "",
-        resetCode: null,
+        resetCode: "",
         password: "",
         confirmPassword: "",
         showPassword: false,
@@ -100,7 +100,7 @@ class ForgotPassword extends Component {
             this.setState({ email: "" })
         }
         else if (activeStep === 1) {
-            this.setState({ resetCode: null })
+            this.setState({ resetCode: "" })
         }
         else {
             this.setState({ password: "", confirmPassword: "" })
@@ -193,6 +193,7 @@ class ForgotPassword extends Component {
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
                 { loading && <Loading open = {loading} /> }
+                { console.log(this.state) }
             </div>
         )
     }

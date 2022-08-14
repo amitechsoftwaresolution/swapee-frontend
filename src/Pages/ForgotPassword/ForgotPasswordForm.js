@@ -12,6 +12,8 @@ import CancelButton from '../../Components/Button/CancelButton'
 import LogoComponent from '../../Components/Logo/LogoComponent'
 import StepperComponent from "../../Components/Stepper/StepperComponent"
 
+import './ForgotPassword.css'
+
 const ForgotPasswordForm = ({
     state, 
     handleInputOnChange, 
@@ -90,22 +92,25 @@ const ForgotPasswordForm = ({
     }
 
     const renderResetPasswordStep = () => (
-        <>
+        <div className = "stepper-des">
+            <p className = "stepper-des_span">Please reset your password here</p>
             { renderPasswordField("password", "Password", "Password") }
             { renderPasswordField("confirmPassword", "Confirm Password", "Confirm Password") }
-        </>
+        </div>
     )
 
     const renderResetCodeStep = () => (
-        <>
+        <div className = "stepper-des">
+            <p className = "stepper-des_span">Reset code has been sent, please check your mail</p>
             { renderInputField("resetCode", "Reset Code", "Reset Code") }
-        </>
+        </div>
     )
 
     const renderEmailStep = () => (
-        <>
+        <div className = "stepper-des">
+            <p className = "stepper-des_span">Let us know your email address, and we'll send a reset code</p>
             { renderInputField("email", "Email", "Email") }
-        </>
+        </div>
     )
 
     const renderStepper = () => (
@@ -144,11 +149,9 @@ const ForgotPasswordForm = ({
                 { renderStepper() }
                 <div className = 'sign-form-input-container'>
                     {
-                        activeStep === 0 ?
-                        renderEmailStep()
+                        activeStep === 0 ? renderEmailStep()
                         :
-                        activeStep === 1 ?
-                        renderResetCodeStep() 
+                        activeStep === 1 ? renderResetCodeStep() 
                         :
                         renderResetPasswordStep()
                     }

@@ -39,10 +39,10 @@ const DrawerPanel = ({open, links, icons, handleDrawer}) => {
         <div>
             <List>
                 <ListItem>
-                    <a href = "/" className = "login_btn">LOGIN</a>
+                    <a href = "/signin" className = "login_btn">LOGIN</a>
                 </ListItem>
                 <ListItem>
-                    <a href = "/" className = "join_btn">Join Now</a>
+                    <a href = "/signup" className = "join_btn">Join Now</a>
                 </ListItem>
             </List>
         </div>
