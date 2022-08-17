@@ -1,0 +1,11 @@
+{
+    "Home" : "/",
+    "SignIn": "/signin",
+    "SignUp": "/signup",
+    "ForgotPassword": "/forgot-password",
+    "AboutUs": "/aboutus",
+    "TermsAndConditions": "/",
+    "Dashboard": "/",
+    "FAQ": "/",
+    "PrivacyAndPolicy": "/"
+}

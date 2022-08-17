@@ -8,6 +8,8 @@ import PasswordField from '../../Components/Input/PasswordField'
 import SignUpButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/CancelButton'
 
+import paths from '../../Data/Json/paths.json'
+
 import './SignUp.css'
 
 const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleSignUpOnClick}) => {
@@ -32,7 +34,7 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
     const renderTermsAndConditionsLink = () => {
         return (
             <div className = 'terms-conditions-root'>
-                <a href = "/" className = 'terms-conditions-link'>Terms & Conditions</a>
+                <a href = {paths.TermsAndConditions} className = 'terms-conditions-link'>Terms & Conditions</a>
             </div>
         )
     }
@@ -75,7 +77,7 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
             <div className = 'signin-link-root'>
                 <p className = 'signin-link-para'>
                     Already have an account ?
-                    <a href = "/signin" className = 'signin-link'>Sign In</a>
+                    <a href = {paths.SignIn} className = 'signin-link'>Sign In</a>
                 </p>
             </div>
         )

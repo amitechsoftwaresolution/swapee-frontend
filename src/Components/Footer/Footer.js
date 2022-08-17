@@ -16,22 +16,11 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 
 import LogoComponent from "../Logo/LogoComponent"
 
+import {footerQuickLinks, footerSocialLinks} from '../../Data/Values/Values'
+
 import './Footer.css'
 
 const Footer = () => {
-
-    const SOCIAL_LINKS = [
-        {id: "1", url: "https://www.facebook.com", title: "Facebook"},
-        {id: "2", url: "https://twitter.com", title: "Twitter"},
-        {id: "3", url: "https://www.instagram.com", title: "Instagram"},
-        {id: "4", url: "https://www.linkedin.com", title: "LinkedIn"}
-    ]
-
-    const QUICK_LINKS = [
-        {id : "1", href : "#", title: "About Us"},
-        {id : "2", href : "#", title: "Privacy Policy"},
-        {id : "3", href : "#", title: "Tearms and Conditions"}
-    ]
 
     const SOCIAL_ICONS = {
         "Facebook": <FacebookIcon sx = {{width: "100%", height: "100%"}}/>,
@@ -40,9 +29,9 @@ const Footer = () => {
         "LinkedIn": <LinkedInIcon sx = {{width: "100%", height: "100%"}}/>
     }
 
-    const renderLink = (href, title) => (
+    const renderLink = (href, label) => (
         <Link href = {href} sx = {{textDecoration: 'none !important', color: "#fff"}}>
-            {title}
+            {label}
         </Link>
     )
 
@@ -58,11 +47,11 @@ const Footer = () => {
                 <div className = "wrapper_item-caption">
                     <p>Follow us</p>
                     <div className = "footer-social">
-                        { SOCIAL_LINKS.map(item => {
-                            const {id, url, title} = item
+                        { footerSocialLinks.map((item, idx) => {
+                            const {url, label} = item
                             return (
-                                <a href = {url} target = "_blank" rel = "noreferrer noopener" key = {id}>
-                                    { SOCIAL_ICONS[title] }
+                                <a href = {url} target = "_blank" rel = "noreferrer noopener" key = {idx}>
+                                    { SOCIAL_ICONS[label] }
                                 </a>
                             )
                         }) }
@@ -78,11 +67,11 @@ const Footer = () => {
                 <div className = "wrapper_item-caption">
                     <p>Quick Links</p>
                     <List className = "content">
-                        {QUICK_LINKS.map(item => {
-                            const {id, href, title} = item
+                        {footerQuickLinks.map((item, idx) => {
+                            const {href, label} = item
                             return (
-                                <ListItem key = {id}>
-                                    { renderLink(href, title) }
+                                <ListItem key = {idx}>
+                                    { renderLink(href, label) }
                                 </ListItem>
                             )
                         })}
