@@ -5,7 +5,7 @@ import Box from "@mui/material/Box"
 import Categories from '../../Data/Json/categories.json'
 import MenuBoxWidget from "../Widgets/MenuBoxWidget"
 
-import pages from '../../Data/Json/pages.json'
+import {appBarLinks} from '../../Data/Values/Values'
 
 import './Navigation.css'
 
@@ -44,7 +44,7 @@ const NavigationPagesComponent = () => {
 
     return (
         <Box sx = {{display: {xs: 'none', md: 'flex'}, flexGrow: 2, alignItems: "center"}}>
-            {pages && pages.appbar.map((page) => page.label === "Categories" ? renderCategoryLink(page) : renderPageLink(page))}
+            {appBarLinks && appBarLinks.map((page) => page.label === "Categories" ? renderCategoryLink(page) : renderPageLink(page))}
             <Box sx = {{marginLeft: "20px"}}>
                 { currentUser && !currentUser.token && renderSignInButton() }
                 { currentUser && currentUser.role && currentUser.role === 'admin' &&  renderDashBoardButton() }

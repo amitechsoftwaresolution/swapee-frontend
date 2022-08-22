@@ -13,7 +13,7 @@ import SecurityIcon from '@mui/icons-material/Security'
 
 import DrawerPanel from "../Drawer/DrawerPanel"
 
-import Pages from '../../Data/Json/pages.json'
+import {drawerLinks} from '../../Data/Values/Values'
 
 const MobileMenuBoxComponent = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
@@ -52,7 +52,7 @@ const MobileMenuBoxComponent = () => {
                 { renderMenuIcon() }
                 <DrawerPanel 
                     open = {drawerOpen} 
-                    links = {Pages.Drawer}
+                    links = {drawerLinks}
                     icons = {NAV_ICONS}
                     handleDrawer = {handleDrawer}
                 />

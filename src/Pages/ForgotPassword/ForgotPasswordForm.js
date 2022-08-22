@@ -12,6 +12,8 @@ import CancelButton from '../../Components/Button/CancelButton'
 import LogoComponent from '../../Components/Logo/LogoComponent'
 import StepperComponent from "../../Components/Stepper/StepperComponent"
 
+import paths from '../../Data/Json/paths.json'
+
 import './ForgotPassword.css'
 
 const ForgotPasswordForm = ({
@@ -85,7 +87,7 @@ const ForgotPasswordForm = ({
             <div className = 'signin-link-root'>
                 <p className = 'signin-link-para'>
                     Already reset your password ?
-                    <a href = "/signin" className = 'signin-link'>Sign In</a>
+                    <a href = {paths.SignIn} className = 'signin-link'>Sign In</a>
                 </p>
             </div>
         )

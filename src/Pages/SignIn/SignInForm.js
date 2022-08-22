@@ -12,6 +12,8 @@ import SignInButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/CancelButton'
 import SocialButton from '../../Components/Button/SocialButton'
 
+import paths from '../../Data/Json/paths.json'
+
 import './SignIn.css'
 
 const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick}) => {
@@ -52,7 +54,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
     const renderForgotPasswordLink = () => {
         return (
             <div className = 'forgot-password-root'>
-                <a href = "/forgot-password" className = 'forgot-password-link'>Forgot password?</a>
+                <a href = {paths.ForgotPassword} className = 'forgot-password-link'>Forgot password?</a>
             </div>
         )
     }
@@ -90,7 +92,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
             <div className = 'signup-link-root'>
                 <p className = 'signup-link-para'>
                     Don’t have an account ?
-                    <a href = "/signup" className = 'signup-link'>Get Started</a>
+                    <a href = {paths.SignUp} className = 'signup-link'>Get Started</a>
                 </p>
             </div>
         )

@@ -8,13 +8,17 @@ import Home from './Pages/Home/Home'
 import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp'
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
+import AboutUs from './Pages/AboutUs/AboutUs'
+
+import paths from './Data/Json/paths.json'
 
 const App = () => {
     const routes = [
-      { name: "Home", path: "/", element: <Home /> },
-      { name: "SignIn", path: "/signin", element: <SignIn /> },
-      { name: "SignUp", path: "/signup", element: <SignUp /> },
-      { name: "ForgotPassword", path: "/forgot-password", element: <ForgotPassword /> }
+      { name: "Home", path: paths.Home, element: <Home /> },
+      { name: "SignIn", path: paths.SignIn, element: <SignIn /> },
+      { name: "SignUp", path: paths.SignUp, element: <SignUp /> },
+      { name: "ForgotPassword", path: paths.ForgotPassword, element: <ForgotPassword /> },
+      { name: "AboutUs", path: paths.AboutUs, element: <AboutUs /> }
     ]
 
     const renderRoutes = (route, idx) => {

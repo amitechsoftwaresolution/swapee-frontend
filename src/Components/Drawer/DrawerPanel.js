@@ -4,6 +4,8 @@ import {Box, Drawer, List, Divider, ListItem, ListItemIcon} from '@mui/material'
 
 import LogoComponent from "../Logo/LogoComponent"
 
+import paths from '../../Data/Json/paths.json'
+
 import './Drawer.css'
 
 const DrawerPanel = ({open, links, icons, handleDrawer}) => {
@@ -39,10 +41,10 @@ const DrawerPanel = ({open, links, icons, handleDrawer}) => {
         <div>
             <List>
                 <ListItem>
-                    <a href = "/signin" className = "login_btn">LOGIN</a>
+                    <a href = {paths.SignIn} className = "login_btn">LOGIN</a>
                 </ListItem>
                 <ListItem>
-                    <a href = "/signup" className = "join_btn">Join Now</a>
+                    <a href = {paths.SignUp} className = "join_btn">Join Now</a>
                 </ListItem>
             </List>
         </div>
