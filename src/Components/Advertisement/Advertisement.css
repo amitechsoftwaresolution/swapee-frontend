@@ -17,12 +17,35 @@
     z-index: 0;
     display: flex;
     align-items: center;
-    padding: 24px;
-    width: 94%;
-    height: 400px;
+    width: 96%;
+    height: 550px;
+    align-items: center;
+    justify-content: center;
 }
 
 .advertisement-comp-src {
     width: 100%;
     height: 100%;
+}
+
+.adv-parallax {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    display: block;
+    height: 500px;
+    background-color: #fff !important;
+}
+
+.adv-parallax-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(0, 0, 0);
+    font-size: 4rem;
+    text-shadow: 1px 1px 4px #31e2f2;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem !important;
+    text-align: center;
 }

@@ -4,6 +4,7 @@ import Post from '../../Components/Post/Post'
 import CategorySection from '../../Components/Section/CategorySection'
 import FabButton from '../../Components/FabButton/FabButton'
 import Loading from '../../Components/Loading/Loading'
+import Advertisement from '../../Components/Advertisement/Advertisement'
 
 import './Home.css'
 import img01 from '../../Assets/Images/img01.jpg'
@@ -69,6 +70,14 @@ class Home extends Component {
         })
     }
 
+    renderAdvertisementSection = () => {
+        return (
+            <div className = 'home-main-adverticement'>
+                <Advertisement />
+            </div>
+        )
+    }
+
     renderCategorySection = () => {
         const {isViewMoreClicked, categoriesToView} = this.state
         return (
@@ -87,6 +96,10 @@ class Home extends Component {
             <div className = 'home-main-container'>
                 <Post content = {this.products[0]} />
                 { this.renderCategorySection() }
+                <Post content = {this.products[1]} />
+                { this.renderAdvertisementSection() }
+                <Post content = {this.products[1]} />
+                { this.renderAdvertisementSection() }
             </div>
         )
     }

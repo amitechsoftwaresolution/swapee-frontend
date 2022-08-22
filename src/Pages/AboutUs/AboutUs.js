@@ -15,7 +15,7 @@ class AboutUs extends Component {
     renderMainContainer = () => {
         return (
             <div className = 'about-us-main-container'>
-                { this.renderHeaderParallax() }
+                
             </div>
         )
     }

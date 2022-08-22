@@ -20,7 +20,7 @@ const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, catego
     }
 
     return (
-        <Box sx = {{pl: matches ? '60px': '20px', pr: matches ? '60px' : '30px', pt:'50px', pb:'30px'}}>
+        <Box sx = {{pl: matches ? '60px': '20px', pr: matches ? '60px' : '30px', pt:'50px', pb:'10px'}}>
             <div className = 'section-root'>
                 <SectionHeaderComponent 
                     title = {sectionDetail && sectionDetail.title}
