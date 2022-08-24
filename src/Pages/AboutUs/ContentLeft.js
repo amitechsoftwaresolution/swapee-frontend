@@ -4,7 +4,7 @@ import {Grid} from '@mui/material'
 
 import './AboutUs.css'
 
-const ContentLeft = ({title, children}) => {
+const ContentLeft = ({title, children, src}) => {
     return (
         <Grid container spacing = {2} display = "flex" alignItems = "center" justifyContent = "center">
             <Grid item xs = {12} sm = {9} md = {8}>
@@ -15,7 +15,9 @@ const ContentLeft = ({title, children}) => {
             </Grid>
             <Grid item sm = {3} md = {4} sx = {{display: {xs: 'none', md: 'block'}}}>
                 <div className = "hov-bor1">
-                    <div className = "hov-img0"></div>
+                    <div className = "hov-img0">
+                        <img src = {src} alt = {title} className = "hov-img0-src"/>
+                    </div>
                 </div>
             </Grid>
         </Grid>
