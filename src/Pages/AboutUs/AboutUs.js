@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import {Box} from '@mui/material'
 
 import PageTop from '../../Components/PageTop/PageTop'
-import ContentLeft from './ContentLeft'
-import ContentRight from './ContentRight'
+import ContentLeft from '../../Components/ContentInfo/ContentLeft'
+import ContentRight from '../../Components/ContentInfo/ContentRight'
 
 import './AboutUs.css'
 import aboutUs from '../../Data/Json/aboutUs.json'
