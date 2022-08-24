@@ -1,0 +1,42 @@
+.page-top-header-title-p {
+    line-height: 1;
+}
+
+.page-top-header-title-s1 {
+    font-weight: 600;
+    letter-spacing: 0.07rem;
+    font-size: 1.5rem;
+}
+
+.page-top-header-title-s2 {
+    letter-spacing: 0.09rem;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    color: rgb(145, 158, 171);
+}
+
+.page-top-bread-crumb-sub {
+    margin: 0px;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    color: rgb(33, 43, 54);
+    letter-spacing: 0.05rem;
+}
+
+.page-top-bread-crumb-sub-last {
+    margin: 0px;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05rem;
+    color: rgb(145, 158, 171);
+}

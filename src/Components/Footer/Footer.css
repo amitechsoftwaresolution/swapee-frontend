@@ -114,8 +114,12 @@
         font-size: 0.6rem;
     }
 
+    .footer_bottom_copyrights p {
+        font-size: 0.5rem;
+    }
+
     .footer_bottom_copyrights span {
-        font-size: 0.6rem;
+        font-size: 0.5rem;
     }
 
     .footer_main_content_wrapper .content_wrapper_logo h1 {

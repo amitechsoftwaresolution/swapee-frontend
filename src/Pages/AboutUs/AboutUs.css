@@ -1,7 +1,7 @@
 .about-us-page-root {
     display: block;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgb(250, 251, 251);
 }
 
@@ -19,7 +19,7 @@
     background-position: center center;
     width: 100%;
     display: block;
-    height: 350px;
+    height: 300px;
 }
 
 .header-parallax-title {
@@ -32,4 +32,79 @@
     text-shadow: 1px 1px 4px #31e2f2;
     text-transform: uppercase;
     letter-spacing: 0.5rem !important;
+}
+
+.about-us-main-contents {
+    display: block;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.about-us-intro-container {
+    display: flex;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.about-us-mission-container {
+    display: flex;
+    padding: 5px;
+    margin-top: 70px;
+    margin-bottom: 45px;
+}
+
+.about-us-intro-des {
+    font-size: 15px;
+    line-height: 1.7857;
+    color: #888;
+    font-family: "Public Sans", sans-serif;
+    text-align: justify;
+}
+
+.miss-sub-content {
+    border-left: 3px solid #a0a0a0;
+    margin-top: 22px;
+}
+
+.miss-sub-content-1 {
+    font-size: 15px;
+    line-height: 1.666667;
+    color: rgb(191, 188, 188);
+    padding-left: 25px !important;
+    padding-bottom: 5px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.miss-sub-content-2 {
+    font-size: 13px;
+    line-height: 1.6923;
+    color: rgb(36, 35, 35);
+    font-family: "Public Sans", sans-serif;
+    padding-left: 25px;
+}
+
+@media screen and (max-width: 800px) {
+    .about-us-intro-head {
+        font-size: 20px;
+    }
+
+    .about-us-intro-des {
+        font-size: 11px;
+    }
+
+    .header-parallax-title {
+        font-size: 2rem;
+    }
+
+    .about-us-mission-container {
+        margin-top: 50px;
+    }
+
+    .miss-sub-content-1 {
+        font-size: 11px;
+    }
+
+    .miss-sub-content-2 { 
+        font-size: 10px;
+    }
 }

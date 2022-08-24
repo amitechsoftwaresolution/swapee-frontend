@@ -12,12 +12,6 @@ const Advertisement = ({src}) => {
         )
     }
 
-    const renderSource = () => (
-        <div className = "advertisement-comp">
-            <img src = {src} className = "advertisement-comp-src" alt = ""/>
-        </div>
-    )
-
     return (
         <div className = "advertisement-comp-container">
             { renderParallax() }

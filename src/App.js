@@ -9,6 +9,10 @@ import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp'
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
 import AboutUs from './Pages/AboutUs/AboutUs'
+import PrivacyAndPolicy from './Pages/PrivacyAndPolicy/PrivacyAndPolicy'
+import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions'
+
+import PageNotFound from './Pages/PageNotFound/PageNotFound'
 
 import paths from './Data/Json/paths.json'
 
@@ -18,7 +22,9 @@ const App = () => {
       { name: "SignIn", path: paths.SignIn, element: <SignIn /> },
       { name: "SignUp", path: paths.SignUp, element: <SignUp /> },
       { name: "ForgotPassword", path: paths.ForgotPassword, element: <ForgotPassword /> },
-      { name: "AboutUs", path: paths.AboutUs, element: <AboutUs /> }
+      { name: "AboutUs", path: paths.AboutUs, element: <AboutUs /> },
+      { name: "Privacy & Policy", path: paths.PrivacyAndPolicy, element: <PrivacyAndPolicy /> },
+      { name: "Terms & Conditions", path: paths.TermsAndConditions, element: <TermsAndConditions /> }
     ]
 
     const renderRoutes = (route, idx) => {
@@ -34,6 +40,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
                 { routes.map((route, idx) => renderRoutes(route, idx)) }
+                <Route path = "*" element = {<PageNotFound />} />
             </Routes>
           </BrowserRouter>
           <Footer />
