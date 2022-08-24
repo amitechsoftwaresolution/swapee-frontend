@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
-import {Grid, Box} from '@mui/material'
+import {Box} from '@mui/material'
 
 import PageTop from '../../Components/PageTop/PageTop'
+import ContentRight from './ContentLeft'
+import ContentLeft from './ContentRight'
 
 import './AboutUs.css'
 import aboutUs from '../../Data/Json/aboutUs.json'
@@ -10,31 +12,25 @@ import aboutUs from '../../Data/Json/aboutUs.json'
 class AboutUs extends Component {
     breadcrumbs = ["Home", "Help", "About Us"]
 
-    renderMissionContent = () => {
+    renderContentRight = () => {
         return (
-            <Grid container spacing = {2}>
-                <Grid item xs = {12} sm = {12} md = {12}>
-                    <div className = 'about-us-intro'>
-                        <h3 className = 'about-us-intro-head'>Our Mission</h3>
-                        <p className = 'about-us-intro-des'>{aboutUs.mission_content}</p>
-                    </div>
-                </Grid>
-            </Grid>
+            <ContentRight title = "Our Story">
+                { aboutUs.intro_contents.map((item, idx) => {
+                    return <p className = 'about-us-intro-des' key = {idx}>{item}</p>
+                }) }
+            </ContentRight>
         )
     }
 
-    renderIntroductionContent = () => {
+    renderContentLeft = () => {
         return (
-            <Grid container spacing = {2}>
-                <Grid item xs = {12} sm = {12} md = {12}>
-                    <div className = 'about-us-intro'>
-                        <h3 className = 'about-us-intro-head'>Our Story</h3>
-                        { aboutUs.intro_contents.map((item, idx) => {
-                            return <p className = 'about-us-intro-des' key = {idx}>{item}</p>
-                        }) }
-                    </div>
-                </Grid>
-            </Grid>
+            <ContentLeft title = "Our Mission">
+                <p className = 'about-us-intro-des'>{aboutUs.mission_content}</p>
+                <div className = "miss-sub-content">
+                    <p className = "miss-sub-content-1">{aboutUs.mission_sub_contents[0]}</p>
+                    <span className = "miss-sub-content-2">{aboutUs.mission_sub_contents[1]}</span>
+                </div>
+            </ContentLeft>
         )
     }
 
@@ -42,10 +38,10 @@ class AboutUs extends Component {
         return (
             <div className = 'about-us-main-contents'>
                 <div className = 'about-us-intro-container'> 
-                    { this.renderIntroductionContent() } 
+                    { this.renderContentRight() }
                 </div>
-                <div className = 'about-us-intro-container'> 
-                    { this.renderMissionContent() }
+                <div className = 'about-us-mission-container'>
+                    { this.renderContentLeft() }
                 </div>
             </div>
         )

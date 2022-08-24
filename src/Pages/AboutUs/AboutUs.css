@@ -43,6 +43,14 @@
 .about-us-intro-container {
     display: flex;
     padding: 5px;
+    margin-bottom: 10px;
+}
+
+.about-us-mission-container {
+    display: flex;
+    padding: 5px;
+    margin-top: 70px;
+    margin-bottom: 45px;
 }
 
 .about-us-intro-head {
@@ -64,11 +72,84 @@
 }
 
 .about-us-intro-des {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7857;
     color: #888;
     font-family: "Public Sans", sans-serif;
-    text-align: left;
+    text-align: justify;
+}
+
+.hov-bor1 {
+    position: relative;
+    z-index: 1;
+    margin-left: 35px;
+    height: 93%;
+}
+
+.hov-bor2 {
+    position: relative;
+    z-index: 1;
+    margin-right: 50px;
+    height: 93%;
+}
+
+.hov-bor2::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #ccc;
+    bottom: -21px;
+    right: -40px;
+}
+
+.hov-bor1::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #ccc;
+    bottom: -21px;
+    left: -21px;
+}
+
+.hov-img0 {
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    overflow: hidden;
+    margin: 15px;
+    box-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
+    padding: 0px;
+    width: 100%;
+    height: 400px;
+}
+
+
+.miss-sub-content {
+    border-left: 3px solid #a0a0a0;
+    margin-top: 22px;
+}
+
+.miss-sub-content-1 {
+    font-size: 15px;
+    line-height: 1.666667;
+    color: rgb(191, 188, 188);
+    padding-left: 25px !important;
+    padding-bottom: 5px;
+    font-family: "Public Sans", sans-serif;
+}
+
+.miss-sub-content-2 {
+    font-size: 13px;
+    line-height: 1.6923;
+    color: rgb(36, 35, 35);
+    font-family: "Public Sans", sans-serif;
+    padding-left: 25px;
 }
 
 @media screen and (max-width: 800px) {
@@ -82,5 +163,9 @@
 
     .header-parallax-title {
         font-size: 2rem;
+    }
+
+    .about-us-mission-container {
+        margin-top: 50px;
     }
 }
