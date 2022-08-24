@@ -41,3 +41,14 @@
     font-family: "Public Sans", sans-serif;
     text-align: justify;
 }
+
+
+@media screen and (max-width: 800px) {
+    .privacy-policy-intro-des {
+        font-size: 11px;
+    }
+
+    .header-parallax-title {
+        font-size: 2rem;
+    }
+}

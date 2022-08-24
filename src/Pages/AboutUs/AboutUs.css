@@ -89,7 +89,7 @@
     }
 
     .about-us-intro-des {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .header-parallax-title {
@@ -98,5 +98,13 @@
 
     .about-us-mission-container {
         margin-top: 50px;
+    }
+
+    .miss-sub-content-1 {
+        font-size: 11px;
+    }
+
+    .miss-sub-content-2 { 
+        font-size: 10px;
     }
 }

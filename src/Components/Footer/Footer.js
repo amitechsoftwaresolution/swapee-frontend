@@ -6,6 +6,7 @@ import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import Link from '@mui/material/Link'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import FacebookIcon from '@mui/icons-material/FacebookRounded'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram'
@@ -21,6 +22,7 @@ import {footerQuickLinks, footerSocialLinks} from '../../Data/Values/Values'
 import './Footer.css'
 
 const Footer = () => {
+    const matches = useMediaQuery('(min-width:800px)')
 
     const SOCIAL_ICONS = {
         "Facebook": <FacebookIcon sx = {{width: "100%", height: "100%"}}/>,
@@ -30,7 +32,7 @@ const Footer = () => {
     }
 
     const renderLink = (href, label) => (
-        <Link href = {href} sx = {{textDecoration: 'none !important', color: "#fff"}}>
+        <Link href = {href} sx = {{textDecoration: 'none !important', color: "#fff", fontSize: matches ? "0.8rem": "0.7rem"}}>
             {label}
         </Link>
     )
@@ -87,16 +89,18 @@ const Footer = () => {
                 <p>Contact Us</p>
                 <List className = "content">
                     <ListItem>
-                        <PhoneIcon style = {{ fontSize:25, marginRight:10 }} />
+                        <PhoneIcon style = {{ fontSize: matches ? 25 : 20, marginRight:10 }} />
                         { renderLink("tel:+94 11 2222222", "+94 11 2222222") }
                     </ListItem>
                     <ListItem>
-                        <MailIcon style = {{ fontSize:25, marginRight:10 }} />
+                        <MailIcon style = {{ fontSize: matches ? 25 : 20, marginRight:10 }} />
                         { renderLink("mailto:swapee@gmail.lk", "swapee@gmail.lk") }
                     </ListItem>
                     <ListItem>
-                        <LocationOnIcon style = {{ fontSize:25, marginRight:10 }} />
-                        <span style = {{color: "#fff"}}>No 25 Ananda Rajakaruna Mawatha Colombo 10</span>
+                        <LocationOnIcon style = {{ fontSize: matches ? 25 : 20, marginRight:10 }} />
+                        <span style = {{color: "#fff", fontSize: matches ? "0.8rem": "0.7rem"}}>
+                            No 25 Ananda Rajakaruna Mawatha Colombo 10
+                        </span>
                     </ListItem>
                 </List>
             </div>
