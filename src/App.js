@@ -10,6 +10,7 @@ import SignUp from './Pages/SignUp/SignUp'
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
 import AboutUs from './Pages/AboutUs/AboutUs'
 import PrivacyAndPolicy from './Pages/PrivacyAndPolicy/PrivacyAndPolicy'
+import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions'
 
 import paths from './Data/Json/paths.json'
 
@@ -20,7 +21,8 @@ const App = () => {
       { name: "SignUp", path: paths.SignUp, element: <SignUp /> },
       { name: "ForgotPassword", path: paths.ForgotPassword, element: <ForgotPassword /> },
       { name: "AboutUs", path: paths.AboutUs, element: <AboutUs /> },
-      { name: "Privacy & Policy", path: paths.PrivacyAndPolicy, element: <PrivacyAndPolicy /> }
+      { name: "Privacy & Policy", path: paths.PrivacyAndPolicy, element: <PrivacyAndPolicy /> },
+      { name: "Terms & Conditions", path: paths.TermsAndConditions, element: <TermsAndConditions /> }
     ]
 
     const renderRoutes = (route, idx) => {

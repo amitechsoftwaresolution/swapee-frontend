@@ -4,7 +4,7 @@
     "SignUp": "/signup",
     "ForgotPassword": "/forgot-password",
     "AboutUs": "/aboutus",
-    "TermsAndConditions": "/",
+    "TermsAndConditions": "/termsAndConditions",
     "Dashboard": "/",
     "FAQ": "/",
     "PrivacyAndPolicy": "/privacyAndPolicy"

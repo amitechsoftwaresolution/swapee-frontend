@@ -5,18 +5,18 @@ import {Box} from '@mui/material'
 import PageTop from '../../Components/PageTop/PageTop'
 import ContentLeft from '../../Components/ContentInfo/ContentLeft'
 
-import './PrivacyAndPolicy.css'
-import privacyAndPolicy from '../../Data/Json/privacyPolicy.json'
-import privacyPolicyImg from '../../Assets/Images/aboutus01.jfif'
+import './TermsAndConditions.css'
+import termsNcondition from '../../Data/Json/termsNcondition.json'
+import termsNconditionImg from '../../Assets/Images/aboutus01.jfif'
 
-class PrivacyAndPolicy extends Component {
-    breadcrumbs = ["Home", "Help", "Privacy & Policy"]
+class TermsAndConditions extends Component {
+    breadcrumbs = ["Home", "Help", "Terms & Conditions"]
 
     renderContentLeft = () => {
         return (
-            <ContentLeft title = "Privacy & Policy" src = {privacyPolicyImg}>
-                { privacyAndPolicy.contents.map((item, idx) => {
-                    return <p className = 'privacy-policy-intro-des' key = {idx}>{item}</p>
+            <ContentLeft title = "Terms & Conditions" src = {termsNconditionImg}>
+                { termsNcondition.contents.map((item, idx) => {
+                    return <p className = 'terms-intro-des' key = {idx}>{item}</p>
                 }) }
             </ContentLeft>
         )
@@ -24,8 +24,8 @@ class PrivacyAndPolicy extends Component {
 
     renderContents = () => {
         return (
-            <div className = 'privacy-policy-main-contents'>
-                <div className = 'privacy-policy-intro-container'>
+            <div className = 'terms-main-contents'>
+                <div className = 'terms-intro-container'>
                     { this.renderContentLeft() } 
                 </div>
             </div>
@@ -34,15 +34,15 @@ class PrivacyAndPolicy extends Component {
 
     renderHeaderParallax = () => {
         return (
-            <div className = 'privacy-policy-header-parallax'>
-                <span className = 'header-parallax-title'>Privacy & Policy</span>
+            <div className = 'terms-header-parallax'>
+                <span className = 'header-parallax-title'>Terms & Conditions</span>
             </div>
         )
     }
 
     renderMainContainer = () => {
         return (
-            <div className = 'privacy-policy-main-container'>
+            <div className = 'terms-main-container'>
                 { this.renderHeaderParallax() }
                 <PageTop breadcrumbs = {this.breadcrumbs} />
                 <Box sx = {{ flexGrow: 1 }} pt = {3} display = "flex" justifyContent = "center">
@@ -54,11 +54,11 @@ class PrivacyAndPolicy extends Component {
 
     render() {
         return (
-            <div className = 'privacy-policy-page-root'>
+            <div className = 'terms-page-root'>
                 { this.renderMainContainer() }
             </div>
         )
     }
 }
 
-export default PrivacyAndPolicy
+export default TermsAndConditions

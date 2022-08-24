@@ -1,0 +1,43 @@
+.terms-page-root {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(250, 251, 251);
+}
+
+.terms-main-container {
+    display: block;
+}
+
+.terms-header-parallax {
+    position: relative;
+    z-index: 0;
+    background-image: url(../../Assets/Images/signin_cover.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    display: block;
+    height: 300px;
+}
+
+.terms-main-contents {
+    display: block;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.terms-intro-container {
+    display: flex;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.terms-intro-des {
+    font-size: 15px;
+    line-height: 1.7857;
+    color: #888;
+    font-family: "Public Sans", sans-serif;
+    text-align: justify;
+}
