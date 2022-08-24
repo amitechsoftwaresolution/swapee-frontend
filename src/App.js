@@ -12,6 +12,8 @@ import AboutUs from './Pages/AboutUs/AboutUs'
 import PrivacyAndPolicy from './Pages/PrivacyAndPolicy/PrivacyAndPolicy'
 import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions'
 
+import PageNotFound from './Pages/PageNotFound/PageNotFound'
+
 import paths from './Data/Json/paths.json'
 
 const App = () => {
@@ -38,6 +40,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
                 { routes.map((route, idx) => renderRoutes(route, idx)) }
+                <Route path = "*" element = {<PageNotFound />} />
             </Routes>
           </BrowserRouter>
           <Footer />
