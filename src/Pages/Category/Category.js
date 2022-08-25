@@ -19,9 +19,43 @@ class Category extends Component {
 
     breadcrumbs = ["Category", "Fashion"]
 
+    otherCategories = [
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion }
+    ]
+
     filters = [
         {label: "Category", list: ["Men", "Women", "Kid"]},
         {label: "Genre", list: ["Action", "Adventure", "Comedy"]}
+    ]
+
+    marks = [
+        {
+          value: 0,
+          label: '0',
+        },
+        {
+          value: 20,
+          label: '100',
+        },
+        {
+          value: 37,
+          label: '500',
+        },
+        {
+          value: 100,
+          label: '> 1000',
+        },
     ]
 
     handleFilterCheckBoxToggle = (label, index) => {
@@ -59,30 +93,17 @@ class Category extends Component {
         return name
     }
 
-    otherCategories = [
-        { label: "Accessories", src: accessories },
-        { label: "Gadgest", src: gadget },
-        { label: "Smartphones", src: fashion },
-        { label: "Accessories", src: accessories },
-        { label: "Gadgest", src: gadget },
-        { label: "Smartphones", src: fashion },
-        { label: "Accessories", src: accessories },
-        { label: "Gadgest", src: gadget },
-        { label: "Smartphones", src: fashion },
-        { label: "Accessories", src: accessories },
-        { label: "Gadgest", src: gadget },
-        { label: "Smartphones", src: fashion }
-    ]
-
     renderCategoryListBlock = () => {
         return (
             <Grid container spacing = {2}>
                 <Grid item xs = {12} sm = {5} md = {3}>
                     <Filters 
                         filters = {this.filters}
+                        marks = {this.marks}
                         values = {this.state}
                         handleFilterCheckBoxToggle = {this.handleFilterCheckBoxToggle}
                         getCheckedStateAttribute = {this.getCheckedStateAttribute}
+                        handleFilterClear = {this.handleFilterClear}
                     />
                 </Grid>
                 <Grid item xs = {12} sm = {7} md = {9}></Grid>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { List, Checkbox, Divider } from '@mui/material'
+import { List, Checkbox } from '@mui/material'
 
 import './Filter.css'
 
