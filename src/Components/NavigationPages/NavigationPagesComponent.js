@@ -6,6 +6,7 @@ import Categories from '../../Data/Json/categories.json'
 import MenuBoxWidget from "../Widgets/MenuBoxWidget"
 
 import {appBarLinks} from '../../Data/Values/Values'
+import paths from '../../Data/Json/paths.json'
 
 import './Navigation.css'
 
@@ -19,11 +20,11 @@ const NavigationPagesComponent = () => {
     }
 
     const renderSignInButton = () => (
-        <a href = "/signin" className = "appbar-link">Sign in</a>
+        <a href = {paths.SignIn} className = "appbar-link">Sign in</a>
     )
 
     const renderDashBoardButton = () => (
-        <a href = "/dashboard" className = "appbar-link">Dashboard</a>
+        <a href = {paths.Dashboard} className = "appbar-link">Dashboard</a>
     )
 
     const renderMenu = () => (
