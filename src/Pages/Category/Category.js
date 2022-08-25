@@ -14,7 +14,8 @@ import fashion from '../../Assets/Images/Categories/fashion.png'
 class Category extends Component {
     state = {
         categoryChecked: [],
-        genreChecked: []
+        genreChecked: [],
+        filterByPrice: false
     }
 
     breadcrumbs = ["Category", "Fashion"]
@@ -79,6 +80,10 @@ class Category extends Component {
         this.setState({ categoryChecked: [], genreChecked: []})
     }
 
+    handleFilterByPriceOnClick = () => {
+        this.setState({ filterByPrice: !this.state.filterByPrice })
+    }
+
     getCheckedStateAttribute = (label) => {
         let name = "categoryChecked"
 
@@ -104,6 +109,7 @@ class Category extends Component {
                         handleFilterCheckBoxToggle = {this.handleFilterCheckBoxToggle}
                         getCheckedStateAttribute = {this.getCheckedStateAttribute}
                         handleFilterClear = {this.handleFilterClear}
+                        handleFilterByPriceOnClick = {this.handleFilterByPriceOnClick}
                     />
                 </Grid>
                 <Grid item xs = {12} sm = {7} md = {9}></Grid>
