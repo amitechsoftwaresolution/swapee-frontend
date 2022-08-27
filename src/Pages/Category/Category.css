@@ -9,19 +9,6 @@
     display: block;
 }
 
-.category-page-parallax {
-    position: relative;
-    z-index: 0;
-    background-image: url(../../Assets/Images/signin_cover.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-    display: block;
-    height: 300px;
-}
-
 .category-page-main-contents {
     display: block;
     width: 90%;
@@ -84,6 +71,7 @@
     box-shadow: rgb(90 114 123 / 11%) 0px 7px 30px 0px;
     flex-direction: column;
     border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 .popular_category_image {
@@ -155,4 +143,39 @@
     position: absolute;
     border-radius: 2px;
     cursor: pointer;
+}
+
+.category-search-root {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.category_list-pagination-root {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
+
+.no_data_container {
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.no_data {
+    margin-bottom: 20px;
+}
+
+.other-cat-row-root {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
