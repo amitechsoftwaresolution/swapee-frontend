@@ -20,7 +20,7 @@ const Filters = ({
     const {filterByPrice} = values
 
     const renderFilterByPrice = () => (
-        <Grid item xs = {4} sm = {12} md = {12}>
+        <Grid item xs = {12} sm = {12} md = {12}>
             <PriceFilter marks = {marks}/>
             <div className = "price-filter-button-container">
                 <span className = "price-filter-button" onClick = {handleFilterByPriceOnClick}
@@ -32,7 +32,7 @@ const Filters = ({
     )
 
     const renderFilter = (name, label, list, idx) => (
-        <Grid item xs = {4} sm = {12} md = {12} key = {idx}>
+        <Grid item xs = {6} sm = {12} md = {12} key = {idx}>
             <Filter 
                 label = {label}
                 list = {list}

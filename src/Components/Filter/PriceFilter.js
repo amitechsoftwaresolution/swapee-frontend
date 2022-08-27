@@ -6,8 +6,8 @@ import { styled } from '@mui/material/styles'
 import './Filter.css'
   
 function valuetext(value) {
-    return `${value}`
-}
+    return `${value * 10}`
+} 
 
 const PrettoSlider = styled(Slider)({
     color: '#52af77',
@@ -56,8 +56,9 @@ const PriceFilter = ({marks}) => {
                 <PrettoSlider
                     valueLabelDisplay = "auto"
                     aria-label = "pretto slider"
-                    defaultValue = {20}
+                    defaultValue = {10}
                     getAriaValueText = {valuetext}
+                    valueLabelFormat = {valuetext}
                     step = {10}
                     marks = {marks}
                 />

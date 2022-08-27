@@ -46,11 +46,11 @@ class Category extends Component {
           label: '0',
         },
         {
-          value: 20,
+          value: 10,
           label: '100',
         },
         {
-          value: 37,
+          value: 50,
           label: '500',
         },
         {

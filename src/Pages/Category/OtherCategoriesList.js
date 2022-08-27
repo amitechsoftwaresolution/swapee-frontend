@@ -1,8 +1,6 @@
 import React, {useState, useLayoutEffect} from "react"
 
-import {Grid, IconButton} from '@mui/material'
-import NavigateBefore from '@mui/icons-material/NavigateBefore'
-import NavigateNext from '@mui/icons-material/NavigateNext'
+import {Grid} from '@mui/material'
 
 import CategoriesListItem from "./CategoryListItem"
 import ImageCarousel from '../../Components/ImageCarousel/ImageCarousel'
@@ -10,7 +8,7 @@ import ImageCarousel from '../../Components/ImageCarousel/ImageCarousel'
 import './Category.css'
 
 const OtherCategoriesList = ({otherCategories}) => {
-    const [slidesToShow, setSlidesToShow] = useState(6)
+    const [slidesToShow, setSlidesToShow] = useState(8)
     const [slidesToScroll, setSlidesToScroll] = useState(3)
 
     useLayoutEffect(() => {
@@ -19,7 +17,7 @@ const OtherCategoriesList = ({otherCategories}) => {
 
     const setPropertiesWithScreenSize = () => {
         if (window.innerWidth >= 1300) {
-            setSlidesToShow(6)
+            setSlidesToShow(8)
             setSlidesToScroll(3)
         }
         else if (window.innerWidth >= 1200) {
@@ -35,11 +33,11 @@ const OtherCategoriesList = ({otherCategories}) => {
             setSlidesToScroll(2)
         }
         else if (window.innerWidth >= 600) {
-            setSlidesToShow(2)
+            setSlidesToShow(3)
             setSlidesToScroll(1)
         }
         else if (window.innerWidth >= 360) {
-            setSlidesToShow(2)
+            setSlidesToShow(3)
             setSlidesToScroll(1)
         }
         else {
@@ -69,39 +67,19 @@ const OtherCategoriesList = ({otherCategories}) => {
         />
     }
 
-    const renderArrowNext = () => (
-        <div className = "popular_categories_arrow">
-            <IconButton aria-label = "next">
-                <NavigateNext />
-            </IconButton>
-        </div>
-    )
-
-    const renderArrowBefore = () => (
-        <div className = "popular_categories_arrow">
-            <IconButton aria-label = "before">
-                <NavigateBefore />
-            </IconButton>
-        </div>
-    )
-
     const renderPopularCategory = () => (
         <div className = 'popular-other-categories'>
             <div className = "popular_categories_title">Other Popular Categories</div>
-            <div className = "popular_categories_slider_arrows">
-                { renderArrowBefore() }
-                { renderArrowNext() }
-            </div>
             <div className = "popular_categories_link">View full catalog</div> 
         </div>
     )
 
     return (
         <Grid container spacing = {2}>
-            <Grid item xs = {12} sm = {5} md = {3}>
+            <Grid item xs = {12} sm = {12} md = {12}>
                 { renderPopularCategory() }  
             </Grid>
-            <Grid item xs = {12} sm = {7} md = {9}>
+            <Grid item xs = {12} sm = {12} md = {12}>
                 <ImageCarousel data = {otherCategories} children = {renderCategoryList} settings = {carouselSetting}/>
             </Grid>
         </Grid>
