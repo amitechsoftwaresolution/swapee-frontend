@@ -2,15 +2,22 @@ import React from "react"
 
 import {Box, Grid, Stack, Breadcrumbs} from '@mui/material'
 import FiberManualRecord from '@mui/icons-material/FiberManualRecord'
+import HomeIcon from '@mui/icons-material/House'
+import CategoryIcon from '@mui/icons-material/Category'
 
 import './PageTop.css'
 
-const PageTop = ({breadcrumbs}) => {
+const PageTop = ({breadcrumbs, subHead}) => {
+    let len = breadcrumbs ? breadcrumbs.length : 0
+
+    const ICONS = {
+        "Home": <HomeIcon sx = {{width: "20px", height: "20px", marginRight: "5px", mb: "3px"}}/>,
+        "Category": <CategoryIcon sx = {{width: "20px", height: "20px", marginRight: "5px", mb: "3px"}}/>
+    }
 
     const renderBreadcrumb = (i, idx) => (
-        <span className = {idx === breadcrumbs.length - 1 ? "page-top-bread-crumb-sub-last" : "page-top-bread-crumb-sub"} 
-            key = {idx}
-        >
+        <span className = {idx === len- 1 ? "page-top-bread-crumb-sub-last" : "page-top-bread-crumb-sub"} key = {idx}>
+        { ICONS[i] }
         {i}
         </span>
     )
@@ -33,7 +40,7 @@ const PageTop = ({breadcrumbs}) => {
         <Grid item xs = {12}>
             <p className = "page-top-header-title-p">
                 <span className = "page-top-header-title-s1">SWAPEE</span> 
-                <span className = "page-top-header-title-s2">CUSTOMER CARE</span>
+                <span className = "page-top-header-title-s2">{subHead ? subHead : "CUSTOMER CARE"}</span>
             </p>
         </Grid>
     )

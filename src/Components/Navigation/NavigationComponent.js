@@ -53,7 +53,7 @@ const NavigationComponent = () => {
                         <MobileMenuBoxComponent />
                         <LogoComponent textColor = "text.secondary" position = "start" />
                         <NavigationPagesComponent />
-                        <SearchBarComponent placeholder = "Search"/>
+                        <SearchBarComponent placeholder = "Search" xs = 'none'/>
                         { currentUser && currentUser.token && renderProfileIcon() }
                     </Toolbar>
                 </Container>

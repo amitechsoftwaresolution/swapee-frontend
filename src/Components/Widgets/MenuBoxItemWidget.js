@@ -1,28 +1,25 @@
 import React from "react"
 
-import MenuItem from "@mui/material/MenuItem"
-import Typography from "@mui/material/Typography"
+import {MenuItem} from "@mui/material"
+
+import { Link } from "react-router-dom"
 
 const MenuBoxItemWidget = (props) => {
+
     const renderListItem = () => (
-        <Typography textAlign = "center" sx = {{
-                fontSize: "0.85rem", 
-                letterSpacing: "0.03rem", 
-                '&:hover': {
-                    fontWeight: "600",
-                }
-            }}
-        >
+        <Link to = "/category" style = {{
+            fontSize: "0.8rem", 
+            letterSpacing: "0.05rem", 
+            fontWeight: "550",
+            textDecoration: "none",
+            color: "#000"
+        }}>
             {props.item.type}
-        </Typography>
+        </Link>
     )
 
     return(
-        <MenuItem key = {props.item.name}  onClick = {props.handleCloseUserMenu} sx = {{
-            '&:hover': {
-                color: "rgb(0, 171, 85)"
-            }
-        }}>
+        <MenuItem key = {props.item.name}  onClick = {props.handleCloseUserMenu}>
             { props.customIcon && <props.customIcon color = "info" sx = {{mr:2}}/> }
             { renderListItem() }
         </MenuItem>

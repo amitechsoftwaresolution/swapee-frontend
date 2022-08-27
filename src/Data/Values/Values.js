@@ -28,3 +28,5 @@ export const footerSocialLinks  = [
     { label: "Instagram", url: "https://www.instagram.com" },
     { label: "LinkedIn", url: "https://www.linkedin.com" }
 ]
+
+export const primaryColor = "#31e2f2"

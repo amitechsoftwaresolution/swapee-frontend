@@ -16,8 +16,7 @@ const SearchInput = styled('div')(({ theme }) => ({
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
-    },
-    marginRight: "20px"
+    }
 }))
   
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -47,9 +46,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }))
 
-const SearchBarComponent = ({placeholder, name, value, handleOnChange, handleEnterOnPress}) => {
+const SearchBarComponent = ({placeholder, name, value, xs, handleOnChange, handleEnterOnPress}) => {
     return (
-        <SearchInput sx = {{display: {xs: 'none', md: 'block'}}}>
+        <SearchInput sx = {{display: {xs: xs, md: 'block'}}}>
             <SearchIconWrapper> <SearchIcon /> </SearchIconWrapper>
             <StyledInputBase 
                 placeholder = {placeholder} 

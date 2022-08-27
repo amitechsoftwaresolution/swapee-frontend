@@ -11,7 +11,7 @@ import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
 import AboutUs from './Pages/AboutUs/AboutUs'
 import PrivacyAndPolicy from './Pages/PrivacyAndPolicy/PrivacyAndPolicy'
 import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions'
-
+import Category from './Pages/Category/Category'
 import PageNotFound from './Pages/PageNotFound/PageNotFound'
 
 import paths from './Data/Json/paths.json'
@@ -24,7 +24,8 @@ const App = () => {
       { name: "ForgotPassword", path: paths.ForgotPassword, element: <ForgotPassword /> },
       { name: "AboutUs", path: paths.AboutUs, element: <AboutUs /> },
       { name: "Privacy & Policy", path: paths.PrivacyAndPolicy, element: <PrivacyAndPolicy /> },
-      { name: "Terms & Conditions", path: paths.TermsAndConditions, element: <TermsAndConditions /> }
+      { name: "Terms & Conditions", path: paths.TermsAndConditions, element: <TermsAndConditions /> },
+      { name: "Category", path: paths.Category, element: <Category /> }
     ]
 
     const renderRoutes = (route, idx) => {
@@ -36,14 +37,14 @@ const App = () => {
 
     return (
       <div>
-          <NavigationComponent />
           <BrowserRouter>
+            <NavigationComponent />
             <Routes>
                 { routes.map((route, idx) => renderRoutes(route, idx)) }
                 <Route path = "*" element = {<PageNotFound />} />
             </Routes>
+            <Footer />
           </BrowserRouter>
-          <Footer />
       </div>
     )
 }
