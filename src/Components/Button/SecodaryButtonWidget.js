@@ -2,7 +2,7 @@ import React from 'react'
 
 import Button from "@mui/material/Button"
 
-const CancelButton = ({onClick}) => {
+const SecodaryButtonWidget = ({name, onClick}) => {
     return (
         <>
             <Button
@@ -25,10 +25,10 @@ const CancelButton = ({onClick}) => {
                 }}
                 onClick = {onClick}
             >
-                Cancel
+                {name}
             </Button>
         </>
     )
 }
 
-export default CancelButton
+export default SecodaryButtonWidget

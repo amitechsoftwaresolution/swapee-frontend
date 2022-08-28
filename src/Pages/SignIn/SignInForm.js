@@ -9,7 +9,7 @@ import LogoComponent from '../../Components/Logo/LogoComponent'
 import InputField from '../../Components/Input/InputField'
 import PasswordField from '../../Components/Input/PasswordField'
 import SignInButtonWidget from '../../Components/Widgets/ButtonWidget'
-import CancelButton from '../../Components/Button/CancelButton'
+import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import SocialButton from '../../Components/Button/SocialButton'
 
 import paths from '../../Data/Json/paths.json'
@@ -38,7 +38,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
         return (
             <Grid container spacing = {2} sx = {{marginTop: "10px", marginBottom: "10px"}}>
                 <Grid item xs = {12} sm = {6} md = {4}>
-                    <CancelButton onClick = {handleCancelOnClick} />
+                    <CancelButton onClick = {handleCancelOnClick} name = "Cancel" />
                 </Grid>
                 <Grid item xs = {12} sm = {6} md = {8}>
                     <SignInButtonWidget 

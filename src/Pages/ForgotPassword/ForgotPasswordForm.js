@@ -8,7 +8,7 @@ import PasswordlIcon from '@mui/icons-material/Password'
 import InputField from '../../Components/Input/InputField'
 import PasswordField from '../../Components/Input/PasswordField'
 import SubmitButtonWidget from '../../Components/Widgets/ButtonWidget'
-import CancelButton from '../../Components/Button/CancelButton'
+import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import LogoComponent from '../../Components/Logo/LogoComponent'
 import StepperComponent from "../../Components/Stepper/StepperComponent"
 
@@ -37,7 +37,7 @@ const ForgotPasswordForm = ({
         return (
             <Grid container spacing = {2} sx = {{marginTop: "10px", marginBottom: "30px"}}>
                 <Grid item xs = {12} sm = {6} md = {4}>
-                    <CancelButton onClick = {handleCancelOnClick} />
+                    <CancelButton onClick = {handleCancelOnClick} name = "Cancel" />
                 </Grid>
                 <Grid item xs = {12} sm = {6} md = {8}>
                     <SubmitButtonWidget 
