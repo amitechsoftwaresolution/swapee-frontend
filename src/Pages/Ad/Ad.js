@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {Box} from "@mui/material"
 
 import ProductDetail from './ProductDetail'
+import ProductDescription from './ProductDescription'
 import Loading from '../../Components/Loading/Loading'
 
 import './Ad.css'
@@ -19,6 +20,7 @@ class Ad extends Component {
                     <div className = 'product-detail-component-root'>
                         <div className = "product-detail-component">
                             <ProductDetail />
+                            <ProductDescription />
                         </div>
                     </div>
                 </Box>
