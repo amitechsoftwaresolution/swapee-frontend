@@ -12,6 +12,8 @@ import AboutUs from './Pages/AboutUs/AboutUs'
 import PrivacyAndPolicy from './Pages/PrivacyAndPolicy/PrivacyAndPolicy'
 import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions'
 import Category from './Pages/Category/Category'
+import Ad from './Pages/Ad/Ad'
+import Store from './Pages/Store/Store'
 import PageNotFound from './Pages/PageNotFound/PageNotFound'
 
 import paths from './Data/Json/paths.json'
@@ -25,7 +27,9 @@ const App = () => {
       { name: "AboutUs", path: paths.AboutUs, element: <AboutUs /> },
       { name: "Privacy & Policy", path: paths.PrivacyAndPolicy, element: <PrivacyAndPolicy /> },
       { name: "Terms & Conditions", path: paths.TermsAndConditions, element: <TermsAndConditions /> },
-      { name: "Category", path: paths.Category, element: <Category /> }
+      { name: "Category", path: paths.Category, element: <Category /> },
+      { name: "Ad", path: paths.Ad, element: <Ad /> },
+      { name: "Store", path: paths.Store, element: <Store /> }
     ]
 
     const renderRoutes = (route, idx) => {

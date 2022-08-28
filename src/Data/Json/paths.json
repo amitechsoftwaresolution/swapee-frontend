@@ -8,5 +8,7 @@
     "Dashboard": "/",
     "FAQ": "/",
     "PrivacyAndPolicy": "/privacyAndPolicy",
-    "Category": "/category"
+    "Category": "/category",
+    "Ad": "/ad",
+    "Store": "/Store"
 }
