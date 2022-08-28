@@ -22,6 +22,11 @@ class Ad extends Component {
                             <ProductDetail />
                             <ProductDescription />
                         </div>
+                        <div className = 'ad-page-other-products-root'>
+                            <div className = 'ad-page-other-products-con'>
+                                <h3>Visit store for more seller</h3>
+                            </div>
+                        </div>
                     </div>
                 </Box>
             </div>
