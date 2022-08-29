@@ -1,9 +1,10 @@
 import React from "react"
 
-import {Box, Grid} from '@mui/material'
+import {Box, Grid, Button} from '@mui/material'
 
 import Filter from "../../Components/Filter/Filter"
 import PriceFilter from "../../Components/Filter/PriceFilter"
+import AccordionComponent from "../../Components/Accordian/Accordian"
 
 import './Category.css'
 
@@ -17,16 +18,29 @@ const Filters = ({
     getCheckedStateAttribute
 }) => {
 
-    const {filterByPrice} = values
+    const renderClearButton = () => (
+        <Box sx = {{mt: "25px"}}>
+            <Button variant = "contained" fullWidth onClick = {handleFilterClear} sx = {{
+                background: 'rgb(244, 67, 54)',
+                '&:hover': { background: 'rgb(198, 40, 40)'}
+            }}>Clear All</Button>
+        </Box>
+    )
+
+    const renderFilterButton = () => (
+        <Box>
+            <Button variant = "outlined" onClick = {handleFilterByPriceOnClick} sx = {{
+                border: "2px solid #31e2f2",
+                '&:hover': { border: "2px solid #31e2f2" }
+            }}>Filter</Button>
+        </Box>
+    )
 
     const renderFilterByPrice = () => (
         <Grid item xs = {12} sm = {12} md = {12}>
             <PriceFilter marks = {marks}/>
             <div className = "price-filter-button-container">
-                <span className = "price-filter-button" onClick = {handleFilterByPriceOnClick}
-                    style = {{border: filterByPrice ? '2px solid red' : '2px solid #31e2f2'}}>
-                    { filterByPrice ? "Clear" : "Filter" }
-                </span>
+                { renderFilterButton() }
             </div>
         </Grid>
     )
@@ -44,7 +58,7 @@ const Filters = ({
 
     const renderFilters = () => (
         <Box sx = {{mt: "25px"}}>
-            <Grid container spacing = {2} sx = {{marginTop: "5px"}}>
+            <Grid container spacing = {2}>
                 { renderFilterByPrice() }
                 { filters.map((item, idx) => {
                     const {label, list} = item
@@ -52,20 +66,15 @@ const Filters = ({
                     return renderFilter(name, label, list, idx)
                 }) }
             </Grid>
+            { renderClearButton() }
         </Box>
-    )
-
-    const renderFilterHeader = () => (
-        <div className = 'filter_header'>
-            <span className = 'filter_header_title'>Filter by</span>
-            <span className = 'filter_header_clear' onClick = {handleFilterClear}>Clear</span>
-        </div>
     )
 
     return (
         <div className = "category-filter-root">
-            { renderFilterHeader() }
-            { renderFilters() }
+            <AccordionComponent title = "FILTER BY">
+                { renderFilters() }
+            </AccordionComponent>
         </div>
     )
 }

@@ -23,6 +23,18 @@
     color: rgb(127, 128, 129);
 }
 
+.product-content-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.product-content-icons img {
+    width: 25px;
+    margin-right: 5px;
+}
+
 @media screen and (max-width: 800px) {
     .product-content-des {
         font-size: 0.6rem;

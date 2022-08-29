@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import {Box} from '@mui/material'
 
-import PageTop from '../../Components/PageTop/PageTop'
+import PageHeader from '../../Components/PageTop/PageHeader'
 import ContentLeft from '../../Components/ContentInfo/ContentLeft'
 import ContentRight from '../../Components/ContentInfo/ContentRight'
 
@@ -39,6 +39,7 @@ class AboutUs extends Component {
     renderContents = () => {
         return (
             <div className = 'about-us-main-contents'>
+                <PageHeader navs = {this.breadcrumbs} />
                 <div className = 'about-us-intro-container'>
                     { this.renderContentLeft() } 
                 </div>
@@ -61,7 +62,6 @@ class AboutUs extends Component {
         return (
             <div className = 'about-us-main-container'>
                 { this.renderHeaderParallax() }
-                <PageTop breadcrumbs = {this.breadcrumbs} />
                 <Box sx = {{ flexGrow: 1 }} pt = {3} display = "flex" justifyContent = "center">
                     { this.renderContents() }
                 </Box>

@@ -52,11 +52,5 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non.",
       "price": "1500",
       "date": "25-08-2022"
-   },
-   {
-      "title": "Classic Men Sunglasses", 
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non.",
-      "price": "1500",
-      "date": "25-08-2022"
    }
 ]

@@ -270,8 +270,8 @@
 
 @media screen and (max-width: 800px) {
     .product-detail-image-carousel {
-        width: 100%;
-        margin-left: 0%;
+        width: 92%;
+        margin-left: 4%;
     }
 
     .product-detail-image-carousel-img {

@@ -6,17 +6,16 @@ const Paginator = ({count, page, onChange}) => {
     return (
         <Pagination
             count = {count} 
-            variant = "outlined" 
             color = "primary"
             page = {page}
             onChange = {onChange}
+            shape = "rounded"
             sx = {{
                 "& .MuiPaginationItem-root": {
-                    color: "#31e2f2",
-                    fontWeight: "bold"
+                    color: "#000",
                 },
                 "& .MuiPaginationItem-outlinedSecondary.Mui-selected": {
-                    backgroundColor: "rgba(255, 255, 255, .15)", 
+                    backgroundColor: "#31e2f2", 
                     backdropFilter: "blur(4px)"
                 }
             }}
