@@ -270,6 +270,10 @@ class Category extends Component {
                             { this.renderFilters() }
                         </Grid>
                         <Grid item xs = {12} sm = {7} md = {9}>
+                            { this.renderList() }
+                            <div className = 'pagination-block-root'>
+                                { this.renderPagination() }
+                            </div>
                         </Grid>
                     </Grid>
                 </Grid>

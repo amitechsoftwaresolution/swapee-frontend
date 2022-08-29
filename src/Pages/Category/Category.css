@@ -157,7 +157,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 25px;
 }
 
 .no_data_container {
@@ -242,4 +241,18 @@
 .showing-post-count-root span {
     margin-left: 10px;
     font-size: 14px;
+}
+
+.pagination-block-root {
+    background-color: rgb(255, 255, 255);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-image: none;
+    position: relative;
+    box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
+    border-radius: 10px;
+    z-index: 0;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
