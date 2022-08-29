@@ -205,17 +205,16 @@
     line-height: 1.334em;
     font-family: Roboto, sans-serif;
     color: rgb(158, 158, 158);
-    padding-left: 25px;
+    padding-right: 15px;
     font-size: 1rem;
     font-weight: 400;
+    padding-left: 15px;
 }
 
 .category-list-block-con-head-search-sortby {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    margin: 0px 0px 0px 8px;
 }
 
 .category-list-block-con-head-search-sortby span {
@@ -223,4 +222,24 @@
     font-weight: 600;
     font-size: 0.8rem;
     margin-bottom: 2px;
+}
+
+.showing-post-count-root {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.showing-post-count-root h5 {
+    font-size: 14px;
+    color: rgba(34, 51, 84, 0.7);
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+.showing-post-count-root span {
+    margin-left: 10px;
+    font-size: 14px;
 }
