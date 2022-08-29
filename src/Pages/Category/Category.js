@@ -23,6 +23,8 @@ import img02 from '../../Assets/Images/img02.jpg'
 
 import products from '../../Data/Json/products.json'
 
+import './Category.css'
+
 class Category extends Component {
     state = {
         categoryChecked: [],

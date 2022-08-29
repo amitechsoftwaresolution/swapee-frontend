@@ -13,21 +13,19 @@ const OtherCategoriesList = ({otherCategories}) => {
         return <CategoriesListItem label = {label} key = {idx} src = {src} />
     }
 
-    const renderPopularCategory = () => (
-        <div className = 'popular-other-categories'>
-            <div className = "popular_categories_title">Other Popular Categories</div>
-            <div className = "popular_categories_link">View full catalog</div> 
-        </div>
-    )
-
     return (
         <Grid container spacing = {2}>
             <Grid item xs = {12} sm = {12} md = {12}>
-                { renderPopularCategory() }  
+                <div className = 'ad-page-other-products-con'>
+                    <h3>Other Popular Categories</h3>
+                </div> 
             </Grid>
             <Grid item xs = {12} sm = {12} md = {12}>
                 <div className = "other-cat-row-root">
                     { otherCategories.map((item, idx) => renderCategoryList(item, idx)) }
+                </div>
+                <div className = "pupolar_categories_full_catlog_root">
+                    <div className = "popular_categories_link">View full catalog</div>
                 </div>
             </Grid>
         </Grid>

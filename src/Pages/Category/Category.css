@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
     background-color: rgb(250, 251, 251);
+    background-color: rgb(227, 242, 253);
 }
 
 .category-page-main-container {
@@ -17,6 +18,7 @@
 
 .popular-categories-root {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .categorie-list-block-root {
@@ -46,6 +48,13 @@
     width: 100px;
     background: #31e2f2;
     content: "";
+}
+
+.pupolar_categories_full_catlog_root {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .popular_categories_link {
@@ -176,6 +185,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 15px;
 }
 
 .category-list-block-con-head {

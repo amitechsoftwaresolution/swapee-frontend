@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import {Box} from '@mui/material'
 
-import PageTop from '../../Components/PageTop/PageTop'
+import PageHeader from '../../Components/PageTop/PageHeader'
 import ContentLeft from '../../Components/ContentInfo/ContentLeft'
 
 import './TermsAndConditions.css'
@@ -25,6 +25,7 @@ class TermsAndConditions extends Component {
     renderContents = () => {
         return (
             <div className = 'terms-main-contents'>
+                <PageHeader navs = {this.breadcrumbs} />
                 <div className = 'terms-intro-container'>
                     { this.renderContentLeft() } 
                 </div>
@@ -44,7 +45,6 @@ class TermsAndConditions extends Component {
         return (
             <div className = 'terms-main-container'>
                 { this.renderHeaderParallax() }
-                <PageTop breadcrumbs = {this.breadcrumbs} />
                 <Box sx = {{ flexGrow: 1 }} pt = {3} display = "flex" justifyContent = "center">
                     { this.renderContents() }
                 </Box>
