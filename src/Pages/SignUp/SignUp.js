@@ -7,7 +7,7 @@ import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
 
 import './SignUp.css'
-import signup_cover from '../../Assets/Images/signup_cover.jpg'
+import signupCoverImage from '../../Assets/Images/Auth/signup.png'
 
 class SignUp extends Component {
     state = {
@@ -133,7 +133,7 @@ class SignUp extends Component {
         return (
             <Grid container component = "main">
                 <Grid item xs = {false} sm = {4} md = {5} sx = {{
-                    backgroundImage: `url(${signup_cover})`,
+                    backgroundImage: `url(${signupCoverImage})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',

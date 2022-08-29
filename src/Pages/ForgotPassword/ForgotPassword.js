@@ -7,7 +7,7 @@ import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
 
 import './ForgotPassword.css'
-import forgotpassword_cover from '../../Assets/Images/signin_cover.jpg'
+import forgotpasswordCoverImage from '../../Assets/Images/Auth/forgotpassword.png'
 
 class ForgotPassword extends Component {
     state = {
@@ -166,7 +166,7 @@ class ForgotPassword extends Component {
         return (
             <Grid container component = "main">
                 <Grid item xs = {false} sm = {4} md = {5} sx = {{
-                    backgroundImage: `url(${forgotpassword_cover})`,
+                    backgroundImage: `url(${forgotpasswordCoverImage})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
