@@ -21,7 +21,7 @@ const Filters = ({
     const renderClearButton = () => (
         <Box sx = {{mt: "25px"}}>
             <Button variant = "contained" fullWidth onClick = {handleFilterClear} sx = {{
-                background: 'rgb(198, 40, 40)',
+                background: 'rgb(244, 67, 54)',
                 '&:hover': { background: 'rgb(198, 40, 40)'}
             }}>Clear All</Button>
         </Box>

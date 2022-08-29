@@ -9,7 +9,6 @@ import Filters from './Filters'
 import SearchBarComponent from '../../Components/SearchBar/SearchBarComponent'
 import Paginator from '../../Components/Pagination/Paginator'
 import Product from '../../Components/Product/Product'
-import ProductV2 from '../../Components/Product/ProductV2'
 import Post from '../../Components/Post/Post'
 import FabButton from '../../Components/FabButton/FabButton'
 import Loading from '../../Components/Loading/Loading'
@@ -167,7 +166,7 @@ class Category extends Component {
                         { products.map((item, idx) => {
                             return (
                                 <Grid item xs = {6} sm = {6} md = {4} key = {idx}>
-                                    <ProductV2 productData = {item} id = {idx}/>
+                                    <Product productData = {item} id = {idx}/>
                                 </Grid>
                             )
                         }) }
