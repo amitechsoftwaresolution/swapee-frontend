@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import {Box, Grid} from '@mui/material'
+import {Box, Grid, Button} from '@mui/material'
+import KeyboardDoubleArrowRight from '@mui/icons-material/KeyboardDoubleArrowRight'
+import FilterAlt from '@mui/icons-material/FilterAlt'
 
 import OtherCategoriesList from './OtherCategoriesList'
 import Filters from './Filters'
@@ -10,6 +12,7 @@ import Product from '../../Components/Product/Product'
 import Post from '../../Components/Post/Post'
 import FabButton from '../../Components/FabButton/FabButton'
 import Loading from '../../Components/Loading/Loading'
+import PageHeader from '../../Components/PageTop/PageHeader'
 
 import './Category.css'
 import accessories from '../../Assets/Images/Categories/accessory.png'
@@ -31,7 +34,7 @@ class Category extends Component {
         loading: false
     }
 
-    breadcrumbs = ["Category", "Fashion"]
+    breadcrumbs = ["Products", "Electronics"]
 
     otherCategories = [
         { label: "Accessories", src: accessories },
@@ -205,6 +208,60 @@ class Category extends Component {
         )
     }
 
+    renderCategoryListBlockV2 = () => {
+        const {searchValue} = this.state
+        return (
+            <Grid container spacing = {2}>
+                <Grid item xs = {12} sm = {12} md = {12}>
+                    <div className = 'category-list-block-con-head'>
+                        <div className = 'category-list-block-con-head-title'>
+                            <h3>Posts</h3>
+                            <KeyboardDoubleArrowRight sx = {{
+                                width: "20px", 
+                                height: "20px", 
+                                mr: "5px", 
+                                ml: "5px", 
+                                color: "rgb(158, 158, 158)"}}
+                            />
+                        </div>
+                        <div className = 'category-list-block-con-head-search-sort'>
+                            <SearchBarComponent 
+                                placeholder = "Search"
+                                name = "searchValue"
+                                value = {searchValue}
+                                handleOnChange = {this.handleInputOnChange}
+                                handleEnterOnPress = {this.handleSearchOnPress}
+                            />
+                            <p>|</p>
+                            <div className = 'category-list-block-con-head-search-sortby'>
+                                <Button variant="text">
+                                    <FilterAlt sx = {{
+                                        width: "20px", 
+                                        height: "20px", 
+                                        mr: "5px", 
+                                        ml: "5px", 
+                                        color: "rgb(179, 157, 219)" 
+                                    }}/>
+                                    <h5>Sort By Price: </h5>
+                                </Button>
+                                <span>Low To High</span>
+                            </div>
+                        </div>
+                    </div>
+                </Grid>
+                <Grid item xs = {12} sm = {12} md = {12}>
+                    <Grid container spacing = {2}>
+                        <Grid item xs = {12} sm = {5} md = {3}>
+                            { this.renderFilters() }
+                        </Grid>
+                        <Grid item xs = {12} sm = {7} md = {9}>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        )
+    }
+
     renderCategoryListBlock = () => {
         return (
             <Grid container spacing = {2}>
@@ -225,11 +282,12 @@ class Category extends Component {
     renderContents = () => {
         return (
             <div className = 'category-page-main-contents'>
+                <PageHeader navs = {this.breadcrumbs} />
+                <div className = 'categorie-list-block-root'>
+                    { this.renderCategoryListBlockV2() }
+                </div>
                 <div className = 'popular-categories-root'>
                     <OtherCategoriesList otherCategories = {this.otherCategories}/>
-                </div>
-                <div className = 'categorie-list-block-root'>
-                    { this.renderCategoryListBlock() }
                 </div>
             </div>
         )
