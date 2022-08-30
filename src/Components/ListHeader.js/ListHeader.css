@@ -1,0 +1,64 @@
+.list-block-con-head {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-block-con-head-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2px;
+}
+
+.list-block-con-head-search-sort {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-list-block-con-head-search-sort p {
+    line-height: 1.334em;
+    font-family: Roboto, sans-serif;
+    color: rgb(158, 158, 158);
+    padding-right: 15px;
+    font-size: 1rem;
+    font-weight: 400;
+    padding-left: 15px;
+}
+
+.list-block-con-head-search-sortby {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.list-block-con-head-search-sortby span {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+.showing-post-count-root {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.showing-post-count-root h5 {
+    font-size: 14px;
+    color: rgba(34, 51, 84, 0.7);
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+.showing-post-count-root span {
+    margin-left: 10px;
+    font-size: 14px;
+}

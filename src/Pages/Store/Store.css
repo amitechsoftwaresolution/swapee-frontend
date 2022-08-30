@@ -1,7 +1,7 @@
 .store-page-root {
     display: block;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgb(250, 251, 251);
     background-color: rgb(227, 242, 253);
 }
@@ -114,4 +114,9 @@
     margin-left: 10px;
     letter-spacing: 0.04rem;
     text-transform: uppercase;
+}
+
+.store-page-posts-list-root {
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
