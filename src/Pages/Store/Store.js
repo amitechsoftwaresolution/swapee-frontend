@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {Box, Grid, Button} from '@mui/material'
+import {Box} from '@mui/material'
 
 import PageHeader from '../../Components/PageTop/PageHeader'
 import StorePageCover from './StorePageCover'

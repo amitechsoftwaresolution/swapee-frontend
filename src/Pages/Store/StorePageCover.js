@@ -1,6 +1,6 @@
 import React from "react"
 
-import {Box, Grid, Avatar} from '@mui/material'
+import {Grid} from '@mui/material'
 
 import './Store.css'
 import storeCoverImage from '../../Assets/Images/storeCoverImage.jpg'
