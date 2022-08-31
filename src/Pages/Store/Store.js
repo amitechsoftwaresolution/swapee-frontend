@@ -8,6 +8,8 @@ import ListHeader from '../../Components/ListHeader.js/ListHeader'
 import Filters from './Filters'
 import Paginator from '../../Components/Pagination/Paginator'
 import Product from '../../Components/Product/Product'
+import FabButton from '../../Components/FabButton/FabButton'
+import Loading from '../../Components/Loading/Loading'
 
 import products from '../../Data/Json/products.json'
 
@@ -212,9 +214,12 @@ class Store extends Component {
     }
 
     render() {
+        const {loading} = this.state
         return (
             <div className = 'store-page-root'>
                 { this.renderMainContainer() }
+                <FabButton />
+                { loading && <Loading open = {loading} /> }
             </div>
         )
     }
