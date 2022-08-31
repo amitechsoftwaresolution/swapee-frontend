@@ -7,7 +7,8 @@ import ProductDescription from './ProductDescription'
 import Loading from '../../Components/Loading/Loading'
 import Product from '../../Components/Product/Product'
 import PageHeader from '../../Components/PageTop/PageHeader'
-import Popup from '../../Components/Popup/Popup'
+import ShareDecisionModel from '../../Components/Popup/ShareDecisionModel'
+import ShareNewExchangeModel from '../../Components/Popup/ShareNewExchangeModel'
 
 import products from '../../Data/Json/products.json'
 
@@ -16,21 +17,71 @@ import './Ad.css'
 class Ad extends Component {
     state = {
         loading: false,
-        openExchangeAlertPopup: false
+        openExchangeAlertPopup: false,
+        openNewExchangePopup: false,
+        title: "",
+        category: "",
+        description: ""
     }
 
     breadcrumbs = ["Home", "Ad"]
+
+    handleExchangeOnClick = () => {
+
+    }
+
+    handleCancelOnClick = () => {
+        this.handleNewExchangePopup()
+
+        this.setState({
+            title: "",
+            category: "",
+            description: ""
+        })
+    }
+
+    handleYesOnClick = () => {
+        this.handleExchangeAlertPopup()
+    }
+
+    handleNoOnClick = () => {
+        this.handleExchangeAlertPopup()
+        this.handleNewExchangePopup()
+    }
+
+    handleInputOnChange = (e) => {
+        const {name, value} = e.target
+        this.setState({[name]: value})
+    }
+
+    handleNewExchangePopup = () => {
+        this.setState({ openNewExchangePopup: !this.state.openNewExchangePopup })
+    }
 
     handleExchangeAlertPopup = () => {
         this.setState({ openExchangeAlertPopup: !this.state.openExchangeAlertPopup })
     }
 
+    renderNewExchangePopup = (open) => {
+        return (
+            <ShareNewExchangeModel
+                open = {open}
+                state = {this.state}
+                handleClose = {this.handleNewExchangePopup}
+                handleCancelOnClick = {this.handleCancelOnClick}
+                handleExchangeOnClick = {this.handleExchangeOnClick}
+                handleInputOnChange = {this.handleInputOnChange}
+            />
+        )
+    }
+
     renderExchangeAlertPopup = (open) => {
         return (
-            <Popup 
+            <ShareDecisionModel 
                 open = {open}
-                title = "Example Popup"
                 handleClose = {this.handleExchangeAlertPopup}
+                handleYesOnClick = {this.handleYesOnClick}
+                handleNoOnClick = {this.handleNoOnClick}
             />
         )
     }
@@ -83,12 +134,13 @@ class Ad extends Component {
     }
 
     render() {
-        const {loading, openExchangeAlertPopup} = this.state
+        const {loading, openExchangeAlertPopup, openNewExchangePopup} = this.state
         return (
             <div className = 'ad-page-root'>
                 { this.renderMainContainer() }
                 { loading && <Loading open = {loading} /> }
-                { openExchangeAlertPopup && this.renderExchangeAlertPopup(openExchangeAlertPopup)}
+                { this.renderExchangeAlertPopup(openExchangeAlertPopup) }
+                { this.renderNewExchangePopup(openNewExchangePopup) }
             </div>
         )
     }
