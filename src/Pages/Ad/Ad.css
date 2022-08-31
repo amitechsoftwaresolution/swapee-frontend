@@ -14,6 +14,11 @@
     display: block;
 }
 
+.ad-page-header-contents {
+    display: block;
+    width: 90%;
+}
+
 .product-detail-component-root {
     box-sizing: border-box;
     display: block;

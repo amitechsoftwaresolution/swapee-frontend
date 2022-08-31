@@ -6,6 +6,8 @@ import ProductDetail from './ProductDetail'
 import ProductDescription from './ProductDescription'
 import Loading from '../../Components/Loading/Loading'
 import Product from '../../Components/Product/Product'
+import PageHeader from '../../Components/PageTop/PageHeader'
+import Popup from '../../Components/Popup/Popup'
 
 import products from '../../Data/Json/products.json'
 
@@ -13,7 +15,24 @@ import './Ad.css'
 
 class Ad extends Component {
     state = {
-        loading: false
+        loading: false,
+        openExchangeAlertPopup: false
+    }
+
+    breadcrumbs = ["Home", "Ad"]
+
+    handleExchangeAlertPopup = () => {
+        this.setState({ openExchangeAlertPopup: !this.state.openExchangeAlertPopup })
+    }
+
+    renderExchangeAlertPopup = (open) => {
+        return (
+            <Popup 
+                open = {open}
+                title = "Example Popup"
+                handleClose = {this.handleExchangeAlertPopup}
+            />
+        )
     }
 
     renderList = () => {
@@ -37,10 +56,17 @@ class Ad extends Component {
     renderMainContainer = () => {
         return (
             <div className = 'ad-page-main-container'>
-                <Box sx = {{ flexGrow: 1 }} pt = {3} pb = {2} display = "flex" justifyContent = "center">
+                <Box sx = {{ flexGrow: 1 }} pt = {3} display = "flex" justifyContent = "center">
+                    <div className = 'ad-page-header-contents'>
+                        <PageHeader navs = {this.breadcrumbs} />
+                    </div>
+                </Box>
+                <Box sx = {{ flexGrow: 1 }} pb = {2} display = "flex" justifyContent = "center">
                     <div className = 'product-detail-component-root'>
                         <div className = "product-detail-component">
-                            <ProductDetail />
+                            <ProductDetail 
+                                handleExchangeAlertPopup = {this.handleExchangeAlertPopup}
+                            />
                             <ProductDescription />
                         </div>
                         <div className = 'ad-page-other-products-root'>
@@ -57,11 +83,12 @@ class Ad extends Component {
     }
 
     render() {
-        const {loading} = this.state
+        const {loading, openExchangeAlertPopup} = this.state
         return (
             <div className = 'ad-page-root'>
                 { this.renderMainContainer() }
                 { loading && <Loading open = {loading} /> }
+                { openExchangeAlertPopup && this.renderExchangeAlertPopup(openExchangeAlertPopup)}
             </div>
         )
     }
