@@ -34,7 +34,7 @@ const ShareDecisionModel = ({open, handleClose, handleYesOnClick, handleNoOnClic
                     position: 'absolute',
                     right: 8,
                     top: 8,
-                    color: (theme) => theme.palette.grey[500],
+                    color: "#fff",
                 }}
                 >
                 <CloseIcon />
@@ -50,8 +50,14 @@ const ShareDecisionModel = ({open, handleClose, handleYesOnClick, handleNoOnClic
             onClose = {handleClose}
             aria-describedby = "alert-dialog-slide-description"
             fullWidth
+            PaperProps = {{
+                style: {
+                    backgroundColor: 'transparent',
+                    boxShadow: 'none',
+                }
+            }}
         >
-            <Box sx = {{background: "#4b4e5f"}} p = "10px">
+            <Box sx = {{background: "rgba(255, 255, 255, .15)", backdropFilter: "blur(5px)"}} p = "10px">
                 { renderTitle() }   
                 { renderContent() }
                 { renderActions() }
