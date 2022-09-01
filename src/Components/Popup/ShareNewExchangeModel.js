@@ -8,6 +8,7 @@ import SecondaryButton from "../Button/SecondaryButton"
 import InputField from '../../Components/Input/InputField'
 import MultilineInput from '../Input/MultilineInput'
 import SelectField from '../Input/SelectField'
+import InputImage from '../Input/InputImage'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction = "up" ref = {ref} {...props} />
@@ -19,8 +20,10 @@ const ShareNewExchangeModel = ({
     handleClose, 
     handleCancelOnClick, 
     handleExchangeOnClick,
-    handleInputOnChange
+    handleInputOnChange,
+    inputImageOnChange
 }) => {
+
     const categories = ["Fashion", "Electronics"]
 
     const renderSelectField = (name, label, placeholder) => {
@@ -66,6 +69,12 @@ const ShareNewExchangeModel = ({
         )
     }
 
+    const renderImageInputBlock = () => (
+        <div className = 'signin_form-input_wrapper'>
+            <InputImage inputOnChange = {inputImageOnChange}/>
+        </div>
+    )
+
     const renderActions = () => (
         <DialogActions sx = {{mb: "10px", mr: "10px"}}>
             <SecondaryButton label = "Cancel" onClick = {handleCancelOnClick} />
@@ -75,6 +84,7 @@ const ShareNewExchangeModel = ({
 
     const renderForm = () => (
         <Box sx = {{my: 2, display: 'flex', flexDirection: 'column'}}>
+            { renderImageInputBlock() }
             { renderInputField("title", "Title", "Title") }
             { renderSelectField("category", "Category", "Category") }
             { renderMultilineInputField("description", "Description", "Description") }

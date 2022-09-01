@@ -21,7 +21,9 @@ class Ad extends Component {
         openNewExchangePopup: false,
         title: "",
         category: "",
-        description: ""
+        description: "",
+        selectedImage: null,
+        selectedImageFile: null
     }
 
     breadcrumbs = ["Home", "Ad"]
@@ -49,9 +51,30 @@ class Ad extends Component {
         this.handleNewExchangePopup()
     }
 
+    handleImageFileOnSelect = (file) => {
+        let reader = new FileReader()
+
+        reader.onloadend = () => {
+            this.setState({ 
+                selectedImage: reader.result,
+                selectedImageFile: file 
+            })
+        }
+
+        reader.readAsDataURL(file)
+    }
+
     handleInputOnChange = (e) => {
         const {name, value} = e.target
         this.setState({[name]: value})
+    }
+
+    inputImageOnChange = (e) => {
+        const { files } = e.target
+
+        if (files && files.length) {
+            this.handleImageFileOnSelect(files[0])
+        }
     }
 
     handleNewExchangePopup = () => {
@@ -71,6 +94,7 @@ class Ad extends Component {
                 handleCancelOnClick = {this.handleCancelOnClick}
                 handleExchangeOnClick = {this.handleExchangeOnClick}
                 handleInputOnChange = {this.handleInputOnChange}
+                inputImageOnChange = {this.inputImageOnChange}
             />
         )
     }
