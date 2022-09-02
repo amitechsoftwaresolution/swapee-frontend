@@ -16,8 +16,8 @@ const InputImage = ({inputOnChange}) => {
         <div className = 'input-image-field-root'>
             <input 
                 type = "file" 
-                autocomplete = "off" 
-                tabindex = "-1" 
+                autoComplete = "off" 
+                tabIndex = "-1" 
                 style = {{display: 'none'}} 
                 ref = {inputImageFile}
                 onChange = {inputOnChange}

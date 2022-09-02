@@ -9,7 +9,7 @@ import sellerIcon from '../../Assets/Images/Common/seller.png'
 import verifyIcon from '../../Assets/Images/Common/verify.png'
 import product_6 from '../../Assets/Images/product_6.jpg'
 
-const Product = ({productData, id}) => {
+const Product = ({productData}) => {
     const {title, description, price, date} = productData
 
     const renderActions = () => (

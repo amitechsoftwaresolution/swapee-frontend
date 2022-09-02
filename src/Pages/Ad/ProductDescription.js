@@ -86,9 +86,9 @@ const ProductDescription = () => {
             { renderAccordionSummary(title) }
             <AccordionDetails>
                 <Grid container spacing = {2}>
-                    { specifications.map(i => {
+                    { specifications.map((i, idx) => {
                         return (
-                            <Grid item xs = {12} sm = {6} md = {6} key = {i}>
+                            <Grid item xs = {12} sm = {6} md = {6} key = {idx}>
                                 { renderSpecificationInfo(i.type, i.value) }
                             </Grid>
                         )

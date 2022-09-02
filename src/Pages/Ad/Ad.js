@@ -9,6 +9,7 @@ import Product from '../../Components/Product/Product'
 import PageHeader from '../../Components/PageTop/PageHeader'
 import ShareDecisionModel from '../../Components/Popup/ShareDecisionModel'
 import ShareNewExchangeModel from '../../Components/Popup/ShareNewExchangeModel'
+import ShareExistingPostModel from '../../Components/Popup/ShareExistingPostModel'
 
 import products from '../../Data/Json/products.json'
 
@@ -19,11 +20,14 @@ class Ad extends Component {
         loading: false,
         openExchangeAlertPopup: false,
         openNewExchangePopup: false,
+        openExistingPostPopup: false,
         title: "",
         category: "",
         description: "",
         selectedImage: null,
-        selectedImageFile: null
+        selectedImageFile: null,
+        count: 5,
+        page: 1
     }
 
     breadcrumbs = ["Home", "Ad"]
@@ -44,6 +48,7 @@ class Ad extends Component {
 
     handleYesOnClick = () => {
         this.handleExchangeAlertPopup()
+        this.handleExistingPostPopup()
     }
 
     handleNoOnClick = () => {
@@ -64,6 +69,10 @@ class Ad extends Component {
         reader.readAsDataURL(file)
     }
 
+    handlePageOnChange = (event, newPage) => {
+        this.setState({ page: newPage})
+    }
+
     handleInputOnChange = (e) => {
         const {name, value} = e.target
         this.setState({[name]: value})
@@ -77,12 +86,30 @@ class Ad extends Component {
         }
     }
 
+    handleExistingPostPopup = () => {
+        this.setState({ openExistingPostPopup: !this.state.openExistingPostPopup })
+    }
+
     handleNewExchangePopup = () => {
         this.setState({ openNewExchangePopup: !this.state.openNewExchangePopup })
     }
 
     handleExchangeAlertPopup = () => {
         this.setState({ openExchangeAlertPopup: !this.state.openExchangeAlertPopup })
+    }
+
+    renderShareExistingPostPopup = (open) => {
+        const {count, page} = this.state
+        return (
+            <ShareExistingPostModel 
+                open = {open}
+                productData = {products}
+                count = {count}
+                page = {page}
+                handleClose = {this.handleExistingPostPopup}
+                handlePageOnChange = {this.handlePageOnChange}
+            />
+        )
     }
 
     renderNewExchangePopup = (open) => {
@@ -158,13 +185,14 @@ class Ad extends Component {
     }
 
     render() {
-        const {loading, openExchangeAlertPopup, openNewExchangePopup} = this.state
+        const {loading, openExchangeAlertPopup, openNewExchangePopup, openExistingPostPopup} = this.state
         return (
             <div className = 'ad-page-root'>
                 { this.renderMainContainer() }
                 { loading && <Loading open = {loading} /> }
                 { this.renderExchangeAlertPopup(openExchangeAlertPopup) }
                 { this.renderNewExchangePopup(openNewExchangePopup) }
+                { this.renderShareExistingPostPopup(openExistingPostPopup) }
             </div>
         )
     }

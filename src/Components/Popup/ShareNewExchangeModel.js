@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Box, Dialog, Slide, DialogContent, DialogActions, DialogContentText, DialogTitle, IconButton} from "@mui/material"
+import {Box, Dialog, Slide, DialogContent, DialogActions, DialogTitle, IconButton} from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close'
 
 import PrimaryButton from "../Button/PrimaryButton"
@@ -93,9 +93,7 @@ const ShareNewExchangeModel = ({
 
     const renderContent = () => (
         <DialogContent>
-            <DialogContentText id = "alert-dialog-slide-description" sx = {{color: "#fff"}}>
-                { renderForm() }
-            </DialogContentText>
+            { renderForm() }
         </DialogContent>
     )
 
@@ -131,7 +129,7 @@ const ShareNewExchangeModel = ({
             }}
         >
             <Box sx = {{background: "rgba(255, 255, 255, .15)", backdropFilter: "blur(5px)"}} p = "10px">
-                { renderTitle() }   
+                { renderTitle() }
                 { renderContent() }
                 { renderActions() }
             </Box>
