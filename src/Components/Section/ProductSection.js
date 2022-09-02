@@ -3,21 +3,18 @@ import React from 'react'
 import {Box, Grid, useMediaQuery} from "@mui/material"
 
 import SectionHeaderComponent from './SectionHeaderComponent'
-import CategoryList from '../Category/CategoryList'
-import CategoryItem from '../Category/CategoryItem'
 import CustomCssButton from "../Button/CustomCssButton"
+import Product from '../Product/Product'
 
 import './Section.css'
 
-const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, categoriesToView, handleViewMoreOnClick}) => {
+const ProductSection = ({sectionDetail, posts, handleViewMoreOnClick}) => {
     const matches = useMediaQuery('(min-width:800px)')
 
-    const label = isViewMoreClicked ? "View less" : "View more"
-
-    const renderCategory = (item, idx) => {
+    const renderPosts = (item, idx) => {
         return (
-            <Grid item xs = {4} sm = {4} md = {2} key = {idx}>
-                <CategoryItem item = {item} />
+            <Grid item xs = {4} sm = {4} md = {3} key = {idx}>
+                <Product productData = {item} id = {idx}/>
             </Grid>
         )
     }
@@ -29,15 +26,12 @@ const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, catego
                     title = {sectionDetail && sectionDetail.title}
                     description = {sectionDetail && sectionDetail.description}
                 />
-                <div className = 'category-list'>
-                    <CategoryList data = {categoryList}/>
-                </div>
                 <div className = 'category-container'>
                     <div className = 'view-more-container'>
-                        <CustomCssButton label = {label} onClick = {handleViewMoreOnClick} />
+                        <CustomCssButton label = "View More" onClick = {handleViewMoreOnClick} />
                     </div>
                     <Grid container spacing = {2}>
-                        { categoriesToView && categoriesToView.map((i, idx) => { return renderCategory(i, idx) })}
+                        { posts && posts.map((i, idx) => { return renderPosts(i, idx) })}
                     </Grid>
                 </div>
             </div>
@@ -45,4 +39,4 @@ const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, catego
     )
 }
 
-export default CategorySection
+export default ProductSection

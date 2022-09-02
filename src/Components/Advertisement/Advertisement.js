@@ -1,20 +1,19 @@
 import React from "react"
 
 import './Advertisement.css'
+import advertisement from '../../Assets/Images/advertisement.jpg'
 
-const Advertisement = ({src}) => {
+const Advertisement = () => {
 
-    const renderParallax = () => {
-        return (
-            <div className = 'adv-parallax'>
-                <span className = 'adv-parallax-title'>Advertisement will be shown here</span>
-            </div>
-        )
-    }
+    const renderAd = () => (
+        <div className = "advertisement-comp">
+            <img src = {advertisement} alt = "advertisement" className = "advertisement-comp-src"/>
+        </div>
+    )
 
     return (
         <div className = "advertisement-comp-container">
-            { renderParallax() }
+            { renderAd() }
         </div>
     )
 }

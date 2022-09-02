@@ -30,12 +30,12 @@
 
 .product-urgent-status-container {
     color: rgb(198, 40, 40);
-    background-color: rgba(246, 33, 33, 0.376);
+    background-color: rgba(239, 154, 154, 0.376);
 }
 
 .product-out-stock-status-container {
     color: rgb(198, 40, 40);
-    background-color: rgba(246, 33, 33, 0.376);
+    background-color: rgba(239, 154, 154, 0.376);
 }
 
 .product-in-stock-status-container {
@@ -45,5 +45,5 @@
 
 .product-feature-status-container {
     color: rgb(44, 174, 244);
-    background-color: rgba(19, 125, 238, 0.376);
+    background-color: rgba(141, 191, 245, 0.376);
 }

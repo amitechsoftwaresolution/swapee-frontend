@@ -5,10 +5,17 @@ import CategorySection from '../../Components/Section/CategorySection'
 import FabButton from '../../Components/FabButton/FabButton'
 import Loading from '../../Components/Loading/Loading'
 import Advertisement from '../../Components/Advertisement/Advertisement'
+import ProductSection from '../../Components/Section/ProductSection'
+
+import products from '../../Data/Json/products.json'
+import home from '../../Data/Json/home.json'
 
 import './Home.css'
-import img01 from '../../Assets/Images/img01.jpg'
-import img02 from '../../Assets/Images/img02.jpg'
+import img01 from '../../Assets/Images/mobile2.jpg'
+import img02 from '../../Assets/Images/mobile3.jpg'
+import accessories from '../../Assets/Images/Categories/accessory.png'
+import gadget from '../../Assets/Images/Categories/gadget.png'
+import fashion from '../../Assets/Images/Categories/fashion.png'
 
 class Home extends Component {
     state = {
@@ -30,34 +37,31 @@ class Home extends Component {
             category:"Books",
             description:"Lorem Ipsum is a piece of text, used by designers to fill a space where the content will eventually sit. It helps show how text will look once a piece of content is finished, during the planning phase.",
             date:"02nd April 2022",
-            imgs: [img01, img02]
+            imgs: [img02, img01]
         },
     ]
 
-    sectionDetails = [
-        {
-          title: "Our Categories",
-          description: "We Swapee provide a great amount of services through various categories! Go through our categories and enjoy your commodity exchange."
-        }
-    ]
-
     categoryList = [
-        {type: "Electronics", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s4.f4c5d8f9.jpg" },
-        {type: "Vehicles", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s1.69341801.jpg" },
-        {type: "Properties", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s2.3260a3b5.jpg" },
-        {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
-        {type: "Electronics", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s4.f4c5d8f9.jpg" },
-        {type: "Vehicles", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s1.69341801.jpg" },
-        {type: "Properties", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s2.3260a3b5.jpg" },
-        {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
-        {type: "Electronics", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s4.f4c5d8f9.jpg" },
-        {type: "Vehicles", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s1.69341801.jpg" },
-        {type: "Properties", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s2.3260a3b5.jpg" },
-        {type: "Services", image: "https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/main/static/media/s3.323ebcbe.jpg" },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
+        { label: "Accessories", src: accessories },
+        { label: "Gadgest", src: gadget },
+        { label: "Smartphones", src: fashion },
     ]
 
     componentDidMount() {
         this.setState({ categoriesToView: this.categoryList.slice(0, 6) })
+    }
+
+    handlePostViewMoreOnClick = () => {
+
     }
 
     handleViewMoreOnClick = () => {
@@ -78,11 +82,21 @@ class Home extends Component {
         )
     }
 
+    renderPostSections = () => {
+        return (
+            <ProductSection 
+                sectionDetail = {home.posts}
+                posts = {products.slice(0, 4)}
+                handleViewMoreOnClick = {this.handlePostViewMoreOnClick}
+            />
+        )
+    }
+
     renderCategorySection = () => {
         const {isViewMoreClicked, categoriesToView} = this.state
         return (
             <CategorySection 
-                sectionDetail = {this.sectionDetails[0]} 
+                sectionDetail = {home.categories}
                 categoryList = {this.categoryList}
                 isViewMoreClicked = {isViewMoreClicked}
                 categoriesToView = {categoriesToView}
@@ -96,7 +110,9 @@ class Home extends Component {
             <div className = 'home-main-container'>
                 <Post content = {this.products[0]} />
                 { this.renderCategorySection() }
+                { this.renderAdvertisementSection() }
                 <Post content = {this.products[1]} />
+                { this.renderPostSections() }
                 { this.renderAdvertisementSection() }
                 <Post content = {this.products[1]} />
                 { this.renderAdvertisementSection() }

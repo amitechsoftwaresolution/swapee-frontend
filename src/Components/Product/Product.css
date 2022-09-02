@@ -31,7 +31,18 @@
 }
 
 .product-content-icons img {
-    width: 25px;
+    margin-right: 5px;
+}
+
+.product-content-status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.product-content-status > * {
     margin-right: 5px;
 }
 
