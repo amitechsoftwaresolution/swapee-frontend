@@ -14,7 +14,7 @@ import prod2 from '../../Assets/Images/prod2.jpg'
 import prod3 from '../../Assets/Images/prod3.jpg'
 import prod4 from '../../Assets/Images/prod4.jpg'
 
-const ProductDetail = () => {
+const ProductDetail = ({handleExchangeAlertPopup}) => {
     const carouselData = [prod1, prod2, prod3, prod4]
 
     const settings = {
@@ -35,7 +35,7 @@ const ProductDetail = () => {
                     <ExchangeButton 
                         name = "Exchange" 
                         background = "rgb(0, 171, 85)"
-                        onClick = {() => {}}    
+                        onClick = {handleExchangeAlertPopup}    
                     />
                 </Grid>
             </Grid>

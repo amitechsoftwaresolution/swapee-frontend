@@ -6,6 +6,10 @@ import ProductDetail from './ProductDetail'
 import ProductDescription from './ProductDescription'
 import Loading from '../../Components/Loading/Loading'
 import Product from '../../Components/Product/Product'
+import PageHeader from '../../Components/PageTop/PageHeader'
+import ShareDecisionModel from '../../Components/Popup/ShareDecisionModel'
+import ShareNewExchangeModel from '../../Components/Popup/ShareNewExchangeModel'
+import ShareExistingPostModel from '../../Components/Popup/ShareExistingPostModel'
 
 import products from '../../Data/Json/products.json'
 
@@ -13,7 +17,124 @@ import './Ad.css'
 
 class Ad extends Component {
     state = {
-        loading: false
+        loading: false,
+        openExchangeAlertPopup: false,
+        openNewExchangePopup: false,
+        openExistingPostPopup: false,
+        title: "",
+        category: "",
+        description: "",
+        selectedImage: null,
+        selectedImageFile: null,
+        count: 5,
+        page: 1
+    }
+
+    breadcrumbs = ["Home", "Ad"]
+
+    handleExchangeOnClick = () => {
+
+    }
+
+    handleCancelOnClick = () => {
+        this.handleNewExchangePopup()
+
+        this.setState({
+            title: "",
+            category: "",
+            description: ""
+        })
+    }
+
+    handleYesOnClick = () => {
+        this.handleExchangeAlertPopup()
+        this.handleExistingPostPopup()
+    }
+
+    handleNoOnClick = () => {
+        this.handleExchangeAlertPopup()
+        this.handleNewExchangePopup()
+    }
+
+    handleImageFileOnSelect = (file) => {
+        let reader = new FileReader()
+
+        reader.onloadend = () => {
+            this.setState({ 
+                selectedImage: reader.result,
+                selectedImageFile: file 
+            })
+        }
+
+        reader.readAsDataURL(file)
+    }
+
+    handlePageOnChange = (event, newPage) => {
+        this.setState({ page: newPage})
+    }
+
+    handleInputOnChange = (e) => {
+        const {name, value} = e.target
+        this.setState({[name]: value})
+    }
+
+    inputImageOnChange = (e) => {
+        const { files } = e.target
+
+        if (files && files.length) {
+            this.handleImageFileOnSelect(files[0])
+        }
+    }
+
+    handleExistingPostPopup = () => {
+        this.setState({ openExistingPostPopup: !this.state.openExistingPostPopup })
+    }
+
+    handleNewExchangePopup = () => {
+        this.setState({ openNewExchangePopup: !this.state.openNewExchangePopup })
+    }
+
+    handleExchangeAlertPopup = () => {
+        this.setState({ openExchangeAlertPopup: !this.state.openExchangeAlertPopup })
+    }
+
+    renderShareExistingPostPopup = (open) => {
+        const {count, page} = this.state
+        return (
+            <ShareExistingPostModel 
+                open = {open}
+                productData = {products}
+                count = {count}
+                page = {page}
+                handleClose = {this.handleExistingPostPopup}
+                handlePageOnChange = {this.handlePageOnChange}
+            />
+        )
+    }
+
+    renderNewExchangePopup = (open) => {
+        return (
+            <ShareNewExchangeModel
+                open = {open}
+                state = {this.state}
+                handleClose = {this.handleNewExchangePopup}
+                handleCancelOnClick = {this.handleCancelOnClick}
+                handleExchangeOnClick = {this.handleExchangeOnClick}
+                handleInputOnChange = {this.handleInputOnChange}
+                inputImageOnChange = {this.inputImageOnChange}
+            />
+        )
+    }
+
+    renderExchangeAlertPopup = (open) => {
+        return (
+            <ShareDecisionModel 
+                open = {open}
+                handleClose = {this.handleExchangeAlertPopup}
+                handleYesOnClick = {this.handleYesOnClick}
+                handleNoOnClick = {this.handleNoOnClick}
+            />
+        )
     }
 
     renderList = () => {
@@ -37,10 +158,17 @@ class Ad extends Component {
     renderMainContainer = () => {
         return (
             <div className = 'ad-page-main-container'>
-                <Box sx = {{ flexGrow: 1 }} pt = {3} pb = {2} display = "flex" justifyContent = "center">
+                <Box sx = {{ flexGrow: 1 }} pt = {3} display = "flex" justifyContent = "center">
+                    <div className = 'ad-page-header-contents'>
+                        <PageHeader navs = {this.breadcrumbs} />
+                    </div>
+                </Box>
+                <Box sx = {{ flexGrow: 1 }} pb = {2} display = "flex" justifyContent = "center">
                     <div className = 'product-detail-component-root'>
                         <div className = "product-detail-component">
-                            <ProductDetail />
+                            <ProductDetail 
+                                handleExchangeAlertPopup = {this.handleExchangeAlertPopup}
+                            />
                             <ProductDescription />
                         </div>
                         <div className = 'ad-page-other-products-root'>
@@ -57,11 +185,14 @@ class Ad extends Component {
     }
 
     render() {
-        const {loading} = this.state
+        const {loading, openExchangeAlertPopup, openNewExchangePopup, openExistingPostPopup} = this.state
         return (
             <div className = 'ad-page-root'>
                 { this.renderMainContainer() }
                 { loading && <Loading open = {loading} /> }
+                { this.renderExchangeAlertPopup(openExchangeAlertPopup) }
+                { this.renderNewExchangePopup(openNewExchangePopup) }
+                { this.renderShareExistingPostPopup(openExistingPostPopup) }
             </div>
         )
     }
