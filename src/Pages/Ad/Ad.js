@@ -10,6 +10,7 @@ import PageHeader from '../../Components/PageTop/PageHeader'
 import ShareDecisionModel from '../../Components/Popup/ShareDecisionModel'
 import ShareNewExchangeModel from '../../Components/Popup/ShareNewExchangeModel'
 import ShareExistingPostModel from '../../Components/Popup/ShareExistingPostModel'
+import ReportAdModel from '../../Components/Popup/ReportAdModel'
 
 import products from '../../Data/Json/products.json'
 
@@ -21,16 +22,34 @@ class Ad extends Component {
         openExchangeAlertPopup: false,
         openNewExchangePopup: false,
         openExistingPostPopup: false,
+        openReportAdPopup: false,
         title: "",
         category: "",
         description: "",
         selectedImage: null,
         selectedImageFile: null,
         count: 5,
-        page: 1
+        page: 1,
+        email: "",
+        reason: "",
+        message: ""
     }
 
     breadcrumbs = ["Home", "Ad"]
+
+    handleReportAdSubmitOnClick = () => {
+
+    }
+
+    handleReportAdCancelOnClick = () => {
+        this.handleReportAdPopup()
+
+        this.setState({
+            email: "",
+            reason: "",
+            message: ""
+        })
+    }
 
     handleExchangeOnClick = () => {
 
@@ -86,6 +105,10 @@ class Ad extends Component {
         }
     }
 
+    handleReportAdPopup = () => {
+        this.setState({ openReportAdPopup: !this.state.openReportAdPopup })
+    }
+
     handleExistingPostPopup = () => {
         this.setState({ openExistingPostPopup: !this.state.openExistingPostPopup })
     }
@@ -96,6 +119,21 @@ class Ad extends Component {
 
     handleExchangeAlertPopup = () => {
         this.setState({ openExchangeAlertPopup: !this.state.openExchangeAlertPopup })
+    }
+
+    renderReportAdPopup = (open) => {
+        const {email, reason, message} = this.state
+        const values = {email, reason, message}
+        return (
+            <ReportAdModel 
+                open = {open}
+                values = {values}
+                handleClose = {this.handleReportAdPopup}
+                handleCancelOnClick = {this.handleReportAdCancelOnClick}
+                handleSubmitOnClick = {this.handleReportAdSubmitOnClick}
+                handleInputOnChange = {this.handleInputOnChange}
+            />
+        )
     }
 
     renderShareExistingPostPopup = (open) => {
@@ -185,7 +223,7 @@ class Ad extends Component {
     }
 
     render() {
-        const {loading, openExchangeAlertPopup, openNewExchangePopup, openExistingPostPopup} = this.state
+        const {loading, openExchangeAlertPopup, openNewExchangePopup, openExistingPostPopup, openReportAdPopup} = this.state
         return (
             <div className = 'ad-page-root'>
                 { this.renderMainContainer() }
@@ -193,6 +231,7 @@ class Ad extends Component {
                 { this.renderExchangeAlertPopup(openExchangeAlertPopup) }
                 { this.renderNewExchangePopup(openNewExchangePopup) }
                 { this.renderShareExistingPostPopup(openExistingPostPopup) }
+                { this.renderReportAdPopup(openReportAdPopup) }
             </div>
         )
     }
