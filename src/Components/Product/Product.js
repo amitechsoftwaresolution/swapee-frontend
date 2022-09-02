@@ -3,6 +3,7 @@ import React from "react"
 import { Grid, Box, Card, CardMedia, CardContent, Divider, CardActions } from "@mui/material"
 
 import PrimaryButton from "../Button/PrimaryButton"
+import Status from '../Status/Status'
 
 import './Product.css'
 import sellerIcon from '../../Assets/Images/Common/seller.png'
@@ -17,8 +18,8 @@ const Product = ({productData}) => {
             <Grid container spacing = {1}>
                 <Grid item xs = {12} sm = {6} md = {6}>
                     <div className = "product-content-icons">
-                        <img src = {sellerIcon} alt = "best-seller" />
-                        <img src = {verifyIcon} alt = "best-seller" />
+                        <img src = {sellerIcon} alt = "best-seller" style = {{width: "25px", height: "25px"}}/>
+                        <img src = {verifyIcon} alt = "verify" style = {{width: "25px", height: "25px"}}/>
                     </div>
                 </Grid>
                 <Grid item xs = {12} sm = {6} md = {6}>
@@ -35,6 +36,10 @@ const Product = ({productData}) => {
                 <p className = "product-content-des"> { description } </p>
                 <p className = "product-conten-postedOn">Posted On : {date}</p>
                 <span className = "product-content-price"> LKR { price } </span>
+                <div className = "product-content-status">
+                    <Status status = "Feature" />
+                    <Status status = "Urgent" />
+                </div>
             </CardContent>
         </Box>
     )

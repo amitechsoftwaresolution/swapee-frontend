@@ -17,8 +17,8 @@ import './Category.css'
 import accessories from '../../Assets/Images/Categories/accessory.png'
 import gadget from '../../Assets/Images/Categories/gadget.png'
 import fashion from '../../Assets/Images/Categories/fashion.png'
-import img01 from '../../Assets/Images/img01.jpg'
-import img02 from '../../Assets/Images/img02.jpg'
+import img01 from '../../Assets/Images/mobile2.jpg'
+import img02 from '../../Assets/Images/mobile3.jpg'
 
 import products from '../../Data/Json/products.json'
 
@@ -243,11 +243,11 @@ class Category extends Component {
         return (
             <div className = 'category-page-main-contents'>
                 <PageHeader navs = {this.breadcrumbs} />
-                <div className = 'categorie-list-block-root'>
-                    { this.renderCategoryListBlock() }
-                </div>
                 <div className = 'popular-categories-root'>
                     <OtherCategoriesList otherCategories = {this.otherCategories}/>
+                </div>
+                <div className = 'categorie-list-block-root'>
+                    { this.renderCategoryListBlock() }
                 </div>
             </div>
         )

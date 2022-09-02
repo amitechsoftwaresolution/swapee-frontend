@@ -55,14 +55,14 @@ const CategoryList = ({data}) => {
         slidesToScroll: slidesToScroll,
         autoplay: true,
         autoplaySpeed: 5000,
-        arrows: true,
+        arrows: false,
         adaptiveHeight: true
     }
 
     const renderCategoryTabItem = (item, idx) => (
         <li className = "category-tabs-item" key = {idx}>
             <a className = "category-tabs-link" href = "/">
-                <span className = "text">{item.type}</span>
+                <span className = "text">{item.label}</span>
             </a>
         </li>
     )

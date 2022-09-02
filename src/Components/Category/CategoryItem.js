@@ -10,13 +10,13 @@ const CategoryItem = ({item}) => {
 
     return (
         <div className = 'category-item'>
-            <img src = {item.image} alt = "img" width = "100%" />
+            <img src = {item.src} alt = "img" />
             <CardContent>
                 <div className = 'category-item-info'>
                     <IconButton sx = {{ color: 'rgba(0, 0, 0, 0.54)'}} aria-label = {`info about ${item.title}`}>
                         <CategoryIcon sx = {{width: matches ? "25px" : "15px", height: matches ? "25px" : "15px"}}/>
                     </IconButton>
-                    <span>{item.type}</span>
+                    <span>{item.label}</span>
                 </div>
             </CardContent>
         </div>
