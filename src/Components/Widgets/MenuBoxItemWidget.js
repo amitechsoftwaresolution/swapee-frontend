@@ -9,13 +9,16 @@ import paths from "../../Data/Json/paths.json"
 const MenuBoxItemWidget = (props) => {
 
     const renderListItem = () => (
-        <Link to = {paths.Category} style = {{
+        <Link style = {{
             fontSize: "0.8rem", 
             letterSpacing: "0.05rem", 
             fontWeight: "550",
             textDecoration: "none",
             color: "#000"
-        }}>
+        }}
+        to = {paths.Category}
+        state = {{type: props.item.type}}
+        >
             {props.item.type}
         </Link>
     )

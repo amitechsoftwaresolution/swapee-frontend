@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { useLocation } from "react-router-dom"
+
 import {Box, Grid} from '@mui/material'
 
 import PageHeader from '../../Components/PageTop/PageHeader'
@@ -15,6 +17,10 @@ import products from '../../Data/Json/products.json'
 
 import './Store.css'
 
+function withLocation(Component) {
+    return props => <Component {...props} location = {useLocation()} />
+}
+
 class Store extends Component {
     state = {
         searchValue: "",
@@ -27,6 +33,10 @@ class Store extends Component {
     }
 
     breadcrumbs = ["Home", "Store"]
+
+    componentDidMount() {
+        console.log(this.props.location.state)
+    }
 
     filters = [
         {label: "Category", list: ["Men", "Women", "Kid"]},
@@ -225,4 +235,4 @@ class Store extends Component {
     }
 }
 
-export default Store
+export default withLocation(Store)

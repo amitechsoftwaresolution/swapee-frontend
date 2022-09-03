@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { useNavigate } from "react-router-dom"
+
 import Post from '../../Components/Post/Post'
 import CategorySection from '../../Components/Section/CategorySection'
 import FabButton from '../../Components/FabButton/FabButton'
@@ -17,6 +19,10 @@ import img02 from '../../Assets/Images/mobile3.jpg'
 import accessories from '../../Assets/Images/Categories/accessory.png'
 import gadget from '../../Assets/Images/Categories/gadget.png'
 import fashion from '../../Assets/Images/Categories/fashion.png'
+
+function withNavigate(Component) {
+    return props => <Component {...props} navigate = {useNavigate()} />
+}
 
 class Home extends Component {
     state = {
@@ -62,15 +68,15 @@ class Home extends Component {
     }
 
     handlePostViewOnClick = () => {
-        window.location.replace(paths.Ad)
+        this.props.navigate(paths.Ad, { state: {} })
     }
 
     handlePostStoreOnClick = () => {
-        window.location.replace(paths.Store)
+        this.props.navigate(paths.Store, { state: {} })
     }
 
     handlePostViewMoreOnClick = () => {
-        window.location.replace(paths.Category)
+        this.props.navigate(paths.Category, { state: {} })
     }
 
     handleViewMoreOnClick = () => {
@@ -151,4 +157,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default withNavigate(Home)

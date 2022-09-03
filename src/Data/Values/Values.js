@@ -17,10 +17,10 @@ export const drawerLinks = [
 ]
 
 export const footerQuickLinks = [
+    { label: "FAQ", href: paths.FAQ},
     { label: "About Us", href : paths.AboutUs },
     { label: "Privacy & Policy", href: paths.PrivacyAndPolicy },
     { label: "Terms & Condition", href: paths.TermsAndConditions },
-    { label: "FAQ", href: paths.FAQ}
 ]
 
 export const footerSocialLinks  = [
