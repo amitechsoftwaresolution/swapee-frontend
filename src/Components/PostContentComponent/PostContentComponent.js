@@ -9,7 +9,7 @@ import DiamondIcon from "@mui/icons-material/Diamond"
 import PrimaryButton from "../Button/PrimaryButton"
 import SecondaryButton from "../Button/SecondaryButton"
 
-const PostContentComponent = ({content}) => {
+const PostContentComponent = ({content, handleViewOnClick, handleStoreOnClick}) => {
     const matches = useMediaQuery('(max-width: 800px)')
 
     const [postTitle, setPostTitle ] = useState({
@@ -94,8 +94,8 @@ const PostContentComponent = ({content}) => {
     const buttonFooter = () => (
         <Stack sx = {{ pt: 2, marginTop: 4, alignItems: "center" }} direction = "row" spacing = {2} justifyContent = "left">
             <DiamondIcon sx = {{ color: "#fff"}}/>
-            <PrimaryButton label = "VIEW" />
-            <SecondaryButton label = "STORE" />
+            <PrimaryButton label = "VIEW" onClick = {handleViewOnClick}/>
+            <SecondaryButton label = "STORE" onClick = {handleStoreOnClick}/>
         </Stack>
     )
     

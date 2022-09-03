@@ -1,11 +1,11 @@
 import React from 'react'
 
-import {Box, Grid, useMediaQuery} from "@mui/material"
+import {Box, useMediaQuery} from "@mui/material"
 
 import SectionHeaderComponent from './SectionHeaderComponent'
 import CategoryList from '../Category/CategoryList'
-import CategoryItem from '../Category/CategoryItem'
 import CustomCssButton from "../Button/CustomCssButton"
+import OurCategory from './OurCategory'
 
 import './Section.css'
 
@@ -13,14 +13,6 @@ const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, catego
     const matches = useMediaQuery('(min-width:800px)')
 
     const label = isViewMoreClicked ? "View less" : "View more"
-
-    const renderCategory = (item, idx) => {
-        return (
-            <Grid item xs = {4} sm = {4} md = {2} key = {idx}>
-                <CategoryItem item = {item} />
-            </Grid>
-        )
-    }
 
     return (
         <Box sx = {{pl: matches ? '60px': '20px', pr: matches ? '60px' : '30px', pt:'50px', pb:'10px'}}>
@@ -30,15 +22,15 @@ const CategorySection = ({sectionDetail, categoryList, isViewMoreClicked, catego
                     description = {sectionDetail && sectionDetail.description}
                 />
                 <div className = 'category-list'>
-                    <CategoryList data = {categoryList}/>
+                    <CategoryList data = {categoryList} />
                 </div>
                 <div className = 'category-container'>
                     <div className = 'view-more-container'>
                         <CustomCssButton label = {label} onClick = {handleViewMoreOnClick} />
                     </div>
-                    <Grid container spacing = {2}>
-                        { categoriesToView && categoriesToView.map((i, idx) => { return renderCategory(i, idx) })}
-                    </Grid>
+                    <Box sx = {{mt: "40px"}}>
+                        <OurCategory items = {categoriesToView}/>
+                    </Box>
                 </div>
             </div>
         </Box>

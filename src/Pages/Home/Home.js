@@ -9,6 +9,7 @@ import ProductSection from '../../Components/Section/ProductSection'
 
 import products from '../../Data/Json/products.json'
 import home from '../../Data/Json/home.json'
+import paths from '../../Data/Json/paths.json'
 
 import './Home.css'
 import img01 from '../../Assets/Images/mobile2.jpg'
@@ -60,8 +61,16 @@ class Home extends Component {
         this.setState({ categoriesToView: this.categoryList.slice(0, 6) })
     }
 
-    handlePostViewMoreOnClick = () => {
+    handlePostViewOnClick = () => {
+        window.location.replace(paths.Ad)
+    }
 
+    handlePostStoreOnClick = () => {
+        window.location.replace(paths.Store)
+    }
+
+    handlePostViewMoreOnClick = () => {
+        window.location.replace(paths.Category)
     }
 
     handleViewMoreOnClick = () => {
@@ -105,16 +114,26 @@ class Home extends Component {
         )
     }
 
+    renderPostContent = (content) => {
+        return (
+            <Post 
+                content = {content} 
+                handleViewOnClick = {this.handlePostViewOnClick}
+                handleStoreOnClick = {this.handlePostStoreOnClick}
+            />
+        )
+    }
+
     renderMainContainer = () => {
         return (
             <div className = 'home-main-container'>
-                <Post content = {this.products[0]} />
+                { this.renderPostContent(this.products[0]) }
                 { this.renderCategorySection() }
                 { this.renderAdvertisementSection() }
-                <Post content = {this.products[1]} />
+                { this.renderPostContent(this.products[1]) }
                 { this.renderPostSections() }
                 { this.renderAdvertisementSection() }
-                <Post content = {this.products[1]} />
+                { this.renderPostContent(this.products[0]) }
                 { this.renderAdvertisementSection() }
             </div>
         )
