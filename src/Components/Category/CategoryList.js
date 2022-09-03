@@ -1,8 +1,12 @@
 import React, {useState, useLayoutEffect} from 'react'
 
-import {Box, useMediaQuery} from "@mui/material"
+import { Link } from "react-router-dom"
+
+import {useMediaQuery} from "@mui/material"
 
 import ImageCarousel from '../ImageCarousel/ImageCarousel'
+
+import paths from "../../Data/Json/paths.json"
 
 import './Category.css'
 
@@ -61,17 +65,15 @@ const CategoryList = ({data}) => {
 
     const renderCategoryTabItem = (item, idx) => (
         <li className = "category-tabs-item" key = {idx}>
-            <a className = "category-tabs-link" href = "/">
+            <Link to = {paths.Category} className = "category-tabs-link">
                 <span className = "text">{item.label}</span>
-            </a>
+            </Link>
         </li>
     )
 
     return (
         <div className = "category-tabs-container">
-            <Box>
-                <ImageCarousel data = {data} children = {renderCategoryTabItem} settings = {carouselSetting}/>
-            </Box>
+            <ImageCarousel data = {data} children = {renderCategoryTabItem} settings = {carouselSetting}/>
         </div>
     )
 }

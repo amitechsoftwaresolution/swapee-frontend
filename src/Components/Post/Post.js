@@ -8,7 +8,7 @@ import ImageCarousel from '../ImageCarousel/ImageCarousel'
 
 import './Post.css'
 
-const Post = ({content}) => {
+const Post = ({content, handleViewOnClick, handleStoreOnClick}) => {
 
     const carouselSetting = {
         dots: true,
@@ -40,7 +40,11 @@ const Post = ({content}) => {
         <div className = 'post-root'>
             <Grid container spacing = {4} sx = {{padding: "10px"}}>
                 <Grid item xs = {12} sm = {12} md = {6} sx = {{padding: "5px"}}>
-                    <PostContentComponent content = {content}/>
+                    <PostContentComponent 
+                        content = {content}
+                        handleViewOnClick = {handleViewOnClick}
+                        handleStoreOnClick = {handleStoreOnClick}
+                    />
                 </Grid>
                 <Grid item sm = {12} md = {6} sx = {{display: {xs: 'none', md: 'block'}}}>
                     <ImageCarousel data = {content.imgs} children = {renderPostCarouselContent} settings = {carouselSetting}/>
