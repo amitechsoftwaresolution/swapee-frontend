@@ -19,7 +19,8 @@ export const drawerLinks = [
 export const footerQuickLinks = [
     { label: "About Us", href : paths.AboutUs },
     { label: "Privacy & Policy", href: paths.PrivacyAndPolicy },
-    { label: "Terms & Condition", href: paths.TermsAndConditions }
+    { label: "Terms & Condition", href: paths.TermsAndConditions },
+    { label: "FAQ", href: paths.FAQ}
 ]
 
 export const footerSocialLinks  = [
@@ -27,6 +28,12 @@ export const footerSocialLinks  = [
     { label: "Twitter", url: "https://twitter.com" },
     { label: "Instagram", url: "https://www.instagram.com" },
     { label: "LinkedIn", url: "https://www.linkedin.com" }
+]
+
+export const footerFindFastLinks = [
+    { label: "Sign In", href : paths.SignIn },
+    { label: "Sign Up", href : paths.SignUp },
+    { label: "Forgot Password", href : paths.ForgotPassword }
 ]
 
 export const primaryColor = "#31e2f2"

@@ -13,7 +13,7 @@ const ProductSection = ({sectionDetail, posts, handleViewMoreOnClick}) => {
 
     const renderPosts = (item, idx) => {
         return (
-            <Grid item xs = {4} sm = {4} md = {3} key = {idx}>
+            <Grid item xs = {6} sm = {4} md = {3} key = {idx}>
                 <Product productData = {item} id = {idx}/>
             </Grid>
         )
