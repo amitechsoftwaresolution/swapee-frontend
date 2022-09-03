@@ -17,7 +17,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 
 import LogoComponent from "../Logo/LogoComponent"
 
-import {footerQuickLinks, footerSocialLinks} from '../../Data/Values/Values'
+import {footerQuickLinks, footerSocialLinks, footerFindFastLinks} from '../../Data/Values/Values'
 
 import './Footer.css'
 
@@ -32,7 +32,7 @@ const Footer = () => {
     }
 
     const renderLink = (href, label) => (
-        <Link href = {href} sx = {{textDecoration: 'none !important', color: "#fff", fontSize: matches ? "0.8rem": "0.7rem"}}>
+        <Link href = {href} sx = {{textDecoration: 'none !important', color: "#fff", fontSize: matches ? "0.7rem": "0.65rem"}}>
             {label}
         </Link>
     )
@@ -48,6 +48,9 @@ const Footer = () => {
             <div className = "content_wrapper_items_left">
                 <div className = "wrapper_item-caption">
                     <p>Follow us</p>
+                    <div className = 'wrapper_item-caption-des'>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt cilisis.</p>
+                    </div>
                     <div className = "footer-social">
                         { footerSocialLinks.map((item, idx) => {
                             const {url, label} = item
@@ -58,6 +61,26 @@ const Footer = () => {
                             )
                         }) }
                     </div>
+                </div>
+            </div>
+        )
+    }
+
+    const renderFindFastLinks = () => {
+        return (
+            <div className = "content_wrapper_items_right">
+                <div className = "wrapper_item-caption">
+                    <p>Fint It Fast</p>
+                    <List className = "content">
+                        {footerFindFastLinks.map((item, idx) => {
+                            const {href, label} = item
+                            return (
+                                <ListItem key = {idx}>
+                                    { renderLink(href, label) }
+                                </ListItem>
+                            )
+                        })}
+                    </List>
                 </div>
             </div>
         )
@@ -98,7 +121,7 @@ const Footer = () => {
                     </ListItem>
                     <ListItem>
                         <LocationOnIcon style = {{ fontSize: matches ? 25 : 20, marginRight:10 }} />
-                        <span style = {{color: "#fff", fontSize: matches ? "0.8rem": "0.7rem"}}>
+                        <span style = {{color: "#fff", fontSize: matches ? "0.7rem": "0.65rem"}}>
                             No 25 Ananda Rajakaruna Mawatha Colombo 10
                         </span>
                     </ListItem>
@@ -118,8 +141,11 @@ const Footer = () => {
                         <Grid item xs = {12} sm = {4} md = {4}>
                             { renderSocials() }
                         </Grid>
-                        <Grid item xs = {12} sm = {8} md = {4}>
+                        <Grid item xs = {6} sm = {4} md = {2}>
                             { renderLinks() }
+                        </Grid>
+                        <Grid item xs = {6} sm = {4} md = {2}>
+                            { renderFindFastLinks() }
                         </Grid>
                         <Grid item xs = {12} sm = {8} md = {4}>
                             { renderContactUs() }
@@ -137,7 +163,7 @@ const Footer = () => {
                     <div className = "footer_bottom_copyrights">
                         <p>
                             Copyright © 2022 All rights reserved 
-                            | Designed by <i className = "fa fa-heart color-primary" aria-hidden = "true"/> 
+                            | Designed by <i className = "fa fa-heart color-primary" aria-hidden = "true"/>
                             <span> AmiTech Software Solution </span>
                         </p>
                     </div>

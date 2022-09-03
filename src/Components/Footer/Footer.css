@@ -46,7 +46,7 @@
 }
 
 .footer-social {
-    margin-left: 15px;
+    margin-left: 0px;
 }
 
 .footer-social a {
@@ -102,6 +102,21 @@
 
 .shadow {
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.wrapper_item-caption-des {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.wrapper_item-caption-des p {
+    font-size: 12px;
+    font-family: "Montserrat",sans-serif;
+    color: rgb(204, 202, 202);
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: capitalize;
 }
 
 @media screen and (max-width: 800px) {
