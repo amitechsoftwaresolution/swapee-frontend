@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { useLocation } from "react-router-dom"
+
 import {Box, Grid} from "@mui/material"
 
 import ProductDetail from './ProductDetail'
@@ -15,6 +17,10 @@ import ReportAdModel from '../../Components/Popup/ReportAdModel'
 import products from '../../Data/Json/products.json'
 
 import './Ad.css'
+
+function withLocation(Component) {
+    return props => <Component {...props} location = {useLocation()} />
+}
 
 class Ad extends Component {
     state = {
@@ -36,6 +42,10 @@ class Ad extends Component {
     }
 
     breadcrumbs = ["Home", "Ad"]
+
+    componentDidMount() {
+        console.log(this.props.location.state)
+    }
 
     handleReportAdSubmitOnClick = () => {
 
@@ -237,4 +247,4 @@ class Ad extends Component {
     }
 }
 
-export default Ad
+export default withLocation(Ad)

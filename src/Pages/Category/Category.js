@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { useLocation } from "react-router-dom"
+
 import {Box, Grid} from '@mui/material'
 
 import OtherCategoriesList from './OtherCategoriesList'
@@ -24,6 +26,10 @@ import products from '../../Data/Json/products.json'
 
 import './Category.css'
 
+function withLocation(Component) {
+    return props => <Component {...props} location = {useLocation()} />
+}
+
 class Category extends Component {
     state = {
         categoryChecked: [],
@@ -36,6 +42,10 @@ class Category extends Component {
     }
 
     breadcrumbs = ["Products", "Electronics"]
+
+    componentDidMount() {
+        console.log(this.props.location.state)
+    }
 
     otherCategories = [
         { label: "Accessories", src: accessories },
@@ -276,4 +286,4 @@ class Category extends Component {
     }
 }
 
-export default Category
+export default withLocation(Category)
