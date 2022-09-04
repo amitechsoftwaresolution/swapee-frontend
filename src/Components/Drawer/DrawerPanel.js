@@ -1,14 +1,22 @@
 import React from 'react'
 
+import {connect} from 'react-redux'
+
 import {Box, Drawer, List, Divider, ListItem, ListItemIcon} from '@mui/material'
 
 import LogoComponent from "../Logo/LogoComponent"
+
+import {logout} from '../../redux/actions/authAction'
 
 import paths from '../../Data/Json/paths.json'
 
 import './Drawer.css'
 
-const DrawerPanel = ({open, links, icons, handleDrawer}) => {
+const DrawerPanel = ({open, links, icons, handleDrawer, authResponse, signOut}) => {
+
+    const handleLogOut = () => {
+        signOut()
+    }
 
     const renderLinkItem = (idx, item) => {
         const {href, label} = item
@@ -22,7 +30,16 @@ const DrawerPanel = ({open, links, icons, handleDrawer}) => {
 
     const renderNavLinks = (data) => (
         <List>
-            { data.map((item, idx) => renderLinkItem(idx, item) ) }
+            { data.map((item, idx) => {
+                if (item.label === "Dashboard") {
+                    if (authResponse && authResponse.role && authResponse.role === 'admin') {
+                        return renderLinkItem(idx, item)
+                    }
+
+                    return null
+                }
+                return renderLinkItem(idx, item)
+            } ) }
         </List>
     )
 
@@ -31,22 +48,34 @@ const DrawerPanel = ({open, links, icons, handleDrawer}) => {
             <div className = 'logo-component'>
                 <LogoComponent />
             </div>
-            { renderNavLinks(links.slice(0, 4)) }
+            { renderNavLinks(links.main) }
             <Divider sx = {{backgroundColor: "rgba(255, 255, 255, 0.4)", marginTop: "5px", marginBottom: "10px", m: "7px"}}/>
-            { renderNavLinks(links.slice(4, 7)) }
+            { renderNavLinks(links.quickLinks) }
         </div>
+    )
+
+    const renderLoggedUserFooter = () => (
+        <List>
+            <ListItem>
+                <div className = "logout_btn" onClick = {handleLogOut}>LOG OUT</div>
+            </ListItem>
+        </List>
+    )
+
+    const renderLoggedOutUserFooter = () => (
+        <List>
+            <ListItem>
+                <a href = {paths.SignIn} className = "login_btn">LOGIN</a>
+            </ListItem>
+            <ListItem>
+                <a href = {paths.SignUp} className = "join_btn">Join Now</a>
+            </ListItem>
+        </List>
     )
 
     const renderFooterContainer = () => (
         <div>
-            <List>
-                <ListItem>
-                    <a href = {paths.SignIn} className = "login_btn">LOGIN</a>
-                </ListItem>
-                <ListItem>
-                    <a href = {paths.SignUp} className = "join_btn">Join Now</a>
-                </ListItem>
-            </List>
+            { authResponse ? renderLoggedUserFooter() : renderLoggedOutUserFooter() }
         </div>
     )
 
@@ -73,4 +102,14 @@ const DrawerPanel = ({open, links, icons, handleDrawer}) => {
     )
 }
 
-export default DrawerPanel
+const mapStateToProps = state => ({
+    authResponse: state.auth.authResponse
+})
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signOut: () => { dispatch(logout()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerPanel)
