@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
-import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 
 import MobileMenuBoxComponent from '../MobileMenu/MobileMenuBoxComponent'
 import ProfileIconComponent from "../ProfileIcon/ProfileIconComponent"
@@ -30,19 +28,8 @@ const NavigationComponent = ({authResponse}) => {
         window.addEventListener('scroll', changeNavbarDesign)
     }
 
-    const profileMenuList = [
-        {
-            type:'Profile',
-            icon: AccountCircleIcon
-        },
-        {
-            type:'Logout',
-            icon: ExitToAppIcon
-        }
-    ]
-
     const renderProfileIcon = () => (
-        <ProfileIconComponent tooltip = "Open settings" alt = "Username" menuList = {profileMenuList} />
+        <ProfileIconComponent tooltip = "Open settings" authResponse = {authResponse} />
     )
 
     return (
