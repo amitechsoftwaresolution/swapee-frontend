@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 
+import {connect} from 'react-redux'
+
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
@@ -12,10 +14,8 @@ import LogoComponent from "../Logo/LogoComponent"
 import NavigationPagesComponent from "../NavigationPages/NavigationPagesComponent"
 import SearchBarComponent from "../SearchBar/SearchBarComponent"
 
-const NavigationComponent = () => {
+const NavigationComponent = ({authResponse}) => {
     const [navFixed, setNavFixed] = useState(false)
-
-    const currentUser = { role: "", token: null }
 
     const changeNavbarDesign = () => {
         if (window.scrollY >= 80) {
@@ -52,9 +52,9 @@ const NavigationComponent = () => {
                     <Toolbar disableGutters>
                         <MobileMenuBoxComponent />
                         <LogoComponent textColor = "text.secondary" position = "start" />
-                        <NavigationPagesComponent />
+                        <NavigationPagesComponent authResponse = {authResponse} />
                         <SearchBarComponent placeholder = "Search" xs = 'none'/>
-                        { currentUser && currentUser.token && renderProfileIcon() }
+                        { authResponse && authResponse.token && renderProfileIcon() }
                     </Toolbar>
                 </Container>
             </AppBar>
@@ -73,4 +73,8 @@ const NavigationComponent = () => {
     )
 }
 
-export default NavigationComponent
+const mapStateToProps = state => ({
+    authResponse: state.auth.authResponse
+})
+
+export default connect(mapStateToProps)(NavigationComponent)

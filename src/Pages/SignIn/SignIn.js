@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import {Grid} from '@mui/material'
 
 import SignInForm from './SignInForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
+
+import { storeLoginResponse } from '../../redux/actions/authAction'
+import { signIn } from '../../Api/authentication'
 
 import './SignIn.css'
 import loginCoverImage from '../../Assets/Images/Auth/login.png'
@@ -24,8 +29,11 @@ class SignIn extends Component {
     handleSignInApi = async(data) => {
         try {
             this.setState({ loading: true })
-            // handle sign in api
-            this.setState({ loading: false, email: "", password: "", message: null })
+            const response = await signIn(data)
+            const {email, name, token, expiration, role} = response
+            const loginResponse = { email, name, token, expiration, role }
+            this.props.storeLoginResponse(loginResponse)
+            this.setState({ loading: false, email: "", password: "", message: null,  passwordType: "password" })
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -135,4 +143,10 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapDispatchToProps = dispatch => {
+    return {
+        storeLoginResponse: data => { dispatch(storeLoginResponse(data)) }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignIn)
