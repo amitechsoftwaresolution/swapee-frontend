@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
-import {Box} from '@mui/material'
+import {Box, Grid} from '@mui/material'
 
 import PageHeader from '../../Components/PageTop/PageHeader'
 import ProfilePageCover from './ProfilePageCover'
+import PersonalInfo from './PersonalInfo'
 
 import './Profile.css'
+import profileImage from '../../Assets/Images/prod2.jpg'
 
 class Profile extends Component {
     state = {
@@ -18,6 +20,22 @@ class Profile extends Component {
         this.setState({ tabValue: newValue })
     }
 
+    renderMainTab = () => {
+        return (
+            <Grid item xs = {12} sm = {6} md = {7}>
+
+            </Grid>
+        )
+    }
+
+    renderPersonalInfo = () => {
+        return (
+            <Grid item xs = {12} sm = {6} md = {5}>
+                <PersonalInfo profileImage = {profileImage}/>
+            </Grid>
+        )
+    }
+
     renderContents = () => {
         const {tabValue} = this.state
         return (
@@ -25,8 +43,17 @@ class Profile extends Component {
                 <PageHeader navs = {this.breadcrumbs} />
                 <ProfilePageCover 
                     value = {tabValue}
+                    profileImage = {profileImage}
                     handleChange = {this.handleTabOnChange}
                 />
+                <Box sx = {{ flexGrow: 1 }} pt = {2} display = "flex" justifyContent = "center">
+                    <div className = 'profile-page-contents-root'>
+                        <Grid container spacing = {2}>
+                            { this.renderPersonalInfo() }
+                            { this.renderMainTab() }
+                        </Grid>
+                    </div>
+                </Box>
             </div>
         )
     }

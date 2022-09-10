@@ -4,9 +4,8 @@ import {Grid, Tabs, Tab} from '@mui/material'
 
 import './Profile.css'
 import storeCoverImage from '../../Assets/Images/storeCoverImage.jpg'
-import profileImage from '../../Assets/Images/prod2.jpg'
 
-const ProfilePageCover = ({value, handleChange}) => {
+const ProfilePageCover = ({value, profileImage, handleChange}) => {
 
     const renderTab = (label) => (
         <Tab label = {label} sx = {{fontSize: "0.75rem"}}/>
@@ -20,11 +19,13 @@ const ProfilePageCover = ({value, handleChange}) => {
                 </div>
             </Grid>
             <Grid item xs = {12} sm = {9} md = {10}>
-                <Tabs value = {value} onChange={handleChange} aria-label="basic tabs example">
-                    { renderTab("Personal") }
-                    { renderTab("Change Password") }
-                    { renderTab("Settings") }
-                </Tabs>
+                <div className = 'profile-page-cover-info-tabs'>
+                    <Tabs value = {value} onChange = {handleChange} aria-label = "basic tabs example">
+                        { renderTab("Personal") }
+                        { renderTab("Change Password") }
+                        { renderTab("Settings") }
+                    </Tabs>
+                </div>
             </Grid>
         </Grid>
     )
