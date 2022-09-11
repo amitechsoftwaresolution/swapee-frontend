@@ -7,6 +7,7 @@ import ProfilePageCover from './ProfilePageCover'
 import PersonalInfo from './PersonalInfo'
 import TabPanel from '../../Components/TabPanel/TabPanel'
 import EditPersonal from './EditPersonal'
+import ChangePassword from './ChangePassword'
 
 import './Profile.css'
 import profileImage from '../../Assets/Images/prod2.jpg'
@@ -17,7 +18,12 @@ class Profile extends Component {
         username: "Chris Evans",
         email: "Chris@sample.com",
         location: "Brooklyn",
-        contact: "+94 99999999"
+        contact: "+94 99999999",
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+        showPassword: false,
+        passwordType: "password"
     }
 
     breadcrumbs = ["Profile", "My Account"]
@@ -27,6 +33,10 @@ class Profile extends Component {
     }
 
     handleCancelOnClick = () => {
+
+    }
+
+    handleShowPasswordOnClick = () => {
 
     }
 
@@ -52,7 +62,13 @@ class Profile extends Component {
                     />
                 </TabPanel>
                 <TabPanel value = {tabValue} index = {1}>
-                    Item Two
+                    <ChangePassword 
+                        state = {this.state}
+                        handleInputOnChange = {this.handleInputOnChange}
+                        handleCancelOnClick = {this.handleCancelOnClick}
+                        handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
+                        handleSubmitOnClick = {this.handleSubmitOnClick}
+                    />
                 </TabPanel>
                 <TabPanel value = {tabValue} index = {2}>
                     Item Three

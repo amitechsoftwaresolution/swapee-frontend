@@ -33,6 +33,9 @@ const CssTextField = styled(TextField)({
             borderColor: '#31e2f2',
         },
     },
+    '& label': {
+        fontSize: "0.85rem"
+    }
 })
 
 const PasswordField = ({values, handleOnChange, handleShowPasswordOnClick}) => {
