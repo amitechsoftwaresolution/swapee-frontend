@@ -8,7 +8,7 @@ import PhoneEnabledOutlinedIcon from '@mui/icons-material/PhoneEnabledOutlined'
 
 import './Profile.css'
 
-const PersonalInfo = ({profileImage}) => {
+const PersonalInfo = ({profileImage, userDetails}) => {
     const ICONS = {
         "Username": <PersonOutlinedIcon sx = {{width: "18px", height: "18px"}}/>,
         "Email": <EmailIcon sx = {{width: "18px", height: "18px"}}/>,
@@ -28,10 +28,10 @@ const PersonalInfo = ({profileImage}) => {
 
     const renderPersonalInfoContents = () => (
         <div className = 'pro-personal-info-contents'>
-            { renderInfoContent("Username", "Chris Evans") }
-            { renderInfoContent("Email", "Chris@sample.com") }
-            { renderInfoContent("Location", "Brooklyn") }
-            { renderInfoContent("Phone", "+94 99999999") }
+            { renderInfoContent("Username", userDetails && userDetails.username) }
+            { renderInfoContent("Email", userDetails && userDetails.email) }
+            { renderInfoContent("Location", userDetails && userDetails.location) }
+            { renderInfoContent("Phone", userDetails && userDetails.contact) }
         </div>
     )
 
@@ -39,7 +39,7 @@ const PersonalInfo = ({profileImage}) => {
         <div className = 'pro-personal-info-header'>
             <div className = 'personal-info-header-avatar-block'>
                 <Avatar alt = "user-avatar" src = {profileImage} />
-                <span>Chris Evans</span>
+                <span>{userDetails && userDetails.username}</span>
             </div>
             <div className = 'personal-info-header-upload'>
                 <span className = 'upload-pro-image-btn'>Upload</span>

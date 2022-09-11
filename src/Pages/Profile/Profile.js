@@ -9,6 +9,8 @@ import TabPanel from '../../Components/TabPanel/TabPanel'
 import EditPersonal from './EditPersonal'
 import ChangePassword from './ChangePassword'
 import Settings from './Settings'
+import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
+import Loading from '../../Components/Loading/Loading'
 
 import './Profile.css'
 import profileImage from '../../Assets/Images/prod2.jpg'
@@ -16,29 +18,140 @@ import profileImage from '../../Assets/Images/prod2.jpg'
 class Profile extends Component {
     state = {
         tabValue: 0,
-        username: "Chris Evans",
-        email: "Chris@sample.com",
-        location: "Brooklyn",
-        contact: "+94 99999999",
+        username: "",
+        email: "",
+        location: "",
+        contact: "",
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
         showPassword: false,
-        passwordType: "password"
+        passwordType: "password",
+        message: "",
+        severity: "",
+        openSnackBar: false,
+        loading: false,
     }
 
     breadcrumbs = ["Profile", "My Account"]
 
-    handleSubmitOnClick = () => {
+    userDetails = {
+        username: "Chris Evans",
+        email: "Chris@sample.com",
+        location: "Brooklyn",
+        contact: "+94 99999999"
+    }
+
+    componentDidMount() {
+        this.setState({
+            username: this.userDetails.username,
+            email: this.userDetails.email,
+            location: this.userDetails.location,
+            contact: this.userDetails.contact
+        })
+    }
+
+    getPersonalInformationApi = async(data) => {
+        try {
+            this.setState({ loading: true })
+            //const response = await getPersonalInformation(data)
+            this.setState({ loading: false })
+        } catch (e) {
+            this.setState({ loading: false })
+            this.setErrorSnackBar(e.response.data.message)
+        }
+    }
+
+    handlePerosnalInfoApi = async(data) => {
+        try {
+            this.setState({ loading: true })
+            //const response = await updatePersonalInfo(data)
+            this.setState({ loading: false })
+            this.setSuccessSnackBar("You personal information updated successfully")
+        } catch (e) {
+            this.setState({ loading: false })
+            this.setErrorSnackBar(e.response.data.message)
+        }
+    }
+
+    handleChangePasswordApi = async(data) => {
+        try {
+            this.setState({ loading: true })
+            //const response = await changePassword(data)
+            this.setState({ loading: false })
+            this.setSuccessSnackBar("You password successfully changed")
+        } catch (e) {
+            this.setState({ loading: false })
+            this.setErrorSnackBar(e.response.data.message)
+        }
+    }
+
+    handleSettingsApi = async(data) => {
+        try {
+            this.setState({ loading: true })
+            //const response = await updateSettings(data)
+            this.setState({ loading: false })
+            this.setSuccessSnackBar("You settings successfully updated")
+        } catch (e) {
+            this.setState({ loading: false })
+            this.setErrorSnackBar(e.response.data.message)
+        }
+    }
+
+    handlePersonalInfoSubmitOnClick = () => {
 
     }
 
-    handleCancelOnClick = () => {
+    handleChangePasswordSubmitOnClick = () => {
+        const {currentPassword, newPassword, confirmPassword} = this.state
+
+        if (currentPassword && newPassword && confirmPassword) {
+            const passwordMatched = this.validatePassword(newPassword, confirmPassword)
+
+            if (currentPassword === newPassword) {
+                this.setErrorSnackBar('New password and current password cannot be same')
+            }
+            else if (!passwordMatched) {
+                this.setErrorSnackBar('Passwords not matched')
+            }
+            else {
+                const data = {currentPassword, newPassword, confirmPassword}
+                this.handleChangePasswordApi(data)
+            }
+        }
+        else {
+            this.setErrorSnackBar('Fields cannot be empty')
+        }
+    }
+
+    handleSettingsSubmitOnClick = () => {
+
+    }
+
+    handlePersonalInfoCancelOnClick = () => {
+
+    }
+
+    handleChangePasswordCancelOnClick = () => {
+        this.setState({
+            currentPassword: "",
+            newPassword: "",
+            confirmPassword: "",
+            showPassword: false,
+            passwordType: "password"
+        })
+    }
+
+    handleSettingsClearOnClick = () => {
 
     }
 
     handleShowPasswordOnClick = () => {
+        const {showPassword} = this.state
 
+        let passwordType = showPassword ? "password" : "text"
+
+        this.setState({ showPassword: !showPassword, passwordType })
     }
 
     handleInputOnChange = (e) => {
@@ -50,6 +163,43 @@ class Profile extends Component {
         this.setState({ tabValue: newValue })
     }
 
+    handleSnackBarClose = () => {
+        this.setSnackBar("", null, false)
+    }
+
+    setSuccessSnackBar = (message) => {
+        this.setSnackBar("success", message, true)
+    }
+
+    setErrorSnackBar = (message) => {
+        this.setSnackBar("error", message, true)
+    }
+
+    setSnackBar = (severity, message, openSnackBar) => {
+        this.setState({ severity, message, openSnackBar })
+    }
+
+    validateEmail = (email) => {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return pattern.test(email)
+    }
+
+    validatePassword = (password, confirmPassword) => {
+        return password === confirmPassword
+    }
+
+    renderSnackBar = () => {
+        const {openSnackBar, severity, message} = this.state
+        return (
+            <SnackBarAlert 
+                open = {openSnackBar} 
+                severity = {severity} 
+                message = {message} 
+                handleClose = {this.handleSnackBarClose}
+            />
+        )
+    }
+
     renderMainTab = () => {
         const {tabValue} = this.state
         return (
@@ -58,22 +208,24 @@ class Profile extends Component {
                     <EditPersonal 
                         state = {this.state}
                         handleInputOnChange = {this.handleInputOnChange}
-                        handleCancelOnClick = {this.handleCancelOnClick}
-                        handleSubmitOnClick = {this.handleSubmitOnClick}
+                        handleCancelOnClick = {this.handlePersonalInfoCancelOnClick}
+                        handleSubmitOnClick = {this.handlePersonalInfoSubmitOnClick}
                     />
                 </TabPanel>
                 <TabPanel value = {tabValue} index = {1}>
                     <ChangePassword 
                         state = {this.state}
                         handleInputOnChange = {this.handleInputOnChange}
-                        handleCancelOnClick = {this.handleCancelOnClick}
+                        handleCancelOnClick = {this.handleChangePasswordCancelOnClick}
                         handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
-                        handleSubmitOnClick = {this.handleSubmitOnClick}
+                        handleSubmitOnClick = {this.handleChangePasswordSubmitOnClick}
                     />
                 </TabPanel>
                 <TabPanel value = {tabValue} index = {2}>
                     <Settings 
                         state = {this.state}
+                        handleClearOnClick = {this.handleSettingsClearOnClick}
+                        handleSubmitOnClick = {this.handleSettingsSubmitOnClick}
                     />
                 </TabPanel>
             </Grid>
@@ -83,7 +235,10 @@ class Profile extends Component {
     renderPersonalInfo = () => {
         return (
             <Grid item xs = {12} sm = {6} md = {5}>
-                <PersonalInfo profileImage = {profileImage}/>
+                <PersonalInfo 
+                    profileImage = {profileImage}
+                    userDetails = {this.userDetails}
+                />
             </Grid>
         )
     }
@@ -121,9 +276,12 @@ class Profile extends Component {
     }
 
     render() {
+        const {openSnackBar, loading} = this.state
         return (
             <div className = 'profile-page-root'>
                 { this.renderMainContainer() }
+                { openSnackBar && this.renderSnackBar() }
+                { loading && <Loading open = {loading} /> }
             </div>
         )
     }
