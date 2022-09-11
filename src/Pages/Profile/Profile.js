@@ -5,25 +5,58 @@ import {Box, Grid} from '@mui/material'
 import PageHeader from '../../Components/PageTop/PageHeader'
 import ProfilePageCover from './ProfilePageCover'
 import PersonalInfo from './PersonalInfo'
+import TabPanel from '../../Components/TabPanel/TabPanel'
+import EditPersonal from './EditPersonal'
 
 import './Profile.css'
 import profileImage from '../../Assets/Images/prod2.jpg'
 
 class Profile extends Component {
     state = {
-        tabValue: 0
+        tabValue: 0,
+        username: "Chris Evans",
+        email: "Chris@sample.com",
+        location: "Brooklyn",
+        contact: "+94 99999999"
     }
 
     breadcrumbs = ["Profile", "My Account"]
+
+    handleSubmitOnClick = () => {
+
+    }
+
+    handleCancelOnClick = () => {
+
+    }
+
+    handleInputOnChange = (e) => {
+        const {name, value} = e.target
+        this.setState({[name]: value})
+    }
 
     handleTabOnChange = (event, newValue) => {
         this.setState({ tabValue: newValue })
     }
 
     renderMainTab = () => {
+        const {tabValue} = this.state
         return (
             <Grid item xs = {12} sm = {6} md = {7}>
-
+                <TabPanel value = {tabValue} index = {0}>
+                    <EditPersonal 
+                        state = {this.state}
+                        handleInputOnChange = {this.handleInputOnChange}
+                        handleCancelOnClick = {this.handleCancelOnClick}
+                        handleSubmitOnClick = {this.handleSubmitOnClick}
+                    />
+                </TabPanel>
+                <TabPanel value = {tabValue} index = {1}>
+                    Item Two
+                </TabPanel>
+                <TabPanel value = {tabValue} index = {2}>
+                    Item Three
+                </TabPanel>
             </Grid>
         )
     }

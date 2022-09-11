@@ -15,7 +15,8 @@ const CssTextField = styled(TextField)({
         '& input': {
             '&::placeholder': {
                 color: "rgb(33, 43, 54)"
-            }
+            },
+            fontSize: "0.85rem"
         },
         '& fieldset': {
             borderColor: '#D7DBDD',
