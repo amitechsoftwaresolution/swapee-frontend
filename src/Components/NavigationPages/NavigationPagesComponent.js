@@ -10,10 +10,8 @@ import paths from '../../Data/Json/paths.json'
 
 import './Navigation.css'
 
-const NavigationPagesComponent = () => {
+const NavigationPagesComponent = ({authResponse}) => {
     const [anchorElUser, setAnchorElUser] = useState(false)
-
-    const currentUser = { role: "", token: null }
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget)
@@ -47,8 +45,8 @@ const NavigationPagesComponent = () => {
         <Box sx = {{display: {xs: 'none', md: 'flex'}, flexGrow: 2, alignItems: "center"}}>
             {appBarLinks && appBarLinks.map((page) => page.label === "Categories" ? renderCategoryLink(page) : renderPageLink(page))}
             <Box sx = {{marginLeft: "20px"}}>
-                { currentUser && !currentUser.token && renderSignInButton() }
-                { currentUser && currentUser.role && currentUser.role === 'admin' &&  renderDashBoardButton() }
+                { !authResponse && renderSignInButton() }
+                { authResponse && authResponse.role && authResponse.role === 'admin' &&  renderDashBoardButton() }
             </Box>
             { renderMenu() }
         </Box>

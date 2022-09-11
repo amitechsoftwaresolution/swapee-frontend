@@ -4,6 +4,7 @@ import {Stack, Breadcrumbs} from '@mui/material'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import HomeIcon from '@mui/icons-material/House'
 import CategoryIcon from '@mui/icons-material/Category'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 import './PageTop.css'
 
@@ -11,8 +12,9 @@ const PageHeader = ({navs}) => {
     let len = navs ? navs.length : 0
 
     const ICONS = {
-        "Home": <HomeIcon sx = {{width: "18px", height: "18px", marginRight: "5px", mb: "3px"}}/>,
-        "Products": <CategoryIcon sx = {{width: "15px", height: "15px", marginRight: "5px", mb: "3px"}}/>
+        "Home": <HomeIcon sx = {{width: "18px", height: "18px", marginRight: "5px", mb: "1px"}}/>,
+        "Products": <CategoryIcon sx = {{width: "15px", height: "15px", marginRight: "5px", mb: "3px"}}/>,
+        "Profile": <AccountCircleIcon sx = {{width: "18px", height: "18px", marginRight: "3px"}}/>
     }
 
     const renderBreadcrumb = (i, idx) => (

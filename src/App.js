@@ -15,6 +15,7 @@ import Category from './Pages/Category/Category'
 import Ad from './Pages/Ad/Ad'
 import Store from './Pages/Store/Store'
 import FAQ from './Pages/FAQ/FAQ'
+import Profile from './Pages/Profile/Profile'
 import PageNotFound from './Pages/PageNotFound/PageNotFound'
 
 import paths from './Data/Json/paths.json'
@@ -31,7 +32,8 @@ const App = () => {
       { name: "Category", path: paths.Category, element: <Category /> },
       { name: "Ad", path: paths.Ad, element: <Ad /> },
       { name: "Store", path: paths.Store, element: <Store /> },
-      { name: "FAQ", path: paths.FAQ, element: <FAQ /> }
+      { name: "FAQ", path: paths.FAQ, element: <FAQ /> },
+      { name: "Profile", path: paths.Profile, element: <Profile /> }
     ]
 
     const renderRoutes = (route, idx) => {

@@ -1,10 +1,10 @@
 import React, {useState} from "react"
 
+import {connect} from 'react-redux'
+
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
-import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 
 import MobileMenuBoxComponent from '../MobileMenu/MobileMenuBoxComponent'
 import ProfileIconComponent from "../ProfileIcon/ProfileIconComponent"
@@ -12,10 +12,8 @@ import LogoComponent from "../Logo/LogoComponent"
 import NavigationPagesComponent from "../NavigationPages/NavigationPagesComponent"
 import SearchBarComponent from "../SearchBar/SearchBarComponent"
 
-const NavigationComponent = () => {
+const NavigationComponent = ({authResponse}) => {
     const [navFixed, setNavFixed] = useState(false)
-
-    const currentUser = { role: "", token: null }
 
     const changeNavbarDesign = () => {
         if (window.scrollY >= 80) {
@@ -30,19 +28,8 @@ const NavigationComponent = () => {
         window.addEventListener('scroll', changeNavbarDesign)
     }
 
-    const profileMenuList = [
-        {
-            type:'Profile',
-            icon: AccountCircleIcon
-        },
-        {
-            type:'Logout',
-            icon: ExitToAppIcon
-        }
-    ]
-
     const renderProfileIcon = () => (
-        <ProfileIconComponent tooltip = "Open settings" alt = "Username" menuList = {profileMenuList} />
+        <ProfileIconComponent tooltip = "Open settings" authResponse = {authResponse} />
     )
 
     return (
@@ -52,9 +39,9 @@ const NavigationComponent = () => {
                     <Toolbar disableGutters>
                         <MobileMenuBoxComponent />
                         <LogoComponent textColor = "text.secondary" position = "start" />
-                        <NavigationPagesComponent />
+                        <NavigationPagesComponent authResponse = {authResponse} />
                         <SearchBarComponent placeholder = "Search" xs = 'none'/>
-                        { currentUser && currentUser.token && renderProfileIcon() }
+                        { authResponse && authResponse.token && renderProfileIcon() }
                     </Toolbar>
                 </Container>
             </AppBar>
@@ -73,4 +60,8 @@ const NavigationComponent = () => {
     )
 }
 
-export default NavigationComponent
+const mapStateToProps = state => ({
+    authResponse: state.auth.authResponse
+})
+
+export default connect(mapStateToProps)(NavigationComponent)

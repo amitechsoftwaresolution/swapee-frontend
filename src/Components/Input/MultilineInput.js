@@ -15,7 +15,8 @@ const CssTextField = styled(TextField)({
         '& input': {
             '&::placeholder': {
                 color: "rgb(33, 43, 54)"
-            }
+            },
+            fontSize: "0.85rem"
         },
         '& fieldset': {
             borderColor: '#D7DBDD',
@@ -28,6 +29,9 @@ const CssTextField = styled(TextField)({
             borderColor: '#31e2f2',
         },
     },
+    '& label': {
+        fontSize: "0.85rem"
+    }
 })
 
 const MultilineInput = ({name, label, placeholder, value, handleOnChange}) => {
