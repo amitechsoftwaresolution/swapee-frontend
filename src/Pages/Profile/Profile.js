@@ -8,6 +8,7 @@ import PersonalInfo from './PersonalInfo'
 import TabPanel from '../../Components/TabPanel/TabPanel'
 import EditPersonal from './EditPersonal'
 import ChangePassword from './ChangePassword'
+import Settings from './Settings'
 
 import './Profile.css'
 import profileImage from '../../Assets/Images/prod2.jpg'
@@ -71,7 +72,9 @@ class Profile extends Component {
                     />
                 </TabPanel>
                 <TabPanel value = {tabValue} index = {2}>
-                    Item Three
+                    <Settings 
+                        state = {this.state}
+                    />
                 </TabPanel>
             </Grid>
         )
