@@ -43,7 +43,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                 <Grid item xs = {12} sm = {6} md = {8}>
                     <SignInButtonWidget 
                         name = "Sign In" 
-                        background = "rgb(0, 171, 85)"
+                        background = "#31e2f2"
                         onClick = {handleLoginOnClick}    
                     />
                 </Grid>

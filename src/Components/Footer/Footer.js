@@ -70,7 +70,7 @@ const Footer = () => {
         return (
             <div className = "content_wrapper_items_right">
                 <div className = "wrapper_item-caption">
-                    <p>Fint It Fast</p>
+                    <p>Find It Fast</p>
                     <List className = "content">
                         {footerFindFastLinks.map((item, idx) => {
                             const {href, label} = item
