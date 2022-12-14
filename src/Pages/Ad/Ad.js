@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom"
 import {Box, Grid} from "@mui/material"
 
 import ProductDetail from './ProductDetail'
-import ProductDescription from './ProductDescription'
+// import ProductDescription from './ProductDescription'
 import Loading from '../../Components/Loading/Loading'
 import Product from '../../Components/Product/Product'
 import PageHeader from '../../Components/PageTop/PageHeader'
@@ -217,7 +217,7 @@ class Ad extends Component {
                             <ProductDetail 
                                 handleExchangeAlertPopup = {this.handleExchangeAlertPopup}
                             />
-                            <ProductDescription />
+                            {/* <ProductDescription /> */}
                         </div>
                         <div className = 'ad-page-other-products-root'>
                             <div className = 'ad-page-other-products-con'>
