@@ -36,6 +36,7 @@ class Store extends Component {
 
     componentDidMount() {
         console.log(this.props.location.state)
+        window.scrollTo(0, 0)
     }
 
     filters = [

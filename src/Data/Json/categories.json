@@ -30,12 +30,6 @@
       "link":"/categories"
    },
    {
-      "type":"Jobs",
-      "bgColor":"#e48c44",
-      "image":"/images/categories/Jobs.jpg",
-      "link":"/categories"
-   },
-   {
       "type":"Hobbies, Sports & Kids",
       "bgColor":"#f2c138",
       "image":"/images/categories/Hobbies, Sports & Kids.jpg",

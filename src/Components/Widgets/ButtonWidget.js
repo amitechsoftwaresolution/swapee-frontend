@@ -25,6 +25,7 @@ const ButtonWidget = (props) => {
                     transition: 'all, 1s',
                     fontSize: "0.75rem",
                     letterSpacing: "0.1rem",
+                    fontWeight: "bold",
                     '&:hover': {
                         color: background, 
                         border: `1px solid ${background}`, 
