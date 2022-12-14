@@ -1,12 +1,13 @@
 import React from "react"
 
-import {Grid, Paper, IconButton, Rating, Divider} from "@mui/material"
+import {Grid, Paper, IconButton, Divider} from "@mui/material"
 import Favorite from '@mui/icons-material/Favorite'
 
 import Slider from "react-slick"
 
 import ExchangeButton from '../../Components/Widgets/ButtonWidget'
 import StoreButton from '../../Components/Button/SecodaryButtonWidget'
+import Status from '../../Components/Status/Status'
 
 import './ProductDetail.css'
 import prod1 from '../../Assets/Images/prod1.jpg'
@@ -31,7 +32,10 @@ const ProductDetail = ({handleExchangeAlertPopup}) => {
                 <Grid item xs = {12} sm = {6} md = {4}>
                     <StoreButton onClick = {() => {}} name = "Store"/>
                 </Grid>
-                <Grid item xs = {12} sm = {6} md = {8}>
+                <Grid item xs = {12} sm = {6} md = {4}>
+                    <StoreButton onClick = {() => {}} name = "Cash"/>
+                </Grid>
+                <Grid item xs = {12} sm = {6} md = {4}>
                     <ExchangeButton 
                         name = "Exchange" 
                         background = "rgb(0, 171, 85)"
@@ -44,19 +48,9 @@ const ProductDetail = ({handleExchangeAlertPopup}) => {
 
     const renderPrice = () => (
         <div className = "product-detail-price">
-            <h2>$275</h2>
-            <p>$350</p>
-            <span>(Inclusive of all taxes)</span>
-        </div>
-    )
-
-    const renderRating = () => (
-        <div className = "product-detail-rating">
-            <Rating
-                name = "simple-controlled"
-                value = {2}
-            />
-            <span className = "product-detail-rating-count">(350+)</span>
+            <h2>Rs. 275</h2>
+            {/* <p>Rs350</p>
+            <span>(Inclusive of all taxes)</span> */}
         </div>
     )
 
@@ -64,9 +58,7 @@ const ProductDetail = ({handleExchangeAlertPopup}) => {
         <Grid container spacing = {1}>
             <div className = "product-detail-info-title-con">
                 <div className = "product-detail-info-title-left">
-                    <div className = "in-stock-container">
-                        <span>In Stock</span>
-                    </div>
+                    <Status status = "Feature" />
                     <div className = "product-detail-info-title">
                         <h3>Samsung Galaxy Note10+</h3>
                         <div className = "product-detail-info-new">
@@ -103,10 +95,6 @@ const ProductDetail = ({handleExchangeAlertPopup}) => {
             <div className = "product-detail-info-info">
                 <div className = "product-detail-info-info-type">Posted by</div>
                 <span className = "product-detail-info-info-value">Steve Rogers</span>
-            </div>
-            <div className = "product-detail-info-info">
-                <div className = "product-detail-info-info-type">User Rating</div>
-                { renderRating() }
             </div>
             { renderPrice() }
             <Divider sx = {{backgroundColor: "rgba(255, 255, 255, 0.4)", marginTop: "5px", marginBottom: "10px", m: "7px"}}/>
