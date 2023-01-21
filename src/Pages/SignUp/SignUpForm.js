@@ -11,12 +11,28 @@ import PasswordField from '../../Components/Input/PasswordField'
 import SignUpButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import SocialButton from '../../Components/Button/SocialButton'
+import SelectField from '../../Components/Input/SelectField'
 
 import paths from '../../Data/Json/paths.json'
 
 import './SignUp.css'
 
 const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleSignUpOnClick}) => {
+
+    const renderSelectDropDown = (name, label, placeholder, menuItems) => {
+        return (
+            <div className = "signup_form-input_wrapper">
+                <SelectField 
+                    name = {name}
+                    label = {label}
+                    placeholder = {placeholder}
+                    value = {state[name]}
+                    items = {menuItems}
+                    handleOnChange = {handleInputOnChange}
+                />
+            </div>
+        )
+    }
 
     const renderSocialLoginContainer = () => {
         return (
@@ -129,6 +145,7 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                 <div className = 'sign-form-input-container'>
                     { renderInputField("name", "Name", "Name") }
                     { renderInputField("email", "Email", "Email address") }
+                    { renderSelectDropDown("role", "Register as", "Register as", ['vendor', 'viewer']) }
                     { renderPasswordField("password", "Password", "Password") }
                     { renderPasswordField("confirmPassword", "Confirm Password", "Confirm Password") }
                     { renderTermsAndConditionsLink() }

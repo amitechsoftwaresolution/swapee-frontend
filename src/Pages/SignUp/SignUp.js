@@ -22,7 +22,8 @@ class SignUp extends Component {
         showPassword: false,
         showConfirmPassword: false,
         passwordType: "password",
-        confirmPasswordType: "password"
+        confirmPasswordType: "password",
+        role: ""
     }
 
     handleSignUpApi = async(data) => {
@@ -44,8 +45,8 @@ class SignUp extends Component {
     }
 
     handleSignUpOnClick = () => {
-        const {name, email, password, confirmPassword} = this.state
-        if (name && email && password && confirmPassword) {
+        const {name, email, password, confirmPassword, role} = this.state
+        if (name && email && password && confirmPassword && role) {
             const result = this.validateEmail(email)
             const passwordMatched = this.validatePassword(password, confirmPassword)
 
@@ -56,7 +57,7 @@ class SignUp extends Component {
                 this.setErrorSnackBar('Passwords not matched')
             }
             else {
-                const data = {name, email, password}
+                const data = {name, email, password, role}
                 this.handleSignUpApi(data)
             }
         }
@@ -70,7 +71,8 @@ class SignUp extends Component {
             name: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            role: ""
         })
     }
 
