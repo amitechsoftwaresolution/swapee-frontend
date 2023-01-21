@@ -49,7 +49,7 @@ const SelectField = ({name, label, placeholder, value, items, handleOnChange}) =
             name = {name}
             onChange = {handleOnChange}
         >
-        { items.map((item, idx) => (
+        { items && items.map((item, idx) => (
             <MenuItem key = {idx} value = {item}>
                 {item}
             </MenuItem>
