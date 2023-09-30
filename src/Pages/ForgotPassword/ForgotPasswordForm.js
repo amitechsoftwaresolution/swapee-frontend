@@ -1,16 +1,12 @@
 import React from "react"
 
 import {Grid, Box} from '@mui/material'
-import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead'
-import VpnKeyIcon from '@mui/icons-material/VpnKey'
-import PasswordlIcon from '@mui/icons-material/Password'
 
 import InputField from '../../Components/Input/InputField'
 import PasswordField from '../../Components/Input/PasswordField'
 import SubmitButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import LogoComponent from '../../Components/Logo/LogoComponent'
-import StepperComponent from "../../Components/Stepper/StepperComponent"
 
 import paths from '../../Data/Json/paths.json'
 
@@ -25,14 +21,6 @@ const ForgotPasswordForm = ({
 }) => {
     const {activeStep, showPassword, showConfirmPassword, passwordType, confirmPasswordType} = state
 
-    const steps = ['Provide email address', 'Enter reset code', 'Reset new password']
-
-    const icons = {
-        1: <MarkEmailReadIcon />,
-        2: <VpnKeyIcon />,
-        3: <PasswordlIcon />
-    }
-
     const renderButtonFooter = () => {
         return (
             <Grid container spacing = {2} sx = {{marginTop: "10px", marginBottom: "30px"}}>
@@ -42,7 +30,7 @@ const ForgotPasswordForm = ({
                 <Grid item xs = {12} sm = {6} md = {8}>
                     <SubmitButtonWidget 
                         name = {activeStep === 2 ? "Submit" : "Next"} 
-                        background = "rgb(0, 171, 85)"
+                        background = "#31e2f2"
                         onClick = {handleNextOnClick}    
                     />
                 </Grid>
@@ -115,16 +103,6 @@ const ForgotPasswordForm = ({
         </div>
     )
 
-    const renderStepper = () => (
-        <div className = "stepper-root">
-            <StepperComponent 
-                activeStep = {activeStep}
-                steps = {steps}
-                icons = {icons}
-            />
-        </div>
-    )
-
     const renderHeader = () => {
         return (
             <div className = 'forgotpassword-form_header'>
@@ -133,7 +111,6 @@ const ForgotPasswordForm = ({
                     <Grid item xs = {10} sm = {10} md = {11}>
                         <div className = 'forgotpassword-form_header_wel'>
                             <span className = "forgotpassword-form_title">Forgot your password ?</span>
-                            <span className = "forgotpassword-form_des">Don’t worry please follow this steps to reset your password</span>
                         </div>
                     </Grid>
                     <Grid item xs = {2} sm = {2} md = {1}>
@@ -148,8 +125,7 @@ const ForgotPasswordForm = ({
         <Box sx = {{my: 2, display: 'flex', flexDirection: 'column'}}>
             <div className = "forgot-password-form">
                 { renderHeader() }
-                { renderStepper() }
-                <div className = 'sign-form-input-container'>
+                <div className = 'forgetpassword-form-input-container'>
                     {
                         activeStep === 0 ? renderEmailStep()
                         :

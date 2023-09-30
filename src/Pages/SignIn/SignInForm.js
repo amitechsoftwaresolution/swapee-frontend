@@ -110,7 +110,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                         </div>
                     </Grid>
                     <Grid item xs = {2} sm = {2} md = {1}>
-                        <LogoComponent textColor = "primary" position = "end" />
+                        <LogoComponent position = "end" />
                     </Grid>
                 </Grid>
             </div>

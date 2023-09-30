@@ -7,7 +7,6 @@ import GoogleIcon from '@mui/icons-material/Google'
 
 import LogoComponent from '../../Components/Logo/LogoComponent'
 import InputField from '../../Components/Input/InputField'
-import PasswordField from '../../Components/Input/PasswordField'
 import SignUpButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import SocialButton from '../../Components/Button/SocialButton'
@@ -75,24 +74,6 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
         )
     }
 
-    const renderPasswordField = (name, label, placeholder) => {
-        const {showPassword, showConfirmPassword, passwordType, confirmPasswordType} = state
-        let values = {name, label, placeholder, value: state[name]}
-        if (name === "password") {
-            values = {...values, showPassword, passwordType}
-        } else {
-            values = {...values, showPassword: showConfirmPassword, passwordType: confirmPasswordType}
-        }
-        return (
-            <div className = "signup_form-input_wrapper">
-                <PasswordField 
-                    values = {values}
-                    handleOnChange = {handleInputOnChange}
-                    handleShowPasswordOnClick = {() => handleShowPasswordOnClick(name)}
-                />
-            </div>
-        )
-    }
 
     const renderInputField = (name, label, placeholder) => {
         return (
@@ -146,8 +127,6 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                     { renderInputField("name", "Name", "Name") }
                     { renderInputField("email", "Email", "Email address") }
                     { renderSelectDropDown("role", "Register as", "Register as", ['vendor', 'viewer']) }
-                    { renderPasswordField("password", "Password", "Password") }
-                    { renderPasswordField("confirmPassword", "Confirm Password", "Confirm Password") }
                     { renderTermsAndConditionsLink() }
                     { renderButtonFooter() }
                     { renderSocialLoginContainer() }

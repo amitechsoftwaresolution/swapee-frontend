@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 
 import {connect} from 'react-redux'
 
@@ -13,28 +13,13 @@ import NavigationPagesComponent from "../NavigationPages/NavigationPagesComponen
 import SearchBarComponent from "../SearchBar/SearchBarComponent"
 
 const NavigationComponent = ({authResponse}) => {
-    const [navFixed, setNavFixed] = useState(false)
-
-    const changeNavbarDesign = () => {
-        if (window.scrollY >= 80) {
-            setNavFixed(true)
-        }
-        else {
-            setNavFixed(false)
-        }
-    }
-
-    if (typeof window !== "undefined") {
-        window.addEventListener('scroll', changeNavbarDesign)
-    }
-
     const renderProfileIcon = () => (
         <ProfileIconComponent tooltip = "Open settings" authResponse = {authResponse} />
     )
 
     return (
-        <div>
-            <AppBar position = {navFixed ? 'fixed':'static'} className = 'nav'>
+        <div style={{marginBottom:'57px'}}>
+            <AppBar position = 'fixed' className = 'nav'>
                 <Container maxWidth = "xl">
                     <Toolbar disableGutters>
                         <MobileMenuBoxComponent />

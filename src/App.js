@@ -46,7 +46,7 @@ const App = () => {
     return (
       <div>
           <BrowserRouter>
-            <NavigationComponent />
+            <NavigationComponent/>
             <Routes>
                 { routes.map((route, idx) => renderRoutes(route, idx)) }
                 <Route path = "*" element = {<PageNotFound />} />
