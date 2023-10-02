@@ -35,8 +35,8 @@ class SignIn extends Component {
             if (response !== null && !response.success) {
                 this.setErrorSnackBar(response.message)
             } else {
-                const { uid, email, displayName, accessToken } = response
-                const loginResponse = { uid, email, name: displayName, token: accessToken }
+                const { uid, email, displayName } = response
+                const loginResponse = { uid, email, name: displayName }
                 this.props.storeLoginResponse(loginResponse)
                 this.setSuccessSnackBar("You successfully logged in")
             }

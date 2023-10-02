@@ -26,7 +26,7 @@ const NavigationComponent = ({authResponse}) => {
                         <LogoComponent textColor = "text.secondary" position = "start" />
                         <NavigationPagesComponent authResponse = {authResponse} />
                         <SearchBarComponent placeholder = "Search" xs = 'none'/>
-                        { authResponse && authResponse.token && renderProfileIcon() }
+                        { authResponse && authResponse.email && renderProfileIcon() }
                     </Toolbar>
                 </Container>
             </AppBar>

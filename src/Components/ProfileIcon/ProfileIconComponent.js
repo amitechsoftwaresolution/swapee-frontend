@@ -12,6 +12,8 @@ import {logout} from '../../redux/actions/authAction'
 
 import paths from '../../Data/Json/paths.json'
 
+import { logoutfromFirebase } from "../../firebase";
+
 const ProfileIconComponent = (props) => {
     const [anchorElUser, setAnchorElUser] = React.useState(null)
 
@@ -28,6 +30,7 @@ const ProfileIconComponent = (props) => {
 
     const handleLogout = () => {
         props.signOut()
+        logoutfromFirebase()
     }
 
     const renderListItem = (label) => (
