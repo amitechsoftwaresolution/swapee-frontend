@@ -46,7 +46,7 @@ const NavigationPagesComponent = ({authResponse}) => {
             {appBarLinks && appBarLinks.map((page) => page.label === "Categories" ? renderCategoryLink(page) : renderPageLink(page))}
             <Box sx = {{marginLeft: "20px"}}>
                 { !authResponse && renderSignInButton() }
-                { authResponse && authResponse.role && authResponse.role === 'admin' &&  renderDashBoardButton() }
+                { authResponse && authResponse.role && authResponse.role === 'vendor' &&  renderDashBoardButton() }
             </Box>
             { renderMenu() }
         </Box>

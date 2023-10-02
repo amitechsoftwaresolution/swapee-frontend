@@ -9,7 +9,7 @@ import Loading from '../../Components/Loading/Loading'
 import './SignUp.css'
 import signupCoverImage from '../../Assets/Images/Auth/signup.png'
 
-import { registerWithEmailAndPassword, isUserLogedin } from "../../firebase";
+import { registerWithEmailAndPassword, sendPasswordReset } from "../../firebase";
 
 
 class SignUp extends Component {
@@ -26,7 +26,9 @@ class SignUp extends Component {
     handleSignUpApi = async(data) => {
         try {
             this.setState({ loading: true })
-            registerWithEmailAndPassword(data.name, data.email, '12345678')
+            const randomValue = this.generateRandomAlphaNumeric(8);
+            await registerWithEmailAndPassword(data.name, data.email, randomValue)
+            await sendPasswordReset(data.email)
             this.setState({ 
                 loading: false,
                 name: "",
@@ -57,6 +59,19 @@ class SignUp extends Component {
         else {
             this.setErrorSnackBar('Fields cannot be empty')
         }
+    }
+
+    generateRandomAlphaNumeric(length) {
+        const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const charsetLength = charset.length;
+        
+        for (let i = 0; i < length; i++) {
+          const randomIndex = Math.floor(Math.random() * charsetLength);
+          result += charset.charAt(randomIndex);
+        }
+        
+        return result;
     }
 
     handleCancelOnClick = () => {
@@ -135,7 +150,6 @@ class SignUp extends Component {
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
                 { loading && <Loading open = {loading} /> }
-                { console.log(isUserLogedin()) }
             </div>
         )
     }
