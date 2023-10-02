@@ -9,10 +9,12 @@ import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
 
 import { storeLoginResponse } from '../../redux/actions/authAction'
-import { signIn } from '../../Api/authentication'
+// import { signIn } from '../../Api/authentication'
 
 import './SignIn.css'
 import loginCoverImage from '../../Assets/Images/Auth/login.png'
+
+import { logInWithEmailAndPassword } from "../../firebase";
 
 class SignIn extends Component {
     state = {
@@ -26,25 +28,19 @@ class SignIn extends Component {
         passwordType: "password"
     }
 
-    authResponse = {
-        email: "Example@gmail.com",
-        name: "Chris Evans",
-        token: "sff52df12a1sd251sdfwa3s5dZd5dz4d",
-        expiration: "12 hours",
-        role: "admin"
-    } // dummy auth response for ui design purpose
-
     handleSignInApi = async(data) => {
         try {
             this.setState({ loading: true })
-            const response = await signIn(data)
-            const {email, name, token, expiration, role} = response
-            const loginResponse = { email, name, token, expiration, role }
-            console.log(loginResponse)
-            const loginResponseX = this.authResponse
-            this.props.storeLoginResponse(loginResponseX)
-            this.setState({ loading: false, email: "", password: "", message: null,  passwordType: "password" })
-            this.setSuccessSnackBar("You successfully logged in")
+            const response = await logInWithEmailAndPassword(data.email, data.password)
+            if (response !== null && !response.success) {
+                this.setErrorSnackBar(response.message)
+            } else {
+                const { uid, email, displayName, accessToken } = response
+                const loginResponse = { uid, email, displayName, accessToken }
+                this.props.storeLoginResponse(loginResponse)
+                this.setSuccessSnackBar("You successfully logged in")
+            }
+            this.setState({ loading: false, email: "", password: "", passwordType: "password" })
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)

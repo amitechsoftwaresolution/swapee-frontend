@@ -9,35 +9,32 @@ import Loading from '../../Components/Loading/Loading'
 import './SignUp.css'
 import signupCoverImage from '../../Assets/Images/Auth/signup.png'
 
+import { registerWithEmailAndPassword, isUserLogedin } from "../../firebase";
+
+
 class SignUp extends Component {
     state = {
         name: "",
         email: "",
-        password: "",
-        confirmPassword: "",
         message: "",
         severity: "",
         openSnackBar: false,
         loading: false,
-        showPassword: false,
-        showConfirmPassword: false,
-        passwordType: "password",
-        confirmPasswordType: "password",
         role: ""
     }
 
     handleSignUpApi = async(data) => {
         try {
             this.setState({ loading: true })
-            // handle sign up api
+            registerWithEmailAndPassword(data.name, data.email, '12345678')
             this.setState({ 
                 loading: false,
                 name: "",
                 email: "", 
-                password: "",
-                confirmPassword: "",
+                role: '',
                 message: null
             })
+            this.setSuccessSnackBar(data.name + ' registered successfully')
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -45,19 +42,15 @@ class SignUp extends Component {
     }
 
     handleSignUpOnClick = () => {
-        const {name, email, password, confirmPassword, role} = this.state
-        if (name && email && password && confirmPassword && role) {
+        const {name, email, role} = this.state
+        if (name && email && role) {
             const result = this.validateEmail(email)
-            const passwordMatched = this.validatePassword(password, confirmPassword)
 
             if (!result) {
                 this.setErrorSnackBar('Enter a valid email address')
             }
-            else if (!passwordMatched) {
-                this.setErrorSnackBar('Passwords not matched')
-            }
             else {
-                const data = {name, email, password, role}
+                const data = {name, email, role}
                 this.handleSignUpApi(data)
             }
         }
@@ -70,23 +63,8 @@ class SignUp extends Component {
         this.setState({
             name: "",
             email: "",
-            password: "",
-            confirmPassword: "",
             role: ""
         })
-    }
-
-    handleShowPasswordOnClick = (name) => {
-        const {showPassword, showConfirmPassword} = this.state
-
-        if (name === "password") {
-            let passwordType = showPassword ? "password" : "text"
-            this.setState({ showPassword: !showPassword, passwordType })
-        }
-        else {
-            let confirmPasswordType = showConfirmPassword ? "password" : "text"
-            this.setState({ showConfirmPassword: !showConfirmPassword, confirmPasswordType })
-        }
     }
 
     handleInputOnChange = (e) => {
@@ -115,10 +93,6 @@ class SignUp extends Component {
         return pattern.test(email)
     }
 
-    validatePassword = (password, confirmPassword) => {
-        return password === confirmPassword
-    }
-
     renderSnackBar = () => {
         const {openSnackBar, severity, message} = this.state
         return (
@@ -145,7 +119,6 @@ class SignUp extends Component {
                     <SignUpForm 
                         state = {this.state} 
                         handleInputOnChange = {this.handleInputOnChange}
-                        handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
                         handleCancelOnClick = {this.handleCancelOnClick}
                         handleSignUpOnClick = {this.handleSignUpOnClick}
                     />
@@ -162,6 +135,7 @@ class SignUp extends Component {
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
                 { loading && <Loading open = {loading} /> }
+                { console.log(isUserLogedin()) }
             </div>
         )
     }
