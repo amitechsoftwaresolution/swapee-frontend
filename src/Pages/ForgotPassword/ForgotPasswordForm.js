@@ -3,7 +3,6 @@ import React from "react"
 import {Grid, Box} from '@mui/material'
 
 import InputField from '../../Components/Input/InputField'
-import PasswordField from '../../Components/Input/PasswordField'
 import SubmitButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import LogoComponent from '../../Components/Logo/LogoComponent'
@@ -13,13 +12,11 @@ import paths from '../../Data/Json/paths.json'
 import './ForgotPassword.css'
 
 const ForgotPasswordForm = ({
-    state, 
+    email,
     handleInputOnChange, 
-    handleCancelOnClick, 
-    handleShowPasswordOnClick,
-    handleNextOnClick
+    handleCancelOnClick,
+    handleSubmitOnClick
 }) => {
-    const {activeStep, showPassword, showConfirmPassword, passwordType, confirmPasswordType} = state
 
     const renderButtonFooter = () => {
         return (
@@ -29,9 +26,9 @@ const ForgotPasswordForm = ({
                 </Grid>
                 <Grid item xs = {12} sm = {6} md = {8}>
                     <SubmitButtonWidget 
-                        name = {activeStep === 2 ? "Submit" : "Next"} 
+                        name = "Submit"
                         background = "#31e2f2"
-                        onClick = {handleNextOnClick}    
+                        onClick = {handleSubmitOnClick}    
                     />
                 </Grid>
             </Grid>
@@ -45,26 +42,8 @@ const ForgotPasswordForm = ({
                     name = {name}
                     label = {label}
                     placeholder = {placeholder}
-                    value = {state[name]}
+                    value = {email}
                     handleOnChange = {handleInputOnChange}
-                />
-            </div>
-        )
-    }
-
-    const renderPasswordField = (name, label, placeholder) => {
-        let values = {name, label, placeholder, value: state[name]}
-        if (name === "password") {
-            values = {...values, showPassword, passwordType}
-        } else {
-            values = {...values, showPassword: showConfirmPassword, passwordType: confirmPasswordType}
-        }
-        return (
-            <div className = "signup_form-input_wrapper">
-                <PasswordField 
-                    values = {values}
-                    handleOnChange = {handleInputOnChange}
-                    handleShowPasswordOnClick = {() => handleShowPasswordOnClick(name)}
                 />
             </div>
         )
@@ -80,21 +59,6 @@ const ForgotPasswordForm = ({
             </div>
         )
     }
-
-    const renderResetPasswordStep = () => (
-        <div className = "stepper-des">
-            <p className = "stepper-des_span">Please reset your password here</p>
-            { renderPasswordField("password", "Password", "Password") }
-            { renderPasswordField("confirmPassword", "Confirm Password", "Confirm Password") }
-        </div>
-    )
-
-    const renderResetCodeStep = () => (
-        <div className = "stepper-des">
-            <p className = "stepper-des_span">Reset code has been sent, please check your mail</p>
-            { renderInputField("resetCode", "Reset Code", "Reset Code") }
-        </div>
-    )
 
     const renderEmailStep = () => (
         <div className = "stepper-des">
@@ -126,13 +90,7 @@ const ForgotPasswordForm = ({
             <div className = "forgot-password-form">
                 { renderHeader() }
                 <div className = 'forgetpassword-form-input-container'>
-                    {
-                        activeStep === 0 ? renderEmailStep()
-                        :
-                        activeStep === 1 ? renderResetCodeStep() 
-                        :
-                        renderResetPasswordStep()
-                    }
+                    { renderEmailStep() }
                     { renderButtonFooter() }
                 </div>
             </div>

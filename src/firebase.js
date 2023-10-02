@@ -8,7 +8,7 @@ import {
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signOut,
-    updateProfile,
+    updateProfile
 } from "firebase/auth";
 
 import {
@@ -95,6 +95,10 @@ const logInWithEmailAndPassword = async (email, password) => {
     }
 };
 
+const getIdTokenfromFirebase = async () => {
+    return await auth.currentUser.getIdToken(true);
+}
+
 const registerWithEmailAndPassword = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -131,5 +135,6 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
-    isUserLogedin
+    isUserLogedin,
+    getIdTokenfromFirebase
 };

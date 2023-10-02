@@ -9,35 +9,30 @@ import Loading from '../../Components/Loading/Loading'
 import './ForgotPassword.css'
 import forgotpasswordCoverImage from '../../Assets/Images/Auth/forgotpassword.png'
 
+import { sendPasswordReset } from "../../firebase";
+
 class ForgotPassword extends Component {
     state = {
         email: "",
-        resetCode: "",
-        password: "",
-        confirmPassword: "",
-        showPassword: false,
-        showConfirmPassword: false,
-        passwordType: "password",
-        confirmPasswordType: "password",
         message: "",
         severity: "",
         openSnackBar: false,
-        loading: false,
-        activeStep: 0
+        loading: false
     }
 
     handleEmailApi = async(email) => {
         try {
             this.setState({ loading: true })
-            // handle api
+            await sendPasswordReset(email)
             this.setState({ loading: false, email: "", message: null })
+            this.setSuccessSnackBar("Forget password reset link successfully sent")
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
         }
     }
 
-    handleEmailStep = () => {
+    handleSubmitOnClick = () => {
         const {email} = this.state
         if (email) {
             const result = this.validateEmail(email)
@@ -45,7 +40,7 @@ class ForgotPassword extends Component {
                 this.setErrorSnackBar('Enter a valid email address')
             }
             else {
-                this.setState({activeStep: this.state.activeStep + 1})
+                this.handleEmailApi(email)
             }
         }
         else {
@@ -53,71 +48,8 @@ class ForgotPassword extends Component {
         }
     }
 
-    handleResetCodeStep = () => {
-        const {resetCode} = this.state
-        if (resetCode) {
-            this.setState({activeStep: this.state.activeStep + 1})
-        }
-        else {
-            this.setErrorSnackBar('Reset code cannot be empty')
-        }
-    }
-
-    handleResetPasswordStep = () => {
-        const {password, confirmPassword} = this.state
-        if (password && confirmPassword) {
-            const result = this.validatePassword(password, confirmPassword)
-            if (!result) {
-                this.setErrorSnackBar('Passwords not matched')
-            }
-            else {
-                this.setState({activeStep: 0})
-            }
-        }
-        else {
-            this.setErrorSnackBar('Fields cannot be empty')
-        }
-    }
-
-    handleNextOnClick = () => {
-        const {activeStep} = this.state
-
-        if (activeStep === 0) {
-            this.handleEmailStep()
-        }
-        else if (activeStep === 1) {
-            this.handleResetCodeStep()
-        }
-        else {
-            this.handleResetPasswordStep()
-        }
-    }
-
     handleCancelOnClick = () => {
-        const {activeStep} = this.state
-
-        if (activeStep === 0) {
-            this.setState({ email: "" })
-        }
-        else if (activeStep === 1) {
-            this.setState({ resetCode: "" })
-        }
-        else {
-            this.setState({ password: "", confirmPassword: "" })
-        }
-    }
-
-    handleShowPasswordOnClick = (name) => {
-        const {showPassword, showConfirmPassword} = this.state
-
-        if (name === "password") {
-            let passwordType = showPassword ? "password" : "text"
-            this.setState({ showPassword: !showPassword, passwordType })
-        }
-        else {
-            let confirmPasswordType = showConfirmPassword ? "password" : "text"
-            this.setState({ showConfirmPassword: !showConfirmPassword, confirmPasswordType })
-        }
+        this.setState({ email: "" })
     }
 
     handleInputOnChange = (e) => {
@@ -173,12 +105,11 @@ class ForgotPassword extends Component {
                 }} />
                 <Grid item xs = {false} sm = {false} md = {1}/>
                 <Grid item xs = {12} sm = {8} md = {5} sx = {{padding: "15px"}}>
-                    <ForgotPasswordForm 
-                        state = {this.state} 
+                    <ForgotPasswordForm
+                        email = { this.state.email }
                         handleInputOnChange = {this.handleInputOnChange}
                         handleCancelOnClick = {this.handleCancelOnClick}
-                        handleNextOnClick = {this.handleNextOnClick}
-                        handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
+                        handleSubmitOnClick = {this.handleSubmitOnClick}
                     />
                 </Grid>
                 <Grid item xs = {false} sm = {false} md = {1}/>
@@ -193,7 +124,6 @@ class ForgotPassword extends Component {
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
                 { loading && <Loading open = {loading} /> }
-                { console.log(this.state) }
             </div>
         )
     }
