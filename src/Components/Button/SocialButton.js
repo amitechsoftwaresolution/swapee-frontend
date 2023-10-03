@@ -22,6 +22,7 @@ const SocialButton = (props) => {
                     fontSize: "0.75rem",
                     letterSpacing: "0.1rem"
                 }}
+                onClick = {props.onClick}
             >
                 { 
                     props && props.icon && <props.icon sx = {{ 

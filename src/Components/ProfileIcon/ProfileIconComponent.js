@@ -12,7 +12,7 @@ import {logout} from '../../redux/actions/authAction'
 
 import paths from '../../Data/Json/paths.json'
 
-import { logoutfromFirebase } from "../../firebase";
+import { logoutfromFirebase } from "../../Firebase/firebase";
 
 const ProfileIconComponent = (props) => {
     const [anchorElUser, setAnchorElUser] = React.useState(null)

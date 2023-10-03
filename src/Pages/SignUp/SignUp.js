@@ -9,8 +9,7 @@ import Loading from '../../Components/Loading/Loading'
 import './SignUp.css'
 import signupCoverImage from '../../Assets/Images/Auth/signup.png'
 
-import { registerWithEmailAndPassword, sendPasswordReset } from "../../firebase";
-
+import { registerWithEmailAndPassword, sendPasswordReset } from "../../Firebase/firebase";
 
 class SignUp extends Component {
     state = {

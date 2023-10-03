@@ -14,7 +14,7 @@ import { storeLoginResponse } from '../../redux/actions/authAction'
 import './SignIn.css'
 import loginCoverImage from '../../Assets/Images/Auth/login.png'
 
-import { logInWithEmailAndPassword } from "../../firebase";
+import { logInWithEmailAndPassword, signInWithGoogle } from "../../Firebase/firebase";
 
 class SignIn extends Component {
     state = {
@@ -32,6 +32,27 @@ class SignIn extends Component {
         try {
             this.setState({ loading: true })
             const response = await logInWithEmailAndPassword(data.email, data.password)
+            if (response !== null && !response.success) {
+                this.setErrorSnackBar(response.message)
+            } else {
+                const { uid, email, displayName } = response
+                const loginResponse = { uid, email, name: displayName }
+                this.props.storeLoginResponse(loginResponse)
+                this.setSuccessSnackBar("You successfully logged in")
+            }
+            this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+        } catch (e) {
+            this.setState({ loading: false })
+            this.setErrorSnackBar(e.response.data.message)
+        }
+    }
+
+    
+
+    googleLoginOnClick = async(data) => {
+        try {
+            this.setState({ loading: true })
+            const response = await signInWithGoogle(data.email, data.password)
             if (response !== null && !response.success) {
                 this.setErrorSnackBar(response.message)
             } else {
@@ -131,6 +152,7 @@ class SignIn extends Component {
                         handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
                         handleCancelOnClick = {this.handleCancelOnClick}
                         handleLoginOnClick = {this.handleLoginOnClick}
+                        googleLoginOnClick = {this.googleLoginOnClick}
                     />
                 </Grid>
                 <Grid item xs = {false} sm = {false} md = {1}/>

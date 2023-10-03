@@ -2,21 +2,17 @@ import React from "react"
 
 import {Grid, Box} from '@mui/material'
 
-import FacebookIcon from '@mui/icons-material/Facebook'
-import GoogleIcon from '@mui/icons-material/Google'
-
 import LogoComponent from '../../Components/Logo/LogoComponent'
 import InputField from '../../Components/Input/InputField'
 import SignUpButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
-import SocialButton from '../../Components/Button/SocialButton'
 import SelectField from '../../Components/Input/SelectField'
 
 import paths from '../../Data/Json/paths.json'
 
 import './SignUp.css'
 
-const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleSignUpOnClick}) => {
+const SignUpForm = ({state, handleInputOnChange, handleCancelOnClick, handleSignUpOnClick}) => {
 
     const renderSelectDropDown = (name, label, placeholder, menuItems) => {
         return (
@@ -29,22 +25,6 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                     items = {menuItems}
                     handleOnChange = {handleInputOnChange}
                 />
-            </div>
-        )
-    }
-
-    const renderSocialLoginContainer = () => {
-        return (
-            <div className = 'social-login-root'>
-                <span className = "social-login-txt1">Or Signup with</span>
-                <Grid container spacing = {2} sx = {{marginTop: "10px", marginBottom: "10px"}}>
-                    <Grid item xs = {12} sm = {6} md = {6}>
-                        <SocialButton label = "Facebook" icon = {FacebookIcon}/>
-                    </Grid>
-                    <Grid item xs = {12} sm = {6} md = {6}>
-                        <SocialButton label = "Google" icon = {GoogleIcon}/>
-                    </Grid>
-                </Grid>
             </div>
         )
     }
@@ -129,7 +109,6 @@ const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                     { renderSelectDropDown("role", "Register as", "Register as", ['vendor', 'viewer']) }
                     { renderTermsAndConditionsLink() }
                     { renderButtonFooter() }
-                    { renderSocialLoginContainer() }
                 </div>
             </div>
         </Box>

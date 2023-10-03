@@ -16,7 +16,7 @@ import paths from '../../Data/Json/paths.json'
 
 import './SignIn.css'
 
-const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick}) => {
+const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick, googleLoginOnClick}) => {
 
     const renderSocialLoginContainer = () => {
         return (
@@ -27,7 +27,7 @@ const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, hand
                         <SocialButton label = "Facebook" icon = {FacebookIcon}/>
                     </Grid>
                     <Grid item xs = {12} sm = {6} md = {6}>
-                        <SocialButton label = "Google" icon = {GoogleIcon}/>
+                        <SocialButton  onClick = {googleLoginOnClick} label = "Google" icon = {GoogleIcon}/>
                     </Grid>
                 </Grid>
             </div>

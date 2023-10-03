@@ -9,7 +9,7 @@ import Loading from '../../Components/Loading/Loading'
 import './ForgotPassword.css'
 import forgotpasswordCoverImage from '../../Assets/Images/Auth/forgotpassword.png'
 
-import { sendPasswordReset } from "../../firebase";
+import { sendPasswordReset } from "../../Firebase/firebase";
 
 class ForgotPassword extends Component {
     state = {
