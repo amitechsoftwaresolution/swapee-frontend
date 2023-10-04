@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-
 import {Grid} from '@mui/material'
-
 import ForgotPasswordForm from './ForgotPasswordForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
-
 import './ForgotPassword.css'
 import forgotpasswordCoverImage from '../../Assets/Images/Auth/forgotpassword.png'
-
 import { sendPasswordReset } from "../../Firebase/firebase";
+import paths from '../../Data/Json/paths.json'
 
 class ForgotPassword extends Component {
     state = {
@@ -25,7 +22,12 @@ class ForgotPassword extends Component {
             this.setState({ loading: true })
             await sendPasswordReset(email)
             this.setState({ loading: false, email: "", message: null })
-            this.setSuccessSnackBar("Password reset link sent to your email")
+            this.setSuccessSnackBar("Password reset link sent to your email, valid for one hour.")
+
+            const delay = 4000;
+            setTimeout(() => {
+                window.location.href = paths.SignIn;
+            }, delay);
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)

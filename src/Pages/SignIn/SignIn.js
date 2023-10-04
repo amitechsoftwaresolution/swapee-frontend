@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
-
 import {connect} from 'react-redux'
-
 import {Grid} from '@mui/material'
-
 import SignInForm from './SignInForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
-
 import { storeLoginResponse } from '../../redux/actions/authAction'
-// import { signIn } from '../../Api/authentication'
-
 import './SignIn.css'
 import loginCoverImage from '../../Assets/Images/Auth/login.png'
-
 import { logInWithEmailAndPassword, signInWithGoogle, signInWithFacebook } from "../../Firebase/firebase";
+import paths from '../../Data/Json/paths.json'
 
 class SignIn extends Component {
     state = {
@@ -41,6 +35,11 @@ class SignIn extends Component {
                 this.setSuccessSnackBar("You successfully logged in")
             }
             this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+
+            const delay = 4000;
+            setTimeout(() => {
+                window.location.href = paths.Home;
+            }, delay);
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -61,6 +60,11 @@ class SignIn extends Component {
                 this.setSuccessSnackBar("You successfully logged in")
             }
             this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+            
+            const delay = 4000;
+            setTimeout(() => {
+                window.location.href = paths.Home;
+            }, delay);
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -80,6 +84,11 @@ class SignIn extends Component {
                 this.setSuccessSnackBar("You successfully logged in")
             }
             this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+
+            const delay = 4000;
+            setTimeout(() => {
+                window.location.href = paths.Home;
+            }, delay);
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)

@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-
 import {Grid} from '@mui/material'
-
 import SignUpForm from './SignUpForm'
 import SnackBarAlert from '../../Components/SnackBarAlert/SnackBarAlert'
 import Loading from '../../Components/Loading/Loading'
-
+import paths from '../../Data/Json/paths.json'
 import './SignUp.css'
 import signupCoverImage from '../../Assets/Images/Auth/signup.png'
 import { registerWithEmailAndPassword, sendPasswordReset } from "../../Firebase/firebase";
@@ -34,7 +32,12 @@ class SignUp extends Component {
                 role: '',
                 message: null
             })
-            this.setSuccessSnackBar('Password reset link sent to your email')            
+            this.setSuccessSnackBar('Password reset link sent to your email, valid for one hour.')
+
+            const delay = 4000;
+            setTimeout(() => {
+                window.location.href = paths.SignIn;
+            }, delay);
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
