@@ -8,7 +8,8 @@ import {
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signOut,
-    updateProfile
+    updateProfile,
+    FacebookAuthProvider
 } from "firebase/auth";
 
 import {
@@ -29,6 +30,31 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+const FacebookProvider = new FacebookAuthProvider();
+
+const signInWithFacebook = async () => {
+    try {
+        const res = await signInWithPopup(auth, FacebookProvider);
+        console.log(res)
+        const user = res.user;
+        console.log(user)
+
+        const credential = FacebookAuthProvider.credentialFromResult(res);
+
+        return {
+            success: true,
+            uid: credential.uid,
+            email: credential.email,
+            displayName: credential.displayName,
+            accessToken: credential.accessToken
+        };
+    } catch (err) {
+        return {
+            success: false,
+            message: err.message
+        };
+    }
+};
 
 const signInWithGoogle = async () => {
     try {
@@ -90,7 +116,13 @@ const logInWithEmailAndPassword = async (email, password) => {
 };
 
 const getIdTokenfromFirebase = async () => {
-    return await auth.currentUser.getIdToken(true);
+    if(isUserLogedin()){
+        return "User not logged in";
+    }
+
+    const token =  await auth.currentUser.getIdToken(true);
+    console.log(token)
+    return token;
 }
 
 const registerWithEmailAndPassword = async (name, email, password) => {
@@ -118,12 +150,14 @@ const logoutfromFirebase = () => {
 };
 
 const isUserLogedin = () => {
-    return auth.currentUser != null;
+    console.log(auth)
+    return auth.currentUser === null;
 };
 
 export {
     auth,
     db,
+    signInWithFacebook,
     signInWithGoogle,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,

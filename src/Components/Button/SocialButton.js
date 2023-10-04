@@ -6,6 +6,7 @@ const SocialButton = (props) => {
     return (
         <>
             <Button
+                onClick = {props.onClick}
                 sx = {{
                     margin: '0px',
                     width: '100%',
@@ -22,7 +23,6 @@ const SocialButton = (props) => {
                     fontSize: "0.75rem",
                     letterSpacing: "0.1rem"
                 }}
-                onClick = {props.onClick}
             >
                 { 
                     props && props.icon && <props.icon sx = {{ 

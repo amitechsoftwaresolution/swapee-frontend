@@ -8,7 +8,6 @@ import Loading from '../../Components/Loading/Loading'
 
 import './SignUp.css'
 import signupCoverImage from '../../Assets/Images/Auth/signup.png'
-
 import { registerWithEmailAndPassword, sendPasswordReset } from "../../Firebase/firebase";
 
 class SignUp extends Component {
@@ -35,7 +34,7 @@ class SignUp extends Component {
                 role: '',
                 message: null
             })
-            this.setSuccessSnackBar(data.name + ' registered successfully')
+            this.setSuccessSnackBar('Password reset link sent to your email')            
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -92,6 +91,10 @@ class SignUp extends Component {
 
     setSuccessSnackBar = (message) => {
         this.setSnackBar("success", message, true)
+    }
+
+    setWarningSnackBar = (message) => {
+        this.setSnackBar("warning", message, true)
     }
 
     setErrorSnackBar = (message) => {

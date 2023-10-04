@@ -8,6 +8,7 @@ import UpdateButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 
 import './Profile.css'
+import { primaryColor } from '../../Data/Values/Values'
 
 const ChangePassword = ({
     state, 
@@ -26,7 +27,7 @@ const ChangePassword = ({
                 <Grid item xs = {12} sm = {6} md = {8}>
                     <UpdateButtonWidget 
                         name = "Update" 
-                        background = "rgb(0, 171, 85)"
+                        background = {primaryColor}
                         onClick = {handleSubmitOnClick}    
                     />
                 </Grid>

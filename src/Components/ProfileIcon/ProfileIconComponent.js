@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 
 import { Link } from "react-router-dom"
 
@@ -14,8 +14,11 @@ import paths from '../../Data/Json/paths.json'
 
 import { logoutfromFirebase } from "../../Firebase/firebase";
 
+import AlertModel from "../../Components/Popup/AlertModel"
+
 const ProfileIconComponent = (props) => {
-    const [anchorElUser, setAnchorElUser] = React.useState(null)
+    const [anchorElUser, setAnchorElUser] = useState(null)
+    const [openLogOutpopup, setOpenLogOutpopup] = useState(false)
 
     const authResponse = props && props.authResponse
     const username = authResponse ? authResponse.name : "Anonymous User"
@@ -47,13 +50,22 @@ const ProfileIconComponent = (props) => {
         </Link>
     )
 
+    const OpenModel = () => {
+        setOpenLogOutpopup(true)
+    }
+    
+    const handleCloseModel = () => {
+        setOpenLogOutpopup(false)
+    }
+
     const renderMenuItems = () => (
         <Box style = {{mt: "25px"}}>
             <MenuItem>
                 <AccountCircleIcon color = "info" sx = {{mr:2}}/>
                 { renderListItem("Profile") }
             </MenuItem>
-            <MenuItem onClick = {handleLogout}>
+            {/* <MenuItem onClick = {handleLogout}> */}
+            <MenuItem onClick = {OpenModel}>
                 <ExitToAppIcon color = "info" sx = {{mr:2}} />
                 <span style = {{
                     fontSize: "0.8rem", 
@@ -102,6 +114,14 @@ const ProfileIconComponent = (props) => {
                 </IconButton>
             </Tooltip>
             { renderMenu() }
+            <AlertModel
+                title = "Logout Confirmation"
+                content = "Are you sure you want to log out?"
+                open = {openLogOutpopup} 
+                handleClose = {handleCloseModel}
+                handleCancelOnClick = {handleCloseModel}
+                handleSubmitOnClick = {handleLogout}
+            />
         </Box>
     )
 }

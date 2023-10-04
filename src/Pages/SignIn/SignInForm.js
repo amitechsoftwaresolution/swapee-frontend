@@ -2,7 +2,7 @@ import React from "react"
 
 import {Grid, Box} from '@mui/material'
 
-import FacebookIcon from '@mui/icons-material/Facebook'
+// import FacebookIcon from '@mui/icons-material/Facebook'
 import GoogleIcon from '@mui/icons-material/Google'
 
 import LogoComponent from '../../Components/Logo/LogoComponent'
@@ -16,18 +16,18 @@ import paths from '../../Data/Json/paths.json'
 
 import './SignIn.css'
 
-const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick, googleLoginOnClick}) => {
+const SignInForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleLoginOnClick, googleLoginOnClick, FacebookLoginOnClick}) => {
 
     const renderSocialLoginContainer = () => {
         return (
             <div className = 'social-login-root'>
                 <span className = "social-login-txt1">Or login with</span>
                 <Grid container spacing = {2} sx = {{marginTop: "10px", marginBottom: "10px"}}>
-                    <Grid item xs = {12} sm = {6} md = {6}>
-                        <SocialButton label = "Facebook" icon = {FacebookIcon}/>
-                    </Grid>
-                    <Grid item xs = {12} sm = {6} md = {6}>
-                        <SocialButton  onClick = {googleLoginOnClick} label = "Google" icon = {GoogleIcon}/>
+                    {/* <Grid item xs = {12} sm = {6} md = {6}>
+                        <SocialButton onClick = {FacebookLoginOnClick} label = "Facebook" icon = {FacebookIcon}/>
+                    </Grid> */}
+                    <Grid item xs = {12} sm = {12} md = {12}>
+                        <SocialButton onClick = {googleLoginOnClick} label = "Google" icon = {GoogleIcon}/>
                     </Grid>
                 </Grid>
             </div>

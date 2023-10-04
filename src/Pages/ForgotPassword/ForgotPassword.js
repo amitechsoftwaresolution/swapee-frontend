@@ -25,7 +25,7 @@ class ForgotPassword extends Component {
             this.setState({ loading: true })
             await sendPasswordReset(email)
             this.setState({ loading: false, email: "", message: null })
-            this.setSuccessSnackBar("Forget password reset link successfully sent")
+            this.setSuccessSnackBar("Password reset link sent to your email")
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -63,6 +63,10 @@ class ForgotPassword extends Component {
 
     setSuccessSnackBar = (message) => {
         this.setSnackBar("success", message, true)
+    }
+
+    setWarningSnackBar = (message) => {
+        this.setSnackBar("warning", message, true)
     }
 
     setErrorSnackBar = (message) => {
