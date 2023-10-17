@@ -7,3 +7,11 @@
     margin-left: 15px;
     margin-right: 15px;
 }
+
+.slick-dots li.slick-active button:before {
+    color: #31e2f2 !important;
+}
+
+.slick-dots li button:before {
+    color: #31e2f2 !important;
+}
