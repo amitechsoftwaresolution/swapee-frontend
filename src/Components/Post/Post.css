@@ -2,3 +2,8 @@
     background: #4b4e5f;
     padding: 50px
 }
+
+.slick-list {
+    margin-left: 15px;
+    margin-right: 15px;
+}

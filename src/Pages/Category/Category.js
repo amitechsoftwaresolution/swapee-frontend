@@ -19,8 +19,6 @@ import './Category.css'
 import accessories from '../../Assets/Images/Categories/accessory.png'
 import gadget from '../../Assets/Images/Categories/gadget.png'
 import fashion from '../../Assets/Images/Categories/fashion.png'
-import img01 from '../../Assets/Images/mobile2.jpg'
-import img02 from '../../Assets/Images/mobile3.jpg'
 
 import products from '../../Data/Json/products.json'
 
@@ -86,10 +84,12 @@ class Category extends Component {
     posts = [
         {
             title:"Sumsung Galaxy J2 Mobile Phone",
-            category:"Electronics",
+            categoryType:"Electronics",
             description:"Lorem Ipsum is a piece of text, used by designers to fill a space where the content will eventually sit. It helps show how text will look once a piece of content is finished, during the planning phase.",
-            date:"25th May 2022",
-            imgs: [img01, img02]
+            postDate:"25th May 2022",
+            imgLinks: [
+                "https://www.ioshacker.com/wp-content/uploads/2018/04/iPhone-8-PRODUCT-RED-1.jpg",
+                "https://store.nebula.tv/cdn/shop/files/Extra-History-Wallpapers_2048x2048.jpg?v=1689954469"]
         },
     ]
 
