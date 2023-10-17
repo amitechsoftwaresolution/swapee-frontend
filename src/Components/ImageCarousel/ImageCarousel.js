@@ -8,7 +8,9 @@ const ImageCarousel = ({data, children, settings}) => {
                 className = "image-carousel"
                 {...settings}
             >
-                { data && children && data.map((item, idx) => { return children(item, idx) }) }
+                { data && children && data.map((item, idx) => { 
+                    return children(item, idx) 
+                }) }
             </Slider>
     )
 }

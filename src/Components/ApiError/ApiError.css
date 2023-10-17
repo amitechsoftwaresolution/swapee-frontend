@@ -1,0 +1,47 @@
+.api_error_root {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.api_error_container {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.server_error_title {
+    font-family: montserrat,sans-serif;
+    font-size: 200px;
+    font-weight: 900;
+    margin-top: -3rem;
+    margin-bottom: 0;
+    color: #4b4e5f;
+    text-transform: uppercase;
+}
+
+.server_error_description {
+    font-family: montserrat,sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    color: #4b4e5f;
+    text-transform: uppercase;
+    letter-spacing: 13px;
+    margin-top: -40px;
+}
+
+@media screen and (max-width: 700px) {
+    .api_error_container {
+        width: 75%;
+    }
+
+    .server_error_title {
+        font-size: 7rem;
+    }
+
+    .server_error_description {
+        font-size: 30px;
+    }
+}

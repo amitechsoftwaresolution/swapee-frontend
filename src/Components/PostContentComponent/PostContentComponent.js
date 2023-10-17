@@ -81,13 +81,13 @@ const PostContentComponent = ({content, handleViewOnClick, handleStoreOnClick}) 
             paddingTop = {verticalPadding} 
             paragraph
         >
-            {content.category}
+            {content.categoryType}
         </Typography> 
     )
 
     const renderPostedOn = () => (
         <Typography style = {{fontFamily: 'Trebuchet MS'}} variant = "subtitle1" align = "left" color = "#fff" fontSize = '17px' paragraph>
-            Posted On : {content.date}
+            Posted On : {content.postDate}
         </Typography>
     )
 

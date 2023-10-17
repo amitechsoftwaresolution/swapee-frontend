@@ -79,7 +79,7 @@ export const MULTIPART = (endpoint, formData, authorization) => {
 }
   
 const createRequestUrl = (endpoint) => {
-    return `http://localhost:9000/api/v1.0/${endpoint}`
+    return `https://catfact.ninja/${endpoint}`
 }
   
 const createRequestBody = (requestBody) => {

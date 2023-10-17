@@ -23,7 +23,8 @@ const Post = ({content, handleViewOnClick, handleStoreOnClick}) => {
         adaptiveHeight: true
     }
 
-    const renderPostCarouselContent = (img, idx) => (
+    const renderPostCarouselContent = (img, idx) => {
+        return (
             <Paper elevation = {3} key = {idx}
                 sx = {{
                     width: '100%', 
@@ -34,7 +35,8 @@ const Post = ({content, handleViewOnClick, handleStoreOnClick}) => {
                     backgroundSize: "cover"
                 }}
             />
-    )
+        )
+    }
 
     return (
         <div className = 'post-root'>
@@ -47,7 +49,7 @@ const Post = ({content, handleViewOnClick, handleStoreOnClick}) => {
                     />
                 </Grid>
                 <Grid item sm = {12} md = {6} sx = {{display: {xs: 'none', md: 'block'}}}>
-                    <ImageCarousel data = {content.imgs} children = {renderPostCarouselContent} settings = {carouselSetting}/>
+                    <ImageCarousel data = {content.imgLinks} children = {renderPostCarouselContent} settings = {carouselSetting}/>
                 </Grid>
             </Grid>
         </div>
