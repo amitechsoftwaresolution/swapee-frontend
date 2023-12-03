@@ -7,13 +7,17 @@ import InputField from '../../Components/Input/InputField'
 import SignUpButtonWidget from '../../Components/Widgets/ButtonWidget'
 import CancelButton from '../../Components/Button/SecodaryButtonWidget'
 import SelectField from '../../Components/Input/SelectField'
+import PasswordField from '../../Components/Input/PasswordField'
 
 import paths from '../../Data/Json/paths.json'
 
+import GoogleIcon from '@mui/icons-material/Google';
+import SocialButton from '../../Components/Button/SocialButton';
+
+
 import './SignUp.css'
 
-const SignUpForm = ({state, handleInputOnChange, handleCancelOnClick, handleSignUpOnClick}) => {
-
+const SignUpForm = ({state, handleInputOnChange, handleShowPasswordOnClick, handleCancelOnClick, handleSignUpOnClick, googleLoginOnClick, isNeedSocialLogins}) => {
     const renderSelectDropDown = (name, label, placeholder, menuItems) => {
         return (
             <div className = "signup_form-input_wrapper">
@@ -54,6 +58,24 @@ const SignUpForm = ({state, handleInputOnChange, handleCancelOnClick, handleSign
         )
     }
 
+    const renderPasswordField = (name, label, placeholder) => {
+        const {showPassword, showConfirmPassword, passwordType, confirmPasswordType} = state
+        let values = {name, label, placeholder, value: state[name]}
+        if (name === "password") {
+            values = {...values, showPassword, passwordType}
+        } else {
+            values = {...values, showPassword: showConfirmPassword, passwordType: confirmPasswordType}
+        }
+        return (
+            <div className = "signup_form-input_wrapper">
+                <PasswordField 
+                    values = {values}
+                    handleOnChange = {handleInputOnChange}
+                    handleShowPasswordOnClick = {() => handleShowPasswordOnClick(name)}
+                />
+            </div>
+        )
+    }
 
     const renderInputField = (name, label, placeholder) => {
         return (
@@ -99,6 +121,22 @@ const SignUpForm = ({state, handleInputOnChange, handleCancelOnClick, handleSign
         )
     }
 
+    const renderSocialLoginContainer = () => {
+        return (
+            <div className = 'social-login-root'>
+                <span className = "social-login-txt1">Or login with</span>
+                <Grid container spacing = {2} sx = {{marginTop: "10px", marginBottom: "10px"}}>
+                    {/* <Grid item xs = {12} sm = {6} md = {6}>
+                        <SocialButton onClick = {FacebookLoginOnClick} label = "Facebook" icon = {FacebookIcon}/>
+                    </Grid> */}
+                    <Grid item xs = {12} sm = {12} md = {12}>
+                        <SocialButton onClick = {googleLoginOnClick} label = "Google" icon = {GoogleIcon}/>
+                    </Grid>
+                </Grid>
+            </div>
+        )
+    }
+
     return (
         <Box sx = {{my: 2, display: 'flex', flexDirection: 'column'}}>
             <div className = 'signup-form'>
@@ -107,10 +145,13 @@ const SignUpForm = ({state, handleInputOnChange, handleCancelOnClick, handleSign
                     { renderInputField("name", "Name", "Name") }
                     { renderInputField("email", "Email", "Email address") }
                     { renderSelectDropDown("role", "Register as", "Register as", ['vendor', 'viewer']) }
+                    { renderPasswordField("password", "Password", "Password") }
+                    { renderPasswordField("confirmPassword", "Confirm Password", "Confirm Password") }
                     { renderTermsAndConditionsLink() }
                     { renderButtonFooter() }
+                    { isNeedSocialLogins && renderSocialLoginContainer() }
                 </div>
-            </div>
+            </div>+
         </Box>
     )
 }

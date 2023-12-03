@@ -61,6 +61,8 @@ const signInWithGoogle = async () => {
         const res = await signInWithPopup(auth, googleProvider);
         const user = res.user;
 
+        console.log(user.accessToken)
+
         return {
             success: true,
             uid: user.uid,
@@ -68,6 +70,7 @@ const signInWithGoogle = async () => {
             displayName: user.displayName,
             accessToken: user.accessToken
         };
+
     } catch (err) {
         return {
             success: false,

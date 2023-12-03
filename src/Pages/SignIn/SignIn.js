@@ -28,18 +28,20 @@ class SignIn extends Component {
             const response = await logInWithEmailAndPassword(data.email, data.password)
             if (response !== null && !response.success) {
                 this.setErrorSnackBar(response.message)
+                this.setState({ loading: false })
             } else {
-                const { uid, email, displayName } = response
-                const loginResponse = { uid, email, name: displayName }
+                const { uid, email, displayName, accessToken } = response
+                const loginResponse = { uid, email, name: displayName, token:accessToken }
                 this.props.storeLoginResponse(loginResponse)
                 this.setSuccessSnackBar("You successfully logged in")
-            }
-            this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+                this.setState({ loading: false, email: "", password: "", passwordType: "password" })
 
-            const delay = 4000;
-            setTimeout(() => {
-                window.location.href = paths.Home;
-            }, delay);
+                const delay = 4000;
+                setTimeout(() => {
+                    window.location.href = paths.Home;
+                }, delay);
+            }
+            
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
@@ -53,42 +55,47 @@ class SignIn extends Component {
             if (response !== null && !response.success) {
                 this.setErrorSnackBar(response.message)
                 console.log(response.message)
+                this.setState({ loading: false })
             } else {
-                const { uid, email, displayName } = response
-                const loginResponse = { uid, email, name: displayName }
+                const { uid, email, displayName, accessToken } = response
+                const loginResponse = { uid, email, name: displayName, token:accessToken }
                 this.props.storeLoginResponse(loginResponse)
                 this.setSuccessSnackBar("You successfully logged in")
-            }
-            this.setState({ loading: false, email: "", password: "", passwordType: "password" })
-            
-            const delay = 4000;
-            setTimeout(() => {
-                window.location.href = paths.Home;
-            }, delay);
+                this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+
+                const delay = 4000;
+                setTimeout(() => {
+                    window.location.href = paths.Home;
+                }, delay);
+            }            
+           
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)
         }
     }
 
-    googleLoginOnClick = async(data) => {
+    googleLoginOnClick = async() => {
         try {
             this.setState({ loading: true })
-            const response = await signInWithGoogle(data.email, data.password)
+            const response = await signInWithGoogle()
             if (response !== null && !response.success) {
                 this.setErrorSnackBar(response.message)
             } else {
-                const { uid, email, displayName } = response
-                const loginResponse = { uid, email, name: displayName }
+                const { uid, email, displayName, accessToken } = response
+                const loginResponse = { uid, email, name: displayName, token:accessToken }
                 this.props.storeLoginResponse(loginResponse)
                 this.setSuccessSnackBar("You successfully logged in")
-            }
-            this.setState({ loading: false, email: "", password: "", passwordType: "password" })
 
-            const delay = 4000;
-            setTimeout(() => {
-                window.location.href = paths.Home;
-            }, delay);
+                this.setState({ loading: false, email: "", password: "", passwordType: "password" })
+
+                const delay = 4000;
+                setTimeout(() => {
+                    window.location.href = paths.Home;
+                }, delay);
+            }
+            
+
         } catch (e) {
             this.setState({ loading: false })
             this.setErrorSnackBar(e.response.data.message)

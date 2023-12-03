@@ -95,7 +95,7 @@ const PostContentComponent = ({content, handleViewOnClick, handleStoreOnClick}) 
         <Stack sx = {{ pt: 2, marginTop: 4, alignItems: "center" }} direction = "row" spacing = {2} justifyContent = "left">
             <DiamondIcon sx = {{ color: "#fff"}}/>
             <PrimaryButton label = "VIEW" onClick = {handleViewOnClick}/>
-            <SecondaryButton label = "STORE" onClick = {handleStoreOnClick}/>
+            <SecondaryButton sx={{color: '#31e2f2'}} label = "STORE" onClick = {handleStoreOnClick}/>
         </Stack>
     )
     

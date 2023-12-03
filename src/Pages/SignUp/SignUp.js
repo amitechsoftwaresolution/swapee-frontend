@@ -6,17 +6,54 @@ import Loading from '../../Components/Loading/Loading'
 import paths from '../../Data/Json/paths.json'
 import './SignUp.css'
 import signupCoverImage from '../../Assets/Images/Auth/signup.png'
-import { registerWithEmailAndPassword, sendPasswordReset } from "../../Firebase/firebase";
+import { registerWithEmailAndPassword, sendPasswordReset, signInWithGoogle } from "../../Firebase/firebase";
+import { storeLoginResponse } from '../../redux/actions/authAction'
+import {connect} from 'react-redux'
+import AlertModel from "../../Components/Popup/AlertModel"
 
 class SignUp extends Component {
     state = {
         name: "",
         email: "",
+        password: "",
+        confirmPassword: "",
         message: "",
         severity: "",
         openSnackBar: false,
         loading: false,
-        role: ""
+        showPassword: false,
+        showConfirmPassword: false,
+        passwordType: "password",
+        confirmPasswordType: "password",
+        role: "",
+        isNeedSocialLogins: false,
+        openGoogleConformationpopup: false
+    }
+
+    googleLoginOnClick = async() => {
+        try {
+            this.setState({ loading: true,  openGoogleConformationpopup: false})
+            const response = await signInWithGoogle()
+            if (response !== null && !response.success) {
+                this.setErrorSnackBar(response.message)
+                this.setState({ loading: false})
+            } else {
+                const { uid, email, displayName } = response
+                const loginResponse = { uid, email, name: displayName }
+                this.props.storeLoginResponse(loginResponse)
+                this.setSuccessSnackBar("You successfully logged in")
+                this.setState({ loading: false, email: "", password: "", role: "", passwordType: "password" })
+
+                const delay = 4000;
+                setTimeout(() => {
+                    window.location.href = paths.Home;
+                }, delay);
+            }
+        } catch (e) {
+            this.setState({ loading: false })
+            console.log(e)
+            this.setErrorSnackBar(e.response.data.message)
+        }
     }
 
     handleSignUpApi = async(data) => {
@@ -83,13 +120,33 @@ class SignUp extends Component {
         })
     }
 
+    handleShowPasswordOnClick = (name) => {
+        const {showPassword, showConfirmPassword} = this.state
+
+        if (name === "password") {
+            let passwordType = showPassword ? "password" : "text"
+            this.setState({ showPassword: !showPassword, passwordType })
+        }
+        else {
+            let confirmPasswordType = showConfirmPassword ? "password" : "text"
+            this.setState({ showConfirmPassword: !showConfirmPassword, confirmPasswordType })
+        }
+    }
+
     handleInputOnChange = (e) => {
-        const {name, value} = e.target
-        this.setState({[name]: value})
+        const {name, value} = e.target;
+
+        const status = value !== "vendor"
+
+        this.setState({[name]: value, isNeedSocialLogins: status})
     }
 
     handleSnackBarClose = () => {
         this.setSnackBar("", null, false)
+    }
+
+    handleGoogleConformationModel = () => {
+        this.setState({openGoogleConformationpopup: !this.state.openGoogleConformationpopup})
     }
 
     setSuccessSnackBar = (message) => {
@@ -111,6 +168,10 @@ class SignUp extends Component {
     validateEmail = (email) => {
         const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         return pattern.test(email)
+    }
+
+    validatePassword = (password, confirmPassword) => {
+        return password === confirmPassword
     }
 
     renderSnackBar = () => {
@@ -139,8 +200,11 @@ class SignUp extends Component {
                     <SignUpForm 
                         state = {this.state} 
                         handleInputOnChange = {this.handleInputOnChange}
+                        handleShowPasswordOnClick = {this.handleShowPasswordOnClick}
                         handleCancelOnClick = {this.handleCancelOnClick}
                         handleSignUpOnClick = {this.handleSignUpOnClick}
+                        googleLoginOnClick = {this.handleGoogleConformationModel}
+                        isNeedSocialLogins = {this.state.isNeedSocialLogins}
                     />
                 </Grid>
                 <Grid item xs = {false} sm = {false} md = {1}/>
@@ -149,15 +213,31 @@ class SignUp extends Component {
     }
 
     render() {
-        const {openSnackBar, loading} = this.state
+        const {openSnackBar, loading, openGoogleConformationpopup} = this.state
         return (
             <div className = 'signup-page-root'>
                 { this.renderMainContainer() }
                 { openSnackBar && this.renderSnackBar() }
                 { loading && <Loading open = {loading} /> }
+                <AlertModel
+                    title = "Alert!"
+                    content = "If you proceed, you will no longer be able to log in as a vendor. This action is irreversible and will restrict your account to viewer access only."
+                    cancelLabel= 'Cancel'
+                    proceedLabel= 'Continue'
+                    open = {openGoogleConformationpopup} 
+                    handleClose = {this.handleGoogleConformationModel}
+                    handleCancelOnClick = {this.handleGoogleConformationModel}
+                    handleSubmitOnClick = {this.googleLoginOnClick}
+                />
             </div>
         )
     }
 }
 
-export default SignUp
+const mapDispatchToProps = dispatch => {
+    return {
+        storeLoginResponse: data => { dispatch(storeLoginResponse(data)) }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)

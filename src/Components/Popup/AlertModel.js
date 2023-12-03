@@ -12,6 +12,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 const AlertModel = ({
+    cancelLabel = "No",
+    proceedLabel = "yes",
     open, 
     handleClose, 
     handleCancelOnClick, 
@@ -22,8 +24,8 @@ const AlertModel = ({
 
     const renderActions = () => (
         <DialogActions sx = {{mb: "10px", mr: "10px"}}>
-            <SecondaryButton label = "No" onClick = {handleCancelOnClick} />
-            <PrimaryButton label = "Yes" onClick = {handleSubmitOnClick} />
+            <SecondaryButton label = {cancelLabel} onClick = {handleCancelOnClick} />
+            <PrimaryButton label = {proceedLabel} onClick = {handleSubmitOnClick} />
         </DialogActions>
     )
 

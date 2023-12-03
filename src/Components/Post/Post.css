@@ -15,3 +15,8 @@
 .slick-dots li button:before {
     color: #31e2f2 !important;
 }
+
+.css-1hmv391-MuiStack-root .custom_button_outlined {
+    color: #fff !important;
+    border-color: #fff;
+}

@@ -1,0 +1,19 @@
+{
+    "success" : true,
+    "message": "succesfully retrieved ads",
+    "data": {
+        "carousel_interval": {
+            "min": 3,
+            "max": 5
+        },
+        "image_list": [
+            "https://img.freepik.com/free-vector/juice-ad-with-gradients-letterings_52683-30489.jpg",
+            "https://img.freepik.com/free-vector/juice-ad-with-gradients-letterings_52683-30488.jpg",
+            "https://i.pinimg.com/736x/2d/7b/8d/2d7b8d88ca2a973eb7e2d8e2d6c261f4.jpg"
+        ]
+    },
+    "error": {
+        "code": 0,
+        "message": ""
+    }
+}

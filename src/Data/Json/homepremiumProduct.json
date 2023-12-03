@@ -1,0 +1,41 @@
+{
+    "success" : true,
+    "message": "succesfully retrieved premium contents",
+    "data": {
+        "platinum":{
+           "title":"Sumsung Galaxy J2 Mobile Phone",
+           "description":"Lorem Ipsum is a piece of text, used by designers to fill a space where the content will eventually sit. It helps show how text will look once a piece of content is finished, during the planning phase.",
+           "category_type":"Electronics",
+           "post_date":"25th May 2022",
+           "image_links":[
+              "https://www.ioshacker.com/wp-content/uploads/2018/04/iPhone-8-PRODUCT-RED-1.jpg",
+              "https://store.nebula.tv/cdn/shop/files/Extra-History-Wallpapers_2048x2048.jpg?v=1689954469"
+            ]
+        },
+        "gold":{
+           "title":"Harry Potter and the Philosopher's Stone",
+           "description":"Lorem Ipsum is a piece of text, used by designers to fill a space where the content will eventually sit. It helps show how text will look once a piece of content is finished, during the planning phase.",
+           "category_type":"Books",
+           "post_date":"02nd April 2022",
+           "image_links":[
+              "https://www.peterharrington.co.uk/blog/wp-content/uploads/2022/10/HP_5-scaled-e1666611456147.jpg",
+              "https://i.guim.co.uk/img/media/bd795e208946db0bbb9c8319bd006a31f1bc30df/0_164_3500_2099/master/3500.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=a25a7b65f3fb40ed4c16e8c1f5473650",
+              "https://media.cnn.com/api/v1/images/stellar/prod/190801105352-01-uk-harry-potter-first-edition-sale.jpg?q=w_2400,h_1416,x_0,y_0,c_fill"
+            ]
+        },
+        "bronze":{
+           "title":"Armour T shirt Men's Ultra White Sport Style",
+           "description":"Lorem Ipsum is a piece of text, used by designers to fill a space where the content will eventually sit. It helps show how text will look once a piece of content is finished, during the planning phase.",
+           "category_type":"Accessories",
+           "post_date":"19th October 2023",
+           "image_links":[
+              "https://media.littlewoods.com/i/littlewoods/MNT7G_SQ1_0000000013_WHITE_MDf?$300x400_retinamobilex2$&$roundel_littlewoods$&p1_img=new_yellow_round",
+              "https://underarmour.scene7.com/is/image/Underarmour/V5-1373997-100_FC?rp=standard-0pad%7CpdpMainDesktop&scl=1&fmt=jpg&qlt=85&resMode=sharp2&cache=on%2Con&bgc=F0F0F0&wid=566&hei=708&size=566%2C708"
+            ]
+        }
+    },
+    "error": {
+        "code": 0,
+        "message": ""
+    }
+}
